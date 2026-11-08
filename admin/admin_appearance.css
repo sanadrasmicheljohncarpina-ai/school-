@@ -1,0 +1,1347 @@
+/* ============================================================
+   PBI Admin — shared Appearance engine (Density / Motion / Accent / Theme)
+   Include this AFTER admin_aura_theme.css (or any other page theme CSS)
+   so its dark-mode overrides win cascade ties against existing !important
+   rules. Pair with admin_appearance.js.
+   ============================================================ */
+
+:root{
+  --accent:#0F9F6E;
+  --accent-soft:color-mix(in srgb, var(--accent) 12%, #fff);
+  --bg:#f4f8ff;
+  --text:#10243f;
+  --muted:#66809c;
+  --panel-bg:#fff;
+  --panel-border:#dce8f5;
+  --input-bg:#f9fbff;
+  --input-border:#d4e2f2;
+  /* admin_aura_theme.css's .brand-avatar already reads var(--blue-accent, #0F9F6E) —
+     hook it to the shared accent so it repaints automatically. */
+  --blue-accent:var(--accent);
+}
+html[data-theme="dark"]{
+  --bg:#0b1626;
+  --text:#e7eef8;
+  --muted:#8ba0bd;
+  --panel-bg:#121f33;
+  --panel-border:#22344d;
+  --input-bg:#16243a;
+  --input-border:#25374f;
+  --accent-soft:color-mix(in srgb, var(--accent) 22%, #121f33);
+}
+
+/* ---- Generic fallbacks: gives every page a baseline dark mode even
+       before it gets page-specific overrides added below. Several feature
+       pages hard-code body{background:#fff !important;...} to lock their
+       own light palette, so this needs !important + extra specificity
+       (the html[data-theme="dark"] prefix) to win against them. ---- */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:var(--bg)!important;color:var(--text)!important}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea{background:var(--input-bg)!important;color:var(--text)!important;border-color:var(--input-border)!important}
+html[data-theme="dark"] table{color:var(--text)}
+html[data-theme="dark"] a{color:var(--accent)}
+
+/* ---- Page-local color tokens: Questionnaire, Account Management,
+   Evaluation Tracker, My/EA Evaluations, Evaluation Report, System Logs and
+   System Archive each define their own :root custom properties (different
+   names for the same page-bg/card-bg/border/text concepts) and consume them
+   via var(...) throughout their markup. Re-pointing the token here repaints
+   the whole page through its own existing CSS — no per-class rules needed.
+   html[data-theme="dark"] always outguns a bare :root rule on specificity,
+   so this wins regardless of where the page's own :root sits in the file. */
+html[data-theme="dark"]{
+  --page-bg:var(--bg); --card-bg:var(--panel-bg); --card-border:var(--panel-border);
+  --inner:var(--input-bg); --text-dark:var(--text); --text-dim:var(--muted);
+  --track-bg:var(--panel-border);
+  --page-text-dark:var(--text); --page-text-dim:var(--muted);
+  --dark:var(--bg); --mid:var(--panel-bg); --light:var(--text); --border:var(--panel-border);
+  --card:var(--panel-bg); --line:var(--panel-border);
+}
+
+/* ---- Shared "light-lock" pattern: Questionnaire, Account Management,
+   Evaluation Tracker and Evaluation Report additionally hard-code this same
+   selector list with !important to force their light palette regardless of
+   the tokens above. Matching selectors + !important + the extra html[...]
+   specificity lets dark mode through on those exact elements. ---- */
+html[data-theme="dark"] .page-header h1,
+html[data-theme="dark"] .page-title,
+html[data-theme="dark"] .et-title,
+html[data-theme="dark"] .section-title{color:var(--text)!important}
+html[data-theme="dark"] .page-header p,
+html[data-theme="dark"] .page-sub,
+html[data-theme="dark"] .et-sub,
+html[data-theme="dark"] .et-updated,
+html[data-theme="dark"] .muted,
+html[data-theme="dark"] .hint{color:var(--muted)!important}
+html[data-theme="dark"] .sector-tab,
+html[data-theme="dark"] .eval-tab,
+html[data-theme="dark"] .tab,
+html[data-theme="dark"] .level-tab,
+html[data-theme="dark"] .status-tab{color:var(--muted)!important}
+html[data-theme="dark"] .sector-tab:hover,
+html[data-theme="dark"] .eval-tab:hover,
+html[data-theme="dark"] .tab:hover,
+html[data-theme="dark"] .level-tab:hover,
+html[data-theme="dark"] .status-tab:hover{color:var(--text)!important;background:var(--input-bg)!important}
+html[data-theme="dark"] thead tr{background:var(--input-bg)!important}
+html[data-theme="dark"] tbody tr:hover{background:var(--input-bg)!important}
+html[data-theme="dark"] .btn-cancel,
+html[data-theme="dark"] .btn-icon,
+html[data-theme="dark"] .btn-back{background:var(--panel-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .empty-state,
+html[data-theme="dark"] .empty-cta{color:var(--muted)!important}
+html[data-theme="dark"] .sector-card,
+html[data-theme="dark"] .et-wrap,
+html[data-theme="dark"] .et-card,
+html[data-theme="dark"] .et-table,
+html[data-theme="dark"] .et-search,
+html[data-theme="dark"] .et-select,
+html[data-theme="dark"] .et-empty{background:var(--panel-bg)!important;border-color:var(--panel-border)!important;color:var(--text)!important}
+html[data-theme="dark"] .et-table th{background:var(--input-bg)!important;color:var(--muted)!important}
+html[data-theme="dark"] .et-table td{color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .et-card-label,
+html[data-theme="dark"] .et-mini,
+html[data-theme="dark"] .et-progress-text{color:var(--muted)!important}
+html[data-theme="dark"] .et-card-number,
+html[data-theme="dark"] .et-name{color:var(--text)!important}
+html[data-theme="dark"] .info-banner{background:var(--input-bg)!important;color:var(--muted)!important}
+html[data-theme="dark"] .comment-text,
+html[data-theme="dark"] .comment-section{background:var(--input-bg)!important;color:var(--text)!important}
+html[data-theme="dark"] .avg-bar-bg,
+html[data-theme="dark"] .eval-bar-bg,
+html[data-theme="dark"] .score-bar-bg{background:var(--panel-border)!important}
+
+/* ---- Second, larger "light-lock" block on the same 4 pages (Questionnaire,
+   Account Management, Evaluation Tracker, Evaluation Report): cards, tab
+   bars, and panels are force-painted white here too, separately from the
+   selectors above. This is what keeps the sector/status tab bar, the
+   PENDING/APPROVED/BLOCKED stat cards, and the results table panel white. */
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .content-panel,
+html[data-theme="dark"] .create-panel,
+html[data-theme="dark"] .period-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .sector-card,
+html[data-theme="dark"] .person-row,
+html[data-theme="dark"] .sum-card,
+html[data-theme="dark"] .standing-panel,
+html[data-theme="dark"] .eval-card,
+html[data-theme="dark"] .eval-banner,
+html[data-theme="dark"] .info-banner,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .shell .section,
+html[data-theme="dark"] .history-card,
+html[data-theme="dark"] .gl-card,
+html[data-theme="dark"] .amber-card,
+html[data-theme="dark"] .green-card,
+html[data-theme="dark"] .red-card{
+  background:var(--panel-bg)!important;border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .sector-tabs,
+html[data-theme="dark"] .eval-switcher,
+html[data-theme="dark"] .tabs,
+html[data-theme="dark"] .level-tabs,
+html[data-theme="dark"] .status-tabs{
+  background:var(--panel-bg)!important;border-color:var(--panel-border)!important;
+}
+
+/* ---- Generic base-tag fallbacks from the same block's third pass
+   ("SHARP LIGHT ADMIN UI"). Not !important on the source side, so no
+   !important needed here either — the html[data-theme="dark"] prefix's
+   extra specificity is enough. ---- */
+html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,html[data-theme="dark"] h5,html[data-theme="dark"] h6{color:var(--text)}
+html[data-theme="dark"] p,html[data-theme="dark"] .subtitle,html[data-theme="dark"] .description,
+html[data-theme="dark"] .helper,html[data-theme="dark"] small{color:var(--muted)}
+html[data-theme="dark"] label,html[data-theme="dark"] th{color:var(--muted)}
+html[data-theme="dark"] td{color:var(--text)}
+html[data-theme="dark"] .card,html[data-theme="dark"] .panel,
+html[data-theme="dark"] .table-card,html[data-theme="dark"] .content-card{border-color:var(--panel-border)}
+
+/* ---- admin_dashboard.php / admin_aura_theme.css shell ---- */
+html[data-theme="dark"] html:has(.pbi-dashboard-container),
+html[data-theme="dark"] body:has(.pbi-dashboard-container){background:var(--bg)!important}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-stat-card,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-box,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-section-box,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-panel,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-card,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-tile,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-action-btn{
+  background:var(--panel-bg)!important;
+  border-color:var(--panel-border)!important;
+  box-shadow:none!important;
+}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-dashboard-heading,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-dashboard-heading *,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-stat-value,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-card-value,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-value,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-tile-value,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-action-title,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-action-btn{color:var(--text)!important}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-system-subtitle,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-stat-label,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-card-title,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-label,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-tile-label,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-section-heading,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-stat-sub,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-meta,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-period-tile-sub,
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-action-sub{color:var(--muted)!important}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-view-all-link{color:var(--accent)!important}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .nude-nav{background:var(--panel-bg)!important}
+html[data-theme="dark"] body:has(.pbi-dashboard-container) .pbi-sidebar{background:var(--panel-bg)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .iframe-box{background:var(--panel-bg)!important}
+
+/* ---- Reduce motion (global kill-switch) ---- */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after{
+  transition-duration:0s!important;
+  animation-duration:0s!important;
+  scroll-behavior:auto!important;
+}
+
+/* ---- Density ---- */
+html.density-comfortable .pbi-stat-card,
+html.density-comfortable .pbi-section-box,
+html.density-comfortable .pbi-panel,
+html.density-comfortable .pbi-card{padding:24px!important}
+html.density-comfortable .pbi-dashboard-container{padding-top:26px!important}
+
+/* ---- Questionnaire page: a few spots use a literal white/#fff value
+   instead of a token (header gradient strip, the "N Total Questions" pill,
+   and the selected/hovered table-row highlight), so the var() remap above
+   can't reach them — override the exact selectors directly. ---- */
+html[data-theme="dark"] .eval-overview-head{background:var(--panel-bg)!important}
+html[data-theme="dark"] .eval-overview-total{background:var(--panel-bg)!important}
+html[data-theme="dark"] .eval-table-row:hover td,
+html[data-theme="dark"] .eval-table-row.is-active td{background:var(--input-bg)!important}
+
+/* ---- Evaluation Report (admin_analytics.php): these read var(--mid)/
+   var(--muted) with no !important, which should already go dark through
+   the token remap above — restated directly here, with !important, so
+   there's no ambiguity if a browser has an older cached copy of this file
+   loaded for just one of the report's several sub-views. ---- */
+html[data-theme="dark"] .group-tab{background:var(--panel-bg)!important;color:var(--muted)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .ra-table-card{background:var(--panel-bg)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .ra-tool-btn{background:var(--input-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .ra-search{background:var(--input-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .btn-archived-link{background:var(--panel-bg)!important;color:var(--muted)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .faculty-subtabs{background:var(--panel-bg)!important;border-color:var(--panel-border)!important}
+
+/* ---- Settings sub-pages (system_settings.php, system_archive.php): these
+   load in their own nested iframes inside settings.php and use yet another
+   naming scheme for the same page-bg/card-bg/border/text/muted concepts. ---- */
+html[data-theme="dark"]{
+  --surface:var(--panel-bg); --surface-2:var(--panel-bg); --surface-3:var(--input-bg);
+  --text-muted:var(--muted); --text-faint:var(--muted);
+  --border-strong:var(--panel-border);
+}
+
+/* ---- Final dark-mode hard overrides for modules with late light CSS ----
+   Some admin modules deliberately restate their light palette near the end
+   of the document with !important. These shared rules use the saved theme
+   attribute with higher specificity so the dark preference wins without
+   changing the light theme. ---- */
+html[data-theme="dark"]{
+  background:var(--bg)!important;
+  color-scheme:dark;
+}
+html[data-theme="dark"] body{
+  background:var(--bg)!important;
+  color:var(--text)!important;
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--input-border)!important;
+}
+html[data-theme="dark"] ::placeholder{color:var(--muted)!important}
+
+/* Evaluation Tracker / Evaluation Report shared controls */
+html[data-theme="dark"] .et-wrap,
+html[data-theme="dark"] .et-card,
+html[data-theme="dark"] .et-table,
+html[data-theme="dark"] .et-search,
+html[data-theme="dark"] .et-select,
+html[data-theme="dark"] .et-btn,
+html[data-theme="dark"] .et-empty{
+  background:var(--panel-bg)!important;
+  border-color:var(--panel-border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="dark"] .et-table th{background:var(--input-bg)!important;color:var(--muted)!important}
+html[data-theme="dark"] .et-table td{background:var(--panel-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .et-table tr:hover td{background:var(--input-bg)!important}
+html[data-theme="dark"] .comment-text,
+html[data-theme="dark"] .comment-section{background:var(--input-bg)!important;color:var(--text)!important}
+html[data-theme="dark"] .eval-tab.student.active,
+html[data-theme="dark"] .eval-tab.peer.active,
+html[data-theme="dark"] .eval-tab.multi-role.active{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+}
+
+/* System & Period Settings uses --surface/--surface-2/--surface-3. */
+html[data-theme="dark"] .shell,
+html[data-theme="dark"] .section{
+  color:var(--text)!important;
+}
+html[data-theme="dark"] .control-option,
+html[data-theme="dark"] .toggle-row{
+  background:var(--input-bg)!important;
+  border-color:var(--panel-border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="dark"] .maint-banner{
+  background:color-mix(in srgb, #F59E0B 12%, var(--panel-bg))!important;
+  color:#f7c76b!important;
+  border-color:#79551f!important;
+}
+html[data-theme="dark"] .switch .thumb{background:#e7eef8!important}
+
+/* System Archive uses --bg/--card/--line rather than the shared tokens. */
+html[data-theme="dark"]{
+  --card:var(--panel-bg);
+  --line:var(--panel-border);
+}
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .archive-table,
+html[data-theme="dark"] .mini{
+  background:var(--panel-bg)!important;
+  border-color:var(--panel-border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="dark"] .archive-table th{background:var(--input-bg)!important;color:var(--muted)!important}
+html[data-theme="dark"] .archive-table td{color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .select,
+html[data-theme="dark"] .btn{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--input-border)!important;
+}
+html[data-theme="dark"] .btn.primary{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+html[data-theme="dark"] .btn.danger{background:rgba(214,69,93,.12)!important;color:#f08da0!important;border-color:rgba(214,69,93,.4)!important}
+html[data-theme="dark"] .badge{background:var(--input-bg)!important;color:var(--accent)!important;border-color:var(--panel-border)!important}
+
+/* ========================================================================
+   GLOBAL DENSITY SYSTEM — applies Compact / Comfortable consistently to
+   every admin feature that loads admin_appearance.css.
+   Density changes spacing and control dimensions without changing the page's
+   existing colors, typography, or component identity.
+   ======================================================================== */
+html[data-density="compact"]{
+  --density-page-gap: 14px;
+  --density-section-gap: 14px;
+  --density-card-pad: 14px;
+  --density-card-gap: 12px;
+  --density-control-h: 36px;
+  --density-control-pad: 9px 12px;
+  --density-tab-pad: 9px 14px;
+  --density-table-y: 9px;
+  --density-table-x: 12px;
+  --density-row-gap: 8px;
+  --density-field-gap: 8px;
+  --density-head-gap: 10px;
+}
+
+html.density-comfortable,
+html[data-density="comfortable"]{
+  --density-page-gap: 22px;
+  --density-section-gap: 22px;
+  --density-card-pad: 22px;
+  --density-card-gap: 18px;
+  --density-control-h: 44px;
+  --density-control-pad: 11px 15px;
+  --density-tab-pad: 12px 18px;
+  --density-table-y: 13px;
+  --density-table-x: 16px;
+  --density-row-gap: 12px;
+  --density-field-gap: 12px;
+  --density-head-gap: 14px;
+}
+
+/* Make the default compact preference explicit instead of relying on the
+   absence of a class. This lets every page use one predictable selector. */
+html.density-compact{ }
+
+/* ---- Universal content rhythm ---- */
+html.density-compact .page-header,
+html.density-compact .section,
+html.density-compact .content-panel,
+html.density-compact .content-card,
+html.density-compact .table-card,
+html.density-compact .table-wrap,
+html.density-compact .panel,
+html.density-compact .card,
+html.density-compact .period-card,
+html.density-compact .stat-card,
+html.density-compact .sector-card,
+html.density-compact .eval-card,
+html.density-compact .gl-card,
+html.density-compact .history-card,
+html.density-compact .standing-panel,
+html.density-compact .sum-card,
+html.density-compact .amber-card,
+html.density-compact .green-card,
+html.density-compact .red-card,
+html.density-compact .et-card,
+html.density-compact .et-wrap,
+html.density-compact .ra-table-card,
+html.density-compact .results-table-wrap,
+html.density-compact .ra-filters-panel,
+html.density-compact .eval-banner,
+html.density-compact .info-banner{
+  gap:var(--density-card-gap)!important;
+}
+
+/* Comfortable: enlarge the same surfaces. Padding is intentionally limited
+   to common content containers so existing feature layouts remain intact. */
+html.density-comfortable .section,
+html.density-comfortable .content-panel,
+html.density-comfortable .content-card,
+html.density-comfortable .table-card,
+html.density-comfortable .table-wrap,
+html.density-comfortable .panel,
+html.density-comfortable .card,
+html.density-comfortable .period-card,
+html.density-comfortable .stat-card,
+html.density-comfortable .sector-card,
+html.density-comfortable .eval-card,
+html.density-comfortable .gl-card,
+html.density-comfortable .history-card,
+html.density-comfortable .standing-panel,
+html.density-comfortable .sum-card,
+html.density-comfortable .amber-card,
+html.density-comfortable .green-card,
+html.density-comfortable .red-card,
+html.density-comfortable .et-card,
+html.density-comfortable .et-wrap,
+html.density-comfortable .ra-table-card,
+html.density-comfortable .results-table-wrap,
+html.density-comfortable .ra-filters-panel{
+  gap:var(--density-card-gap)!important;
+}
+
+/* ---- Common tabs / segmented controls ---- */
+html.density-compact .tabs,
+html.density-compact .sector-tabs,
+html.density-compact .level-tabs,
+html.density-compact .status-tabs,
+html.density-compact .eval-switcher,
+html.density-compact .faculty-subtabs,
+html.density-compact .desig-subtabs,
+html.density-compact .mr-filter-tabs{
+  gap:4px!important;
+}
+html.density-comfortable .tabs,
+html.density-comfortable .sector-tabs,
+html.density-comfortable .level-tabs,
+html.density-comfortable .status-tabs,
+html.density-comfortable .eval-switcher,
+html.density-comfortable .faculty-subtabs,
+html.density-comfortable .desig-subtabs,
+html.density-comfortable .mr-filter-tabs{
+  gap:8px!important;
+}
+
+html.density-compact .tab,
+html.density-compact .sector-tab,
+html.density-compact .level-tab,
+html.density-compact .status-tab,
+html.density-compact .eval-tab,
+html.density-compact .faculty-subtab,
+html.density-compact .desig-subtab,
+html.density-compact .mr-filter-tab,
+html.density-compact .group-tab{
+  padding:var(--density-tab-pad)!important;
+}
+html.density-comfortable .tab,
+html.density-comfortable .sector-tab,
+html.density-comfortable .level-tab,
+html.density-comfortable .status-tab,
+html.density-comfortable .eval-tab,
+html.density-comfortable .faculty-subtab,
+html.density-comfortable .desig-subtab,
+html.density-comfortable .mr-filter-tab,
+html.density-comfortable .group-tab{
+  padding:var(--density-tab-pad)!important;
+}
+
+/* ---- Buttons / controls / filters ---- */
+html.density-compact .btn,
+html.density-compact button,
+html.density-compact .btn-sm,
+html.density-compact .btn-primary,
+html.density-compact .btn-cancel,
+html.density-compact .btn-back,
+html.density-compact .btn-icon,
+html.density-compact .action-btns > *,
+html.density-compact .ra-tool-btn,
+html.density-compact .ra-filter-clear,
+html.density-compact .ra-pager-btns > *,
+html.density-compact .et-btn,
+html.density-compact .et-level-pill,
+html.density-compact .sf-btn,
+html.density-compact .sf-choose-btn{
+  min-height:var(--density-control-h)!important;
+  padding:var(--density-control-pad)!important;
+}
+html.density-comfortable .btn,
+html.density-comfortable button,
+html.density-comfortable .btn-sm,
+html.density-comfortable .btn-primary,
+html.density-comfortable .btn-cancel,
+html.density-comfortable .btn-back,
+html.density-comfortable .btn-icon,
+html.density-comfortable .action-btns > *,
+html.density-comfortable .ra-tool-btn,
+html.density-comfortable .ra-filter-clear,
+html.density-comfortable .ra-pager-btns > *,
+html.density-comfortable .et-btn,
+html.density-comfortable .et-level-pill,
+html.density-comfortable .sf-btn,
+html.density-comfortable .sf-choose-btn{
+  min-height:var(--density-control-h)!important;
+  padding:var(--density-control-pad)!important;
+}
+
+html.density-compact input,
+html.density-compact select,
+html.density-compact textarea,
+html.density-compact .sf-input,
+html.density-compact .ra-search,
+html.density-compact .et-search{
+  min-height:var(--density-control-h)!important;
+  padding:var(--density-control-pad)!important;
+}
+html.density-comfortable input,
+html.density-comfortable select,
+html.density-comfortable textarea,
+html.density-comfortable .sf-input,
+html.density-comfortable .ra-search,
+html.density-comfortable .et-search{
+  min-height:var(--density-control-h)!important;
+  padding:var(--density-control-pad)!important;
+}
+
+/* Preserve icon-only buttons as square controls. */
+html.density-compact .btn-icon,
+html.density-compact .icon-btn,
+html.density-compact .ra-icon-btn,
+html.density-comfortable .btn-icon,
+html.density-comfortable .icon-btn,
+html.density-comfortable .ra-icon-btn{
+  width:var(--density-control-h)!important;
+  min-width:var(--density-control-h)!important;
+  padding:0!important;
+}
+
+/* ---- Tables and list rows ---- */
+html.density-compact table th,
+html.density-compact table td{
+  padding:var(--density-table-y) var(--density-table-x)!important;
+}
+html.density-comfortable table th,
+html.density-comfortable table td{
+  padding:var(--density-table-y) var(--density-table-x)!important;
+}
+html.density-compact .user-list-item,
+html.density-compact .person-row,
+html.density-compact .sector-row,
+html.density-compact .et-card-foot,
+html.density-compact .history-card .row,
+html.density-compact .standing-item,
+html.density-compact .pbi-personnel-item,
+html.density-compact .pbi-attention-item,
+html.density-compact .notif-item{
+  min-height:0!important;
+  padding-top:var(--density-table-y)!important;
+  padding-bottom:var(--density-table-y)!important;
+}
+html.density-comfortable .user-list-item,
+html.density-comfortable .person-row,
+html.density-comfortable .sector-row,
+html.density-comfortable .et-card-foot,
+html.density-comfortable .history-card .row,
+html.density-comfortable .standing-item,
+html.density-comfortable .pbi-personnel-item,
+html.density-comfortable .pbi-attention-item,
+html.density-comfortable .notif-item{
+  padding-top:var(--density-table-y)!important;
+  padding-bottom:var(--density-table-y)!important;
+}
+
+/* ---- Grids / section spacing ---- */
+html.density-compact .cfg-grid,
+html.density-compact .grid,
+html.density-compact .control-modes,
+html.density-compact .evaluator-grid,
+html.density-compact .yl-grid,
+html.density-compact .et-cards,
+html.density-compact .pbi-cards-row,
+html.density-compact .pbi-bottom-row,
+html.density-compact .pbi-dashboard-grid{
+  gap:var(--density-row-gap)!important;
+}
+html.density-comfortable .cfg-grid,
+html.density-comfortable .grid,
+html.density-comfortable .control-modes,
+html.density-comfortable .evaluator-grid,
+html.density-comfortable .yl-grid,
+html.density-comfortable .et-cards,
+html.density-comfortable .pbi-cards-row,
+html.density-comfortable .pbi-bottom-row,
+html.density-comfortable .pbi-dashboard-grid{
+  gap:var(--density-row-gap)!important;
+}
+
+html.density-compact .field-row,
+html.density-compact .sf-row,
+html.density-compact .action-wrap,
+html.density-compact .ra-filter-row,
+html.density-compact .ra-tool-row{
+  gap:var(--density-field-gap)!important;
+}
+html.density-comfortable .field-row,
+html.density-comfortable .sf-row,
+html.density-comfortable .action-wrap,
+html.density-comfortable .ra-filter-row,
+html.density-comfortable .ra-tool-row{
+  gap:var(--density-field-gap)!important;
+}
+
+/* ---- Explicit feature-level cards that often use their own padding ---- */
+html.density-compact .pbi-stat-card,
+html.density-compact .pbi-section-box,
+html.density-compact .pbi-panel,
+html.density-compact .pbi-card,
+html.density-compact .et-card,
+html.density-compact .stat-card,
+html.density-compact .period-card{
+  padding:var(--density-card-pad)!important;
+}
+html.density-comfortable .pbi-stat-card,
+html.density-comfortable .pbi-section-box,
+html.density-comfortable .pbi-panel,
+html.density-comfortable .pbi-card,
+html.density-comfortable .et-card,
+html.density-comfortable .stat-card,
+html.density-comfortable .period-card{
+  padding:var(--density-card-pad)!important;
+}
+
+/* Comfortable mode gives secondary content a little more breathing room;
+   Compact mode tightens the same areas without changing font sizes. */
+html.density-comfortable .page-header,
+html.density-comfortable .section-head,
+html.density-comfortable .section-body,
+html.density-comfortable .pbi-panel-head,
+html.density-comfortable .pbi-section-head-row,
+html.density-comfortable .ra-table-head,
+html.density-comfortable .ra-table-tools{
+  gap:var(--density-head-gap)!important;
+}
+html.density-compact .page-header,
+html.density-compact .section-head,
+html.density-compact .section-body,
+html.density-compact .pbi-panel-head,
+html.density-compact .pbi-section-head-row,
+html.density-compact .ra-table-head,
+html.density-compact .ra-table-tools{
+  gap:var(--density-head-gap)!important;
+}
+
+/* ========================================================================
+   FINAL GLOBAL DARK MODE PASS
+   This is intentionally last in the stylesheet. Several legacy admin pages
+   contain late light-theme rules with !important; the html[data-theme] prefix
+   gives the saved dark preference enough specificity to override them while
+   leaving the light theme untouched.
+   ======================================================================== */
+html[data-theme="dark"]{
+  --bg:#0b1422;
+  --text:#e7eef8;
+  --muted:#91a4bd;
+  --panel-bg:#121d2d;
+  --panel-border:#263850;
+  --input-bg:#172538;
+  --input-border:#30445f;
+
+  /* Legacy page tokens used throughout the admin modules. */
+  --dark:var(--bg);
+  --mid:var(--panel-bg);
+  --inner:var(--input-bg);
+  --light:var(--text);
+  --page-bg:var(--bg);
+  --card-bg:var(--panel-bg);
+  --card-border:var(--panel-border);
+  --text-dark:var(--text);
+  --text-dim:var(--muted);
+  --page:var(--bg);
+  --card:var(--panel-bg);
+  --line:var(--panel-border);
+  --panel:var(--panel-bg);
+  --panel2:#1b2c43;
+  --card-surface:var(--panel-bg);
+  --form-bg:var(--bg);
+  --text-primary:var(--text);
+  --text-secondary:var(--muted);
+  --border-gray:var(--panel-border);
+  --surface:var(--panel-bg);
+  --surface-2:#172538;
+  --surface-3:#1a2a40;
+  --border-strong:#3a506e;
+
+  --accent-bg:color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-border:color-mix(in srgb, var(--accent) 35%, transparent);
+  --blue-soft:rgba(37,99,235,.14);
+  --green-soft:rgba(15,159,110,.14);
+  --amber-soft:rgba(194,123,19,.15);
+  --red-soft:rgba(214,69,93,.14);
+  --danger-bg:rgba(214,69,93,.14);
+  --danger-border:rgba(214,69,93,.38);
+  --success-bg:rgba(15,159,110,.14);
+  --success-border:rgba(15,159,110,.38);
+  --warning-soft:rgba(194,123,19,.14);
+
+  /* Friendly Dashboard tokens. */
+  --fd-bg:var(--bg);
+  --fd-surface:var(--panel-bg);
+  --fd-border:var(--panel-border);
+  --fd-text:var(--text);
+  --fd-muted:var(--muted);
+  --fd-primary:var(--accent);
+  --fd-primary-soft:color-mix(in srgb, var(--accent) 14%, transparent);
+  --fd-success:#35c692;
+  --fd-success-soft:rgba(15,159,110,.14);
+  --fd-warning:#e6b14b;
+  --fd-warning-soft:rgba(194,123,19,.15);
+  --dashboard-bg:var(--bg);
+  --page-bg-tint:var(--input-bg);
+  --sidebar-bg:#0e1928;
+  --sidebar-card-bg:#142338;
+  --sidebar-hover-bg:#182b43;
+  --sidebar-border:#273a54;
+  --sidebar-active:color-mix(in srgb, var(--accent) 18%, transparent);
+  --sidebar-active-solid:var(--accent);
+  --sidebar-text:var(--text);
+  --sidebar-text-dim:var(--muted);
+  --sidebar-logo-bg:#172a41;
+  --sidebar-logo-border:#345071;
+  --accent-soft-bg:color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-soft-border:color-mix(in srgb, var(--accent) 36%, transparent);
+
+  /* Evaluation-specific accent surfaces. */
+  --purple:#7c8ff0;
+  --purple-dark:#667be5;
+  --brand-purple:#7657d8;
+  --brand-purple-light:#2a2444;
+  --error-red:#f07b88;
+
+  /* Page-specific secondary colours remain readable on dark surfaces. */
+  --blue-hover:#5687ea;
+  --hover:#5687ea;
+  --teal:#3ac7b6;
+  --teal-h:#50d8c7;
+  --gold:#e0b34b;
+  --gold-h:#efc66a;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  color-scheme:dark;
+  background:var(--bg)!important;
+  color:var(--text)!important;
+}
+
+/* Main structural surfaces. */
+html[data-theme="dark"] main,
+html[data-theme="dark"] .wrap,
+html[data-theme="dark"] .page,
+html[data-theme="dark"] .page-content,
+html[data-theme="dark"] .feature-compact,
+html[data-theme="dark"] .content,
+html[data-theme="dark"] .workspace,
+html[data-theme="dark"] .shell,
+html[data-theme="dark"] .settings-shell,
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .panel-card,
+html[data-theme="dark"] .content-panel,
+html[data-theme="dark"] .content-card,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .sum-card,
+html[data-theme="dark"] .period-card,
+html[data-theme="dark"] .sector-card,
+html[data-theme="dark"] .eval-card,
+html[data-theme="dark"] .result-card,
+html[data-theme="dark"] .appearance-card,
+html[data-theme="dark"] .manage-action,
+html[data-theme="dark"] .questionnaire-card,
+html[data-theme="dark"] .logs-table-wrap,
+html[data-theme="dark"] .et-wrap,
+html[data-theme="dark"] .et-card,
+html[data-theme="dark"] .et-table,
+html[data-theme="dark"] .archive-table,
+html[data-theme="dark"] .mini{
+  background-color:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+
+/* Common light utility surfaces that otherwise remain bright. */
+html[data-theme="dark"] .inner,
+html[data-theme="dark"] .toolbar,
+html[data-theme="dark"] .tabs,
+html[data-theme="dark"] .sector-tabs,
+html[data-theme="dark"] .level-tabs,
+html[data-theme="dark"] .status-tabs,
+html[data-theme="dark"] .eval-switcher,
+html[data-theme="dark"] .faculty-subtabs,
+html[data-theme="dark"] .side,
+html[data-theme="dark"] .side-actions,
+html[data-theme="dark"] .filter-bar,
+html[data-theme="dark"] .filters,
+html[data-theme="dark"] .control-option,
+html[data-theme="dark"] .toggle-row,
+html[data-theme="dark"] .setting-row{
+  background-color:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+
+/* Headings / body copy / form labels. */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .page-title,
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .card-title,
+html[data-theme="dark"] .cardhead h2,
+html[data-theme="dark"] .panel-bar h2,
+html[data-theme="dark"] .page-header h1,
+html[data-theme="dark"] .hero h1,
+html[data-theme="dark"] .page-head h1,
+html[data-theme="dark"] .landing-head h2,
+html[data-theme="dark"] .questionnaire-card h3,
+html[data-theme="dark"] .modal-title,
+html[data-theme="dark"] .person-name,
+html[data-theme="dark"] .user-name,
+html[data-theme="dark"] .qtext,
+html[data-theme="dark"] .anonymous,
+html[data-theme="dark"] .detail-value,
+html[data-theme="dark"] .section-head,
+html[data-theme="dark"] .section-panel h2{
+  color:var(--text)!important;
+}
+html[data-theme="dark"] p,
+html[data-theme="dark"] small,
+html[data-theme="dark"] label,
+html[data-theme="dark"] th,
+html[data-theme="dark"] .muted,
+html[data-theme="dark"] .subtle,
+html[data-theme="dark"] .subtitle,
+html[data-theme="dark"] .description,
+html[data-theme="dark"] .helper,
+html[data-theme="dark"] .page-sub,
+html[data-theme="dark"] .page-header p,
+html[data-theme="dark"] .hero p,
+html[data-theme="dark"] .page-head p,
+html[data-theme="dark"] .card p,
+html[data-theme="dark"] .section-hint,
+html[data-theme="dark"] .section-hint,
+html[data-theme="dark"] .section-eyebrow,
+html[data-theme="dark"] .text-secondary,
+html[data-theme="dark"] .selection-count,
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .stat-card .stat-label,
+html[data-theme="dark"] .et-mini,
+html[data-theme="dark"] .et-sub,
+html[data-theme="dark"] .et-updated,
+html[data-theme="dark"] .et-progress-text,
+html[data-theme="dark"] .log-datetime,
+html[data-theme="dark"] .log-details,
+html[data-theme="dark"] .logs-empty{
+  color:var(--muted)!important;
+}
+html[data-theme="dark"] td{color:var(--text)!important}
+
+/* Forms, selectors and editable controls. */
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .field,
+html[data-theme="dark"] .form-input,
+html[data-theme="dark"] .form-select,
+html[data-theme="dark"] .select,
+html[data-theme="dark"] .search-input,
+html[data-theme="dark"] .et-search,
+html[data-theme="dark"] .et-select,
+html[data-theme="dark"] .sf-input,
+html[data-theme="dark"] .ra-search{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--input-border)!important;
+  color-scheme:dark;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder,
+html[data-theme="dark"] select::placeholder{
+  color:#71859e!important;
+}
+html[data-theme="dark"] option{background:var(--input-bg);color:var(--text)}
+html[data-theme="dark"] input[type="checkbox"],
+html[data-theme="dark"] input[type="radio"]{accent-color:var(--accent)}
+
+/* Tables. */
+html[data-theme="dark"] table{color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] thead th,
+html[data-theme="dark"] .archive-table th,
+html[data-theme="dark"] .et-table th,
+html[data-theme="dark"] .logs-table thead th{
+  background:var(--input-bg)!important;
+  color:var(--muted)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] tbody td,
+html[data-theme="dark"] .archive-table td,
+html[data-theme="dark"] .et-table td,
+html[data-theme="dark"] .logs-table tbody td{
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+  background:var(--panel-bg)!important;
+}
+html[data-theme="dark"] tbody tr:hover td,
+html[data-theme="dark"] .archive-table tbody tr:hover td,
+html[data-theme="dark"] .et-table tbody tr:hover td,
+html[data-theme="dark"] .logs-table tbody tr:hover td{
+  background:var(--input-bg)!important;
+}
+
+/* Buttons: neutral controls become dark; primary/semantic buttons keep their accent. */
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] button.btn,
+html[data-theme="dark"] .btn-cancel,
+html[data-theme="dark"] .btn-back,
+html[data-theme="dark"] .btn-icon,
+html[data-theme="dark"] .et-btn,
+html[data-theme="dark"] .back-btn,
+html[data-theme="dark"] .back-link,
+html[data-theme="dark"] .btn-action:not(.primary-submit),
+html[data-theme="dark"] .choice,
+html[data-theme="dark"] .reset-link{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .btn:hover,
+html[data-theme="dark"] .btn-cancel:hover,
+html[data-theme="dark"] .btn-back:hover,
+html[data-theme="dark"] .btn-icon:hover,
+html[data-theme="dark"] .et-btn:hover,
+html[data-theme="dark"] .choice:hover,
+html[data-theme="dark"] .back-btn:hover,
+html[data-theme="dark"] .back-link:hover{
+  background:#20324a!important;
+  border-color:#3b5374!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-submit,
+html[data-theme="dark"] .btn-main,
+html[data-theme="dark"] .btn-assign,
+html[data-theme="dark"] .btn-upload,
+html[data-theme="dark"] .btn-add,
+html[data-theme="dark"] .btn-confirm-del,
+html[data-theme="dark"] .btn.primary,
+html[data-theme="dark"] .et-btn.active,
+html[data-theme="dark"] .et-level-pill.active,
+html[data-theme="dark"] .tab.active,
+html[data-theme="dark"] .sector-tab.active,
+html[data-theme="dark"] .level-tab.active,
+html[data-theme="dark"] .eval-tab.active,
+html[data-theme="dark"] .choice.active,
+html[data-theme="dark"] .side button.active{
+  color:#fff!important;
+}
+
+/* Modals / dialogs / overlays. */
+html[data-theme="dark"] .modal-overlay{background:rgba(0,0,0,.72)!important}
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .dialog,
+html[data-theme="dark"] .modal-content,
+html[data-theme="dark"] .modal-body,
+html[data-theme="dark"] .modal-head{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .modal-sub,
+html[data-theme="dark"] .modal-close{color:var(--muted)!important}
+
+/* Alert / notice / status surfaces. */
+html[data-theme="dark"] .notice,
+html[data-theme="dark"] .info-banner,
+html[data-theme="dark"] .eval-banner,
+html[data-theme="dark"] .peer-info-note{
+  background:rgba(47,110,226,.12)!important;
+  color:#a9c7f8!important;
+  border-color:rgba(47,110,226,.30)!important;
+}
+html[data-theme="dark"] .alert-info{background:rgba(47,110,226,.12)!important;color:#a9c7f8!important;border-color:rgba(47,110,226,.30)!important}
+html[data-theme="dark"] .success,
+html[data-theme="dark"] .alert-success,
+html[data-theme="dark"] .badge.has,
+html[data-theme="dark"] .status.archived{background:rgba(15,159,110,.12)!important;color:#66dfb5!important;border-color:rgba(15,159,110,.30)!important}
+html[data-theme="dark"] .dangerbox,
+html[data-theme="dark"] .alert-error,
+html[data-theme="dark"] .alert-danger,
+html[data-theme="dark"] .status.danger{background:rgba(214,69,93,.12)!important;color:#ff9eaa!important;border-color:rgba(214,69,93,.32)!important}
+html[data-theme="dark"] .warn,
+html[data-theme="dark"] .warning,
+html[data-theme="dark"] .maintenance,
+html[data-theme="dark"] .maint-banner{background:rgba(194,123,19,.13)!important;color:#f0c878!important;border-color:rgba(194,123,19,.32)!important}
+
+/* Questionnaire / Google-form style pages. */
+html[data-theme="dark"] .form-header-card,
+html[data-theme="dark"] .form-block,
+html[data-theme="dark"] .profile-option-card,
+html[data-theme="dark"] .img-container-frame,
+html[data-theme="dark"] .manage-action{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .scale-info-box{background:var(--input-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .profile-option-card:hover{background:#1a2c43!important}
+html[data-theme="dark"] .navigation-dock .btn-action:not(.primary-submit){background:var(--input-bg)!important;color:var(--brand-purple)!important}
+html[data-theme="dark"] .bar-outer,
+html[data-theme="dark"] .et-bar,
+html[data-theme="dark"] .bar-bg,
+html[data-theme="dark"] .pbi-progress-track{background:#263850!important}
+html[data-theme="dark"] .label-text-flex span{background:#263850!important;color:#b7c4d4!important}
+
+/* Dashboard shell and sidebar. */
+html[data-theme="dark"] body:has(.pbi-dashboard-container),
+html[data-theme="dark"] html:has(.pbi-dashboard-container),
+html[data-theme="dark"] .pbi-dashboard-container{
+  background:var(--bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .pbi-stat-card,
+html[data-theme="dark"] .pbi-period-box,
+html[data-theme="dark"] .pbi-period-tile,
+html[data-theme="dark"] .pbi-section-box,
+html[data-theme="dark"] .pbi-panel,
+html[data-theme="dark"] .pbi-card,
+html[data-theme="dark"] .pbi-action-btn,
+html[data-theme="dark"] .pbi-quick-btn{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+  box-shadow:0 3px 14px rgba(0,0,0,.18)!important;
+}
+html[data-theme="dark"] .pbi-period-tile,
+html[data-theme="dark"] .pbi-quick-btn{background:var(--input-bg)!important}
+html[data-theme="dark"] .pbi-dashboard-heading,
+html[data-theme="dark"] .pbi-dashboard-heading *{color:var(--text)!important}
+html[data-theme="dark"] .pbi-system-subtitle,
+html[data-theme="dark"] .pbi-stat-label,
+html[data-theme="dark"] .pbi-card-title,
+html[data-theme="dark"] .pbi-period-label,
+html[data-theme="dark"] .pbi-period-meta,
+html[data-theme="dark"] .pbi-period-tile-label,
+html[data-theme="dark"] .pbi-period-tile-sub,
+html[data-theme="dark"] .pbi-section-heading,
+html[data-theme="dark"] .pbi-stat-sub,
+html[data-theme="dark"] .pbi-action-sub,
+html[data-theme="dark"] .pbi-dashboard-updated,
+html[data-theme="dark"] .pbi-panel-title{color:var(--muted)!important}
+html[data-theme="dark"] .pbi-system-title,
+html[data-theme="dark"] .pbi-stat-value,
+html[data-theme="dark"] .pbi-card-value,
+html[data-theme="dark"] .pbi-period-value,
+html[data-theme="dark"] .pbi-period-tile-value,
+html[data-theme="dark"] .pbi-action-title,
+html[data-theme="dark"] .pbi-quick-btn .qa-title{color:var(--text)!important}
+html[data-theme="dark"] .pbi-dashboard-period-chip,
+html[data-theme="dark"] .dashboard-notification-control .notif-btn{background:var(--input-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .pbi-sidebar{background:var(--sidebar-bg)!important;border-color:var(--sidebar-border)!important}
+html[data-theme="dark"] .pbi-sidebar .nav-item{color:var(--sidebar-text)!important}
+html[data-theme="dark"] .pbi-sidebar .nav-item:hover{background:var(--sidebar-hover-bg)!important;color:#fff!important}
+html[data-theme="dark"] .pbi-sidebar .nav-item.active{background:var(--sidebar-active)!important;color:#fff!important}
+html[data-theme="dark"] .sidebar-profile,
+html[data-theme="dark"] .sidebar-profile-logo{color:var(--text)!important}
+html[data-theme="dark"] .sidebar-profile-logo,
+html[data-theme="dark"] .brand-avatar{background:var(--sidebar-card-bg)!important;border-color:var(--sidebar-logo-border)!important}
+html[data-theme="dark"] .dashboard-notification-control .notif-btn:hover,
+html[data-theme="dark"] .dashboard-notification-control .notif-btn.has-unread{background:var(--accent-soft-bg)!important;border-color:var(--accent-soft-border)!important}
+
+/* Settings page / nested iframe frame. */
+html[data-theme="dark"] .frame,
+html[data-theme="dark"] iframe.frame{background:var(--panel-bg)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .side button{color:var(--muted)!important}
+html[data-theme="dark"] .side button:hover{background:#20324a!important;color:var(--text)!important}
+html[data-theme="dark"] .side button.active{background:color-mix(in srgb, var(--accent) 16%, transparent)!important;color:color-mix(in srgb, var(--accent) 55%, #fff)!important}
+html[data-theme="dark"] .side button.side-save-btn{background:var(--accent)!important;color:#fff!important}
+html[data-theme="dark"] .track{background:#3a4b61!important}
+html[data-theme="dark"] .switch input:checked+.track{background:var(--accent)!important}
+html[data-theme="dark"] .track:after{background:#e7eef8!important}
+html[data-theme="dark"] .toast{background:#e7eef8!important;color:#10243f!important}
+
+/* Light inline backgrounds in markup (common in this project). */
+html[data-theme="dark"] [style*="background:#fff"],
+html[data-theme="dark"] [style*="background:#FFF"],
+html[data-theme="dark"] [style*="background:#ffffff"],
+html[data-theme="dark"] [style*="background:#FFFFFF"],
+html[data-theme="dark"] [style*="background: #fff"],
+html[data-theme="dark"] [style*="background: #FFF"],
+html[data-theme="dark"] [style*="background: #ffffff"],
+html[data-theme="dark"] [style*="background: #FFFFFF"],
+html[data-theme="dark"] [style*="background:white"],
+html[data-theme="dark"] [style*="background: white"]{
+  background:var(--panel-bg)!important;
+}
+html[data-theme="dark"] [style*="background:#f8fafc"],
+html[data-theme="dark"] [style*="background:#F8FAFC"],
+html[data-theme="dark"] [style*="background:#f7f9fc"],
+html[data-theme="dark"] [style*="background:#F7F9FC"],
+html[data-theme="dark"] [style*="background:#fbfdff"],
+html[data-theme="dark"] [style*="background:#FBFDFF"]{
+  background:var(--input-bg)!important;
+}
+
+/* Scrollbars. */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  scrollbar-color:#52657e #0b1422!important;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-track{background:#0b1422!important}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#52657e!important;border-color:#0b1422!important}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#6b7f98!important}
+
+/* Keep printable evaluation forms paper-white even when screen theme is dark. */
+@media print{
+  html[data-theme="dark"],
+  html[data-theme="dark"] body{
+    background:#fff!important;color:#111!important;color-scheme:light!important;
+  }
+  html[data-theme="dark"] .form-header-card,
+  html[data-theme="dark"] .form-block,
+  html[data-theme="dark"] .profile-option-card,
+  html[data-theme="dark"] .scale-info-box{
+    background:#fff!important;color:#111!important;border-color:#d0d0d0!important;
+  }
+  html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] h3,
+  html[data-theme="dark"] h4,html[data-theme="dark"] h5,html[data-theme="dark"] h6,
+  html[data-theme="dark"] p,html[data-theme="dark"] label,html[data-theme="dark"] td,
+  html[data-theme="dark"] th{color:#111!important}
+}
+
+
+/* ========================================================================
+   FINAL DARK-MODE SURFACE CLEANUP
+   Covers remaining light surfaces visible in Questionnaire, View Results,
+   and Evaluation Reports. These rules intentionally sit at the very end so
+   they win against the feature pages' late light-theme declarations.
+   ======================================================================== */
+html[data-theme="dark"] .questionnaire-card,
+html[data-theme="dark"] .questionnaire-icon,
+html[data-theme="dark"] .manage-card,
+html[data-theme="dark"] .back-link,
+html[data-theme="dark"] .filter-pill,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .qxm-modal,
+html[data-theme="dark"] .field,
+html[data-theme="dark"] .select,
+html[data-theme="dark"] .qxm-modal-icon{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .questionnaire-card:hover,
+html[data-theme="dark"] .back-link:hover,
+html[data-theme="dark"] .filter-pill:hover,
+html[data-theme="dark"] .btn:hover{
+  background:var(--input-bg)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .questionnaire-icon{
+  background:var(--input-bg)!important;
+}
+html[data-theme="dark"] .manage-card{
+  color:var(--accent)!important;
+}
+html[data-theme="dark"] .qcat{
+  background:rgba(217,145,33,.12)!important;
+  color:#f0c878!important;
+  border-color:rgba(217,145,33,.30)!important;
+}
+html[data-theme="dark"] .question-count{color:var(--muted)!important}
+html[data-theme="dark"] .badge{background:var(--input-bg)!important;color:var(--muted)!important;border-color:var(--panel-border)!important}
+html[data-theme="dark"] .badge.has{background:rgba(15,159,110,.12)!important;color:#66dfb5!important;border-color:rgba(15,159,110,.30)!important}
+html[data-theme="dark"] .qxm-modal-icon{background:rgba(214,69,93,.12)!important;color:#ff9eaa!important;border-color:rgba(214,69,93,.25)!important}
+
+/* View Results (ea_results.php) */
+html[data-theme="dark"]{
+  --page:#0b1626;
+  --card:#121f33;
+  --border:#22344d;
+  --border-soft:#25374f;
+  --text:#e7eef8;
+  --muted:#8ba0bd;
+  --accent-bg:rgba(217,145,33,.12);
+  --accent-border:rgba(217,145,33,.30);
+}
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .result-card,
+html[data-theme="dark"] .empty,
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .close,
+html[data-theme="dark"] .detail-box,
+html[data-theme="dark"] .answer,
+html[data-theme="dark"] .comments{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .anonymous,
+html[data-theme="dark"] .q-text,
+html[data-theme="dark"] .section-title{color:var(--text)!important}
+html[data-theme="dark"] .meta,
+html[data-theme="dark"] .detail-label,
+html[data-theme="dark"] .category-name,
+html[data-theme="dark"] .q-label,
+html[data-theme="dark"] .q-score,
+html[data-theme="dark"] .comments .text{color:var(--muted)!important}
+html[data-theme="dark"] .score-pill,
+html[data-theme="dark"] .view-btn{
+  background:rgba(217,145,33,.12)!important;
+  color:#f0c878!important;
+  border-color:rgba(217,145,33,.30)!important;
+}
+html[data-theme="dark"] .view-btn:hover{background:rgba(217,145,33,.20)!important}
+html[data-theme="dark"] .bar{background:var(--panel-border)!important}
+html[data-theme="dark"] .modal-head{border-color:var(--panel-border)!important}
+html[data-theme="dark"] .close{color:var(--muted)!important}
+
+/* Evaluation Reports (admin_analytics.php), including all report sub-views. */
+html[data-theme="dark"] .page-header,
+html[data-theme="dark"] .eval-switcher,
+html[data-theme="dark"] .group-tabs,
+html[data-theme="dark"] .faculty-subtabs,
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .content-panel,
+html[data-theme="dark"] .create-panel,
+html[data-theme="dark"] .period-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .sector-card,
+html[data-theme="dark"] .person-row,
+html[data-theme="dark"] .sum-card,
+html[data-theme="dark"] .standing-panel,
+html[data-theme="dark"] .eval-card,
+html[data-theme="dark"] .history-card,
+html[data-theme="dark"] .gl-card,
+html[data-theme="dark"] .amber-card,
+html[data-theme="dark"] .green-card,
+html[data-theme="dark"] .red-card,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .sheet-header,
+html[data-theme="dark"] .no-evaluated,
+html[data-theme="dark"] .ra-table-card,
+html[data-theme="dark"] .group-tab,
+html[data-theme="dark"] .btn-archived-link{
+  background:var(--panel-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .faculty-subtab,
+html[data-theme="dark"] .ra-tool-btn,
+html[data-theme="dark"] .ra-search,
+html[data-theme="dark"] .ra-pager-btns button,
+html[data-theme="dark"] .sheet-avatar-ph{
+  background:var(--input-bg)!important;
+  color:var(--text)!important;
+  border-color:var(--panel-border)!important;
+}
+html[data-theme="dark"] .faculty-subtab:hover{background:#1a2c43!important;color:var(--text)!important}
+html[data-theme="dark"] .faculty-subtab.active-teacher,
+html[data-theme="dark"] .faculty-subtab.active-staff,
+html[data-theme="dark"] .faculty-subtab.active-mr-all{
+  background:rgba(14,116,144,.14)!important;
+  color:#72c7d8!important;
+  border-color:rgba(14,116,144,.34)!important;
+}
+html[data-theme="dark"] .tab-count{background:rgba(255,255,255,.08)!important;color:var(--text)!important}
+html[data-theme="dark"] .group-tab.active-all{background:rgba(59,130,246,.16)!important}
+html[data-theme="dark"] .group-tab.active-faculty{background:rgba(14,116,144,.14)!important}
+html[data-theme="dark"] .group-tab.active-schoolhead{background:rgba(199,122,8,.14)!important}
+html[data-theme="dark"] .group-tab.active-ea{background:rgba(15,159,110,.14)!important}
+html[data-theme="dark"] .group-tab.active-staff{background:rgba(8,145,178,.14)!important}
+html[data-theme="dark"] .sheet-name,
+html[data-theme="dark"] .person-name,
+html[data-theme="dark"] .ra-name-text a,
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .detail-value{color:var(--text)!important}
+html[data-theme="dark"] .ra-table th,
+html[data-theme="dark"] .ra-table td{border-color:var(--panel-border)!important}
+html[data-theme="dark"] .ra-table th{background:var(--input-bg)!important;color:var(--muted)!important}
+html[data-theme="dark"] .ra-table tbody tr:hover{background:var(--input-bg)!important}
+html[data-theme="dark"] .eval-tab:hover{background:var(--input-bg)!important;color:var(--text)!important}
+html[data-theme="dark"] ::-webkit-scrollbar-track{background:#0b1422!important}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#52657e!important;border-color:#0b1422!important}
+
+/* Catch remaining white inline surfaces used by report fragments. */
+html[data-theme="dark"] [style*="background:#fff"],
+html[data-theme="dark"] [style*="background:#FFF"],
+html[data-theme="dark"] [style*="background:#ffffff"],
+html[data-theme="dark"] [style*="background:#FFFFFF"],
+html[data-theme="dark"] [style*="background: #fff"],
+html[data-theme="dark"] [style*="background: #FFF"],
+html[data-theme="dark"] [style*="background: #ffffff"],
+html[data-theme="dark"] [style*="background: #FFFFFF"],
+html[data-theme="dark"] [style*="background:white"],
+html[data-theme="dark"] [style*="background: white"]{
+  background:var(--panel-bg)!important;
+}
+
+/* Dynamic dark-surface safety net */
+html[data-theme="dark"] .pbi-dark-surface{background:var(--panel-bg)!important;color:var(--text)!important;border-color:var(--panel-border)!important;}
+
+
+/* ========================================================================
+   ACTIVE OPTION HIGHLIGHT — Density (Compact/Comfortable) and Theme
+   (Light/Dark/System) buttons. Class is set by admin_appearance.js.
+   ======================================================================== */
+html[data-theme] button.pbi-selected,
+html[data-theme] [role="button"].pbi-selected{
+  background:var(--accent-soft)!important;
+  color:var(--accent)!important;
+  border-color:var(--accent)!important;
+  box-shadow:0 0 0 1px var(--accent) inset!important;
+  font-weight:700!important;
+}
+html[data-theme="dark"] button.pbi-selected,
+html[data-theme="dark"] [role="button"].pbi-selected{
+  background:color-mix(in srgb, var(--accent) 22%, #121d2d)!important;
+  color:#fff!important;
+  border-color:var(--accent)!important;
+}
+html[data-theme] button.pbi-selected:hover{filter:brightness(1.05)}

@@ -1,0 +1,527 @@
+/* ============================================================
+   PBI Admin — Unified workspace UI
+   ------------------------------------------------------------
+   Makes every sidebar tab (Questionnaire, Evaluation Tracker,
+   Evaluate Others, Evaluation Received, Evaluation Reports,
+   Account Management, System Logs, Settings) look like the Dashboard:
+
+     • white rounded workspace card on the soft #F4F7FB canvas
+       (the card itself is the <iframe> in admin_dashboard.php)
+     • 16px-radius cards, #E3EAF3 hairline borders, soft shadow
+     • small uppercase labels, bold dark values, green accent
+     • the page title lives in the shell's top bar, so the big
+       in-page <h1> titles are hidden (sub-text/actions are kept)
+
+   LOAD THIS FILE LAST in each feature page (after admin_appearance.css).
+   Every rule is prefixed with `html body` so it out-ranks the older
+   per-page rules without touching their markup.
+   Dark mode follows the shared tokens from admin_appearance.css.
+   ============================================================ */
+
+:root{
+  --ux-bg:#F4F7FB;
+  --ux-card:#FFFFFF;
+  --ux-border:#E3EAF3;
+  --ux-border-soft:#EDF2F8;
+  --ux-text:#0B1F3A;
+  --ux-body:#294765;
+  --ux-dim:#67819E;
+  --ux-head:#F6F9FC;
+  --ux-hover:#F7FAFD;
+  --ux-input:#FFFFFF;
+  --ux-input-bd:#D5DFEB;
+  /* Brand color now follows the Appearance > Accent Color choice (--accent is set
+     on <html> by admin_appearance.js). Names keep the old "green" prefix so the
+     rules below did not need renaming. Fallback = original green. */
+  --ux-green:var(--accent,#0F9F6E);
+  --ux-green-d:color-mix(in srgb,var(--accent,#0F9F6E) 80%,#000);
+  --ux-green-bg:color-mix(in srgb,var(--accent,#0F9F6E) 11%,#fff);
+  --ux-green-bd:color-mix(in srgb,var(--accent,#0F9F6E) 30%,#fff);
+  --ux-green-glow:color-mix(in srgb,var(--accent,#0F9F6E) 25%,transparent);
+  --ux-radius:16px;
+  --ux-radius-sm:12px;
+  --ux-shadow:0 1px 2px rgba(16,24,40,.04),0 6px 18px rgba(16,24,40,.05);
+  --ux-shadow-sm:0 1px 2px rgba(16,24,40,.04);
+  --ux-pad-x:28px;
+  --ux-pad-top:26px;
+}
+html[data-theme="dark"]{
+  --ux-bg:var(--bg,#0b1626);
+  --ux-card:var(--panel-bg,#121f33);
+  --ux-border:var(--panel-border,#22344d);
+  --ux-border-soft:var(--panel-border,#22344d);
+  --ux-text:var(--text,#e7eef8);
+  --ux-body:var(--text,#e7eef8);
+  --ux-dim:var(--muted,#8ba0bd);
+  --ux-head:var(--input-bg,#16243a);
+  --ux-hover:var(--input-bg,#16243a);
+  --ux-input:var(--input-bg,#16243a);
+  --ux-input-bd:var(--input-border,#25374f);
+  --ux-green-bg:color-mix(in srgb,var(--accent,#0F9F6E) 18%,transparent);
+  --ux-green-bd:color-mix(in srgb,var(--accent,#0F9F6E) 40%,transparent);
+  --ux-green-d:color-mix(in srgb,var(--accent,#0F9F6E) 70%,#fff);
+  --ux-shadow:0 6px 22px rgba(0,0,0,.35);
+  --ux-shadow-sm:none;
+}
+
+/* ───────────── 1. Canvas: the iframe is the white card ───────────── */
+html body:not(.report-mode){
+  background:var(--ux-card)!important;
+  color:var(--ux-text)!important;
+  font-family:'Inter',system-ui,'Segoe UI',Arial,sans-serif;
+  margin:0!important;
+  padding:var(--ux-pad-top) var(--ux-pad-x) 32px!important;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+html:not([data-theme="dark"]){background:var(--ux-card)!important;}
+/* Settings sub-frames (System & Period / Archive) sit inside a card already. */
+html body.ux-nested:not(.report-mode){padding:18px 20px 26px!important;}
+
+/* Inner wrappers no longer provide their own gutter / max-width / panel */
+html body .wrap,
+html body .settings-shell{
+  max-width:none!important;margin:0!important;padding:0!important;
+}
+html body .et-wrap{
+  max-width:none!important;margin:0!important;padding:0!important;
+  background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+  color:var(--ux-text)!important;font-family:'Inter',system-ui,'Segoe UI',Arial,sans-serif!important;
+}
+html body .landing-center{min-height:0!important;display:block!important;}
+html body .landing-center .wrap{padding:0!important;}
+
+/* ───────────── 2. Page titles live in the top bar ───────────── */
+html body .page-header h1,
+html body .header .title h1,
+html body .page-head h1,
+html body .qx-title,
+html body .settings-title,
+html body .et-title{display:none!important;}
+/* Keep the descriptive line under the (now hidden) title as a quiet intro */
+html body .page-header p,
+html body .header .title p,
+html body .page-head p,
+html body .panel-copy,
+html body .settings-sub,
+html body .et-sub{
+  margin:0!important;color:var(--ux-dim)!important;font-size:13px!important;line-height:1.55;
+}
+/* The header strip itself is flat: no card, just spacing */
+html body .page-header,
+html body .header,
+html body .page-head,
+html body .settings-head,
+html body .et-head{
+  background:transparent!important;border:0!important;box-shadow:none!important;
+  padding:0!important;margin:0 0 20px!important;border-radius:0!important;
+  align-items:center!important;
+}
+/* Collapse an empty header (title hidden, nothing else inside) */
+html body .settings-head:not(:has(.settings-badge)):not(:has(.settings-sub:not(:empty))){display:none!important;}
+html body .page-header:not(:has(p)):not(:has(a)):not(:has(button)):not(:has(.refresh-badge)){display:none!important;}
+
+/* ───────────── 3. Cards (same surface as dashboard cards) ───────────── */
+html body:not(.report-mode) .card,
+html body .qx-panel,
+html body .evaluation-panel,
+html body .roster-panel,
+html body .panel-card,
+html body .table-wrap,
+html body .logs-table-wrap,
+html body .content-panel,
+html body .create-panel,
+html body .period-card,
+html body .history-card,
+html body .gl-card,
+html body .sector-card,
+html body .sum-card,
+html body .standing-panel,
+html body .eval-card,
+html body .person-row,
+html body .stat-card,
+html body .stat,
+html body .et-card,
+html body .et-table,
+html body div.panel,
+html body .appearance-card,
+html body .sheet-header,
+html body .result-card,
+html body .response-card{
+  background:var(--ux-card)!important;
+  border:1px solid var(--ux-border)!important;
+  border-radius:var(--ux-radius)!important;
+  box-shadow:var(--ux-shadow)!important;
+}
+/* Cards that sit *inside* cards use the softer, smaller variant */
+html body .group-card,
+html body .qx-group,
+html body .person-card,
+html body .detail-box,
+html body .answer,
+html body .info-banner,
+html body .eval-banner,
+html body .manage-action,
+html body .person{
+  border-radius:var(--ux-radius-sm)!important;
+}
+html body .group-card,
+html body .qx-group,
+html body .person-card{
+  background:var(--ux-card)!important;
+  border:1px solid var(--ux-border)!important;
+  box-shadow:var(--ux-shadow-sm)!important;
+}
+/* Drop the coloured top / bottom strips – the dashboard uses icon chips instead */
+html body .stat-card,
+html body .et-card{border-top:1px solid var(--ux-border)!important;}
+html body .qx-group{border-bottom:1px solid var(--ux-border)!important;}
+html body .group-card::after{display:none!important;}
+html body .group-card:hover,
+html body .qx-group:hover,
+html body .qx-group:focus-visible{
+  background:var(--ux-hover)!important;
+  border-color:var(--ux-green-bd)!important;
+  box-shadow:0 10px 24px rgba(16,24,40,.08)!important;
+  transform:translateY(-2px);
+}
+html body .group-card.selected{border-color:var(--ux-green)!important;background:var(--ux-hover)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--ux-green) 14%,transparent)!important;}
+html body .panel-copy{margin-bottom:18px!important;}
+html body .qx-panel{padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;}
+html body .evaluation-panel{padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;}
+html body .panel-card{overflow:hidden;}
+html body .roster-head,
+html body .panel-bar,
+html body .cardhead{background:var(--ux-head)!important;border-bottom:1px solid var(--ux-border)!important;}
+html body .person-grid{background:transparent!important;}
+
+/* ───────────── 4. Stat tiles ───────────── */
+html body .stat-label,
+html body .sum-label,
+html body .et-card-label,
+html body .pstat-lbl,
+html body .detail-label,
+html body .q-label{
+  font-size:11px!important;font-weight:700!important;letter-spacing:.7px!important;
+  text-transform:uppercase;color:var(--ux-dim)!important;
+}
+html body .stat-value,
+html body .sum-value,
+html body .et-card-number,
+html body .stat-value.amber,
+html body .stat-card .num{
+  font-weight:700!important;line-height:1.1;
+}
+html body .stat-value:not(.amber):not(.green):not(.red),
+html body .sum-value,
+html body .et-card-number,
+html body .stat-card .num{color:var(--ux-text)!important;}
+html body .stat-sub,
+html body .sum-sub,
+html body .et-card-foot,
+html body .stat-card .label{color:var(--ux-dim)!important;}
+html body .step-title,
+html body .qx-step,
+html body .term-picker label,
+html body .section-heading{
+  font-size:11px!important;font-weight:700!important;letter-spacing:.7px!important;
+  text-transform:uppercase;color:var(--ux-dim)!important;
+}
+html body .section-title,
+html body .standing-title,
+html body .panel h2,
+html body .panel-bar h2,
+html body .cardhead h2,
+html body .roster-heading h2,
+html body .group-card h3{
+  font-family:'Inter',system-ui,sans-serif!important;font-weight:700!important;
+  color:var(--ux-text)!important;letter-spacing:-.005em;
+}
+html body .group-count,
+html body .qx-group-count,
+html body .roster-heading p,
+html body .panel-bar p,
+html body .roster-step{color:var(--ux-dim)!important;}
+html body .qx-group-name{color:var(--ux-text)!important;}
+
+/* ───────────── 5. Tabs & filter pills ───────────── */
+html body .sector-tabs,
+html body .status-tabs,
+html body .eval-switcher,
+html body .tabs,
+html body .et-tabs,
+html body .level-tabs,
+html body .side,
+html body .faculty-subtabs{
+  background:var(--ux-bg)!important;
+  border:1px solid var(--ux-border)!important;
+  border-radius:var(--ux-radius-sm)!important;
+  box-shadow:none!important;
+  padding:4px!important;
+  width:fit-content;max-width:100%;
+}
+html body .eval-switcher{padding:4px!important;gap:2px!important;overflow:visible!important;}
+html body .eval-divider{display:none!important;}
+html body .sector-tab,
+html body .status-tab,
+html body .eval-tab,
+html body .tab,
+html body .et-tab,
+html body .level-tab,
+html body .side button{
+  border-radius:9px!important;
+  font-family:'Inter',system-ui,sans-serif!important;
+  font-weight:600!important;
+  color:var(--ux-dim)!important;
+}
+html body .sector-tab:hover,
+html body .status-tab:hover,
+html body .eval-tab:hover,
+html body .tab:hover,
+html body .et-tab:hover,
+html body .level-tab:hover,
+html body .side button:hover{
+  background:var(--ux-card)!important;color:var(--ux-text)!important;
+}
+/* Active tab = dashboard green (semantic status / role tabs keep their own colours) */
+html body .sector-tab.active,
+html body .status-tab.active:not([data-s]),
+html body .tab.active,
+html body .et-tab.active,
+html body .level-tab.active,
+html body .side button.active{
+  background:var(--ux-green)!important;color:#fff!important;
+  box-shadow:0 2px 8px var(--ux-green-glow);
+}
+html body .sector-tab.active .tab-badge,
+html body .tab.active .count,
+html body .et-tab.active .et-tab-n{background:rgba(255,255,255,.24)!important;color:#fff!important;}
+html body .side button.active i{color:#fff!important;}
+html body .eval-tab.active{background:var(--ux-card)!important;box-shadow:var(--ux-shadow-sm);}
+/* Account-status tabs keep their meaning: amber = pending, green = approved, red = blocked */
+html body .status-tab.active[data-s="pending"]{background:#FDF0DF!important;color:#B26A06!important;box-shadow:none;}
+html body .status-tab.active[data-s="approved"]{background:#E6F7F1!important;color:#0C7F59!important;box-shadow:none;}
+html[data-theme="dark"] body .status-tab.active[data-s="approved"]{background:rgba(15,159,110,.2)!important;color:#52E49A!important;}
+html body .status-tab.active[data-s="blocked"]{background:#FDECEF!important;color:#C93550!important;box-shadow:none;}
+html[data-theme="dark"] body .status-tab.active[data-s="pending"]{background:rgba(199,122,8,.2)!important;color:#F0B35A!important;}
+html[data-theme="dark"] body .status-tab.active[data-s="blocked"]{background:rgba(214,69,93,.2)!important;color:#F08A9B!important;}
+
+html body .filter-pill,
+html body .group-tab,
+html body .desig-subtab,
+html body .et-btn{
+  border-radius:999px!important;border:1px solid var(--ux-border)!important;
+  background:var(--ux-card)!important;color:var(--ux-dim)!important;
+  font-family:'Inter',system-ui,sans-serif;font-weight:600;
+}
+html body .filter-pill:hover,
+html body .group-tab:hover,
+html body .desig-subtab:hover,
+html body .et-btn:hover{background:var(--ux-green-bg)!important;border-color:var(--ux-green-bd)!important;color:var(--ux-green-d)!important;}
+html body .filter-pill.active,
+html body .et-btn.active{background:var(--ux-green)!important;border-color:var(--ux-green)!important;color:#fff!important;}
+
+/* ───────────── 6. Tables ───────────── */
+html body:not(.report-mode) table{border-collapse:collapse;}
+html body:not(.report-mode) thead tr,
+html body:not(.report-mode) thead th,
+html body .logs-table thead th,
+html body .et-table th{
+  background:var(--ux-head)!important;
+  color:var(--ux-dim)!important;
+  font-size:11px!important;font-weight:700!important;letter-spacing:.7px!important;
+  text-transform:uppercase;
+  border-bottom:1px solid var(--ux-border)!important;
+}
+html body:not(.report-mode) tbody td,
+html body .logs-table tbody td,
+html body .et-table td{
+  border-color:var(--ux-border-soft)!important;
+  border-bottom:1px solid var(--ux-border-soft);
+  color:var(--ux-body);
+}
+html body:not(.report-mode) tbody tr:hover,
+html body .logs-table tbody tr:hover td{background:var(--ux-hover)!important;}
+html body:not(.report-mode) tbody tr:last-child td{border-bottom:0;}
+html body .user-name,
+html body .designation-cell,
+html body .person-name,
+html body .anonymous{color:var(--ux-text)!important;}
+
+/* ───────────── 7. Buttons ───────────── */
+html body .btn.primary,
+html body .btn-submit:not(.green),
+html body .btn-action.evaluate,
+html body .view-evals-btn,
+html body .side-save-btn:not(:disabled),
+html body .unsaved-banner button,
+html body:not(.report-mode) .btn-print{
+  background:var(--ux-green)!important;border:1px solid var(--ux-green)!important;color:#fff!important;
+  border-radius:10px!important;font-family:'Inter',system-ui,sans-serif;font-weight:700;
+  box-shadow:none;
+}
+html body .btn.primary:hover,
+html body .btn-submit:not(.green):hover,
+html body .btn-action.evaluate:hover,
+html body .view-evals-btn:hover,
+html body .side-save-btn:not(:disabled):hover,
+html body .unsaved-banner button:hover,
+html body:not(.report-mode) .btn-print:hover{background:var(--ux-green-d)!important;border-color:var(--ux-green-d)!important;opacity:1;}
+html body .btn-submit.green,
+html body .btn-confirm-approve{border-radius:10px!important;}
+html body .btn,
+html body .btn-cancel,
+html body .btn-icon,
+html body .btn-back,
+html body .back-link,
+html body .back-btn,
+html body .btn-archived-link,
+html body .btn-archive,
+html body .btn-action.view,
+html body .view-btn,
+html body .close{
+  border-radius:10px!important;
+  border-color:var(--ux-border)!important;
+}
+html body .btn:not(.primary):not(.danger),
+html body .btn-cancel,
+html body .btn-icon,
+html body .btn-back,
+html body .back-link,
+html body .back-btn,
+html body .btn-archived-link{
+  background:var(--ux-card)!important;color:var(--ux-body)!important;
+}
+html body .btn:not(.primary):not(.danger):hover,
+html body .btn-cancel:hover,
+html body .btn-icon:hover,
+html body .btn-back:hover,
+html body .back-link:hover,
+html body .back-btn:hover,
+html body .btn-archived-link:hover{background:var(--ux-green-bg)!important;border-color:var(--ux-green-bd)!important;color:var(--ux-green-d)!important;}
+html body .btn-action.view{background:transparent!important;color:var(--ux-dim)!important;}
+html body .view-btn,
+html body .score-pill{background:var(--ux-green-bg)!important;border-color:var(--ux-green-bd)!important;color:var(--ux-green-d)!important;}
+html body .refresh-badge,
+html body .settings-badge,
+html body .panel-note{
+  background:var(--ux-green-bg)!important;border:1px solid var(--ux-green-bd)!important;
+  color:var(--ux-green-d)!important;
+}
+
+/* ───────────── 8. Form controls ───────────── */
+html body input[type="text"],
+html body input[type="search"],
+html body input[type="email"],
+html body input[type="password"],
+html body input[type="number"],
+html body input[type="date"],
+html body input[type="datetime-local"],
+html body input[type="time"],
+html body input[type="url"],
+html body input[type="tel"],
+html body input:not([type]),
+html body select,
+html body textarea{
+  background-color:var(--ux-input)!important;
+  color:var(--ux-text)!important;
+  border:1px solid var(--ux-input-bd)!important;
+  border-radius:10px!important;
+  font-family:'Inter',system-ui,sans-serif;
+  transition:border-color .15s,box-shadow .15s;
+}
+html body input:focus,
+html body select:focus,
+html body textarea:focus{
+  outline:none!important;
+  border-color:var(--ux-green)!important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--ux-green) 16%,transparent)!important;
+}
+html body input::placeholder,
+html body textarea::placeholder{color:var(--ux-dim);opacity:.8;}
+html body .fg label,
+html body label{color:var(--ux-dim);}
+html body .fg label{font-weight:700;letter-spacing:.7px;}
+
+/* ───────────── 9. Banners, notices, empty states ───────────── */
+html body .info-banner,
+html body .eval-banner,
+html body .notice,
+html body .banner,
+html body .alert-info,
+html body .confidentiality-note{
+  background:var(--ux-green-bg)!important;
+  border:1px solid var(--ux-green-bd)!important;
+  color:var(--ux-body)!important;
+  box-shadow:none!important;
+}
+html body .info-banner i,
+html body .eval-banner-title,
+html body .eval-banner-icon,
+html body .confidentiality-note i{color:var(--ux-green-d)!important;}
+html body .eval-banner-desc{color:var(--ux-dim)!important;}
+html body .empty,
+html body .empty-state,
+html body .et-empty,
+html body .logs-empty{
+  background:transparent!important;color:var(--ux-dim)!important;
+  border-color:var(--ux-border)!important;
+}
+html body .empty{border-radius:var(--ux-radius)!important;}
+
+/* ───────────── 10. Modals ───────────── */
+html body .modal-overlay,
+html body .modal-backdrop,
+html body .qxm-modal-backdrop{
+  background:rgba(9,17,30,.64)!important;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+html body .modal,
+html body .qxm-modal,
+html body .sa-modal{
+  background:var(--ux-card)!important;
+  color:var(--ux-text)!important;
+  border:1px solid var(--ux-border)!important;
+  border-radius:18px!important;
+  box-shadow:0 24px 64px rgba(15,23,42,.35)!important;
+}
+html body .modal-title,
+html body .modal-head,
+html body .qxm-modal h3{font-family:'Inter',system-ui,sans-serif!important;font-weight:700;color:var(--ux-text);}
+
+/* ───────────── 11. Misc polish ───────────── */
+html body .toast{border-radius:12px!important;box-shadow:var(--ux-shadow)!important;}
+html{scrollbar-width:thin;scrollbar-color:#C7D3E2 transparent;}
+html[data-theme="dark"]{scrollbar-color:var(--ux-border) transparent;}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-track{background:transparent!important;}
+::-webkit-scrollbar-thumb{background:#C7D3E2!important;border:0!important;border-radius:8px;background-clip:padding-box;}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:var(--ux-border)!important;}
+
+@media(max-width:760px){
+  :root{--ux-pad-x:14px;--ux-pad-top:16px;}
+}
+@media print{
+  html body{padding:0!important;background:#fff!important;}
+}
+
+/* ───────────── 12. Settings: nested System & Period / Archive frames ───────────── */
+html body.ux-nested:not(.report-mode){padding:2px 4px 0!important;}
+html body.ux-nested .shell{padding:0!important;max-width:none!important;}
+html body.ux-nested .section-eyebrow{color:var(--ux-dim)!important;}
+html body.ux-nested .section-head{background:var(--ux-head)!important;border-bottom:1px solid var(--ux-border)!important;align-items:center;}
+html body.ux-nested .section{border-radius:var(--ux-radius)!important;border:1px solid var(--ux-border)!important;box-shadow:var(--ux-shadow-sm)!important;}
+/* Save / Cancel bar stays visible while scrolling long forms */
+html body.ux-nested .actions{
+  position:sticky;bottom:0;z-index:5;margin:0 -4px;padding:12px 4px 14px!important;
+  background:linear-gradient(to top,var(--ux-card) 70%,transparent);
+}
+html body #section-system.panel-card,
+html body #section-archive.panel-card{border:0!important;box-shadow:none!important;border-radius:0!important;background:transparent!important;}
+
+/* Evaluate Others keeps its "Evaluation" page title (icon + heading) */
+html body .panel-title{
+  display:flex!important;align-items:center;gap:11px;margin:0 0 14px!important;
+  font-family:'Rajdhani',sans-serif!important;font-size:26px;font-weight:700;color:var(--ux-text)!important;
+}
+html body .panel-title i{color:var(--ux-header-icon,#D97706)!important;font-size:22px;}

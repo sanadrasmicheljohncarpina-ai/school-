@@ -1,0 +1,434 @@
+/* =====================================================================
+   PBI Student Portal — shared UI polish
+   Keeps the existing PHP/business logic intact and standardizes the
+   student-facing pages around one calm, accessible visual language.
+   ===================================================================== */
+:root {
+  --student-navy: #0a192f;
+  --student-navy-2: #10233f;
+  --student-amber: #d97706;
+  --student-amber-2: #f59e0b;
+  --student-ink: #0f172a;
+  --student-text: #334155;
+  --student-muted: #64748b;
+  --student-line: #e2e8f0;
+  --student-surface: #ffffff;
+  --student-soft: #f5f7fb;
+  --student-success: #15803d;
+  --student-danger: #b91c1c;
+  --student-shadow: 0 16px 40px rgba(15, 23, 42, .10);
+}
+
+html { scroll-behavior: smooth; }
+button, input, select, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(245, 158, 11, .35);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Auth pages: login, registration, password recovery/reset
+   --------------------------------------------------------------------- */
+body:has(.login-card),
+body:has(.reg-card),
+body:has(.card) {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(245, 158, 11, .10), transparent 32%),
+    radial-gradient(circle at 90% 90%, rgba(43, 108, 176, .10), transparent 30%),
+    var(--student-navy) !important;
+}
+
+body:has(.login-card)::before,
+body:has(.reg-card)::before,
+body:has(.card)::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.025), transparent 26%, rgba(0,0,0,.12));
+  z-index: 0;
+}
+
+.login-card, .reg-card, body:has(.card) .card {
+  border-color: rgba(255, 255, 255, .12) !important;
+  box-shadow: 0 24px 70px rgba(0,0,0,.36), 0 0 0 1px rgba(255,255,255,.02) !important;
+}
+
+.login-card:hover, .reg-card:hover, body:has(.card) .card:hover {
+  border-color: rgba(245, 158, 11, .24) !important;
+}
+
+.form-input:hover {
+  border-color: rgba(245, 158, 11, .38) !important;
+}
+
+.btn-login, .btn-register, .btn-main {
+  min-height: 46px;
+  font-weight: 700 !important;
+  letter-spacing: .1px;
+}
+
+.btn-login:active, .btn-register:active, .btn-main:active,
+.btn-primary-cta:active, .eval-btn:active, .btn-submit:active {
+  transform: translateY(1px) !important;
+}
+
+.register-row a, .back-row a, .card-footer a {
+  text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------
+   Dashboard shell
+   --------------------------------------------------------------------- */
+body.light-theme:has(.app-shell) {
+  background: #f8fafc !important;
+}
+
+body.light-theme:has(.app-shell) .main {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(245,158,11,.045), transparent 27%),
+    linear-gradient(180deg, #f8fafc 0%, #f3f6fa 100%) !important;
+}
+
+body:has(.app-shell) .sidebar {
+  background:
+    linear-gradient(180deg, #08182d 0%, #0a192f 56%, #0b1d35 100%) !important;
+}
+
+/* Sidebar brand row inserted in the dashboard markup. */
+.student-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 18px 18px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.student-sidebar-brand img {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  object-fit: cover;
+  border: 1px solid rgba(245,158,11,.55);
+  box-shadow: 0 5px 14px rgba(0,0,0,.18);
+  flex-shrink: 0;
+}
+.student-sidebar-brand strong {
+  display: block;
+  font-size: 13px;
+  color: #fff;
+  letter-spacing: .2px;
+  line-height: 1.15;
+}
+.student-sidebar-brand span {
+  display: block;
+  margin-top: 3px;
+  font-size: 9.5px;
+  color: #9fb2c7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+body.light-theme:has(.app-shell) .main {
+  border-color: #e6ebf2 !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.6), 0 12px 28px rgba(15,23,42,.05) !important;
+}
+
+body.light-theme:has(.app-shell) .workspace-kicker {
+  letter-spacing: 1px;
+}
+body.light-theme:has(.app-shell) .workspace-title {
+  letter-spacing: -.2px;
+}
+body.light-theme:has(.app-shell) .workspace-subtitle {
+  max-width: 720px;
+}
+body.light-theme:has(.app-shell) .workspace-meta .workspace-pill {
+  background: rgba(255,255,255,.82) !important;
+  border-color: #dde5ef !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,.05) !important;
+}
+
+/* More legible stat cards. */
+body.light-theme:has(.app-shell) .stat-card {
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 7px 18px rgba(15,23,42,.055) !important;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+body.light-theme:has(.app-shell) .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15,23,42,.08) !important;
+  border-color: #d7e1ec !important;
+}
+body.light-theme:has(.app-shell) .stat-card:nth-child(1) { border-top: 3px solid #f59e0b !important; }
+body.light-theme:has(.app-shell) .stat-card:nth-child(2) { border-top: 3px solid #22c55e !important; }
+body.light-theme:has(.app-shell) .stat-card:nth-child(3) { border-top: 3px solid #eab308 !important; }
+body.light-theme:has(.app-shell) .stat-card:nth-child(4) { border-top: 3px solid #3b82f6 !important; }
+
+body.light-theme:has(.app-shell) .progress-wrap {
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 7px 18px rgba(15,23,42,.05) !important;
+}
+body.light-theme:has(.app-shell) .progress-bar-bg { background: #e7edf4 !important; }
+body.light-theme:has(.app-shell) .progress-bar-fill {
+  background: linear-gradient(90deg, #d97706, #f59e0b) !important;
+}
+
+/* Primary CTA gets a more deliberate hierarchy. */
+body.light-theme:has(.app-shell) .dash-cta {
+  border-color: #f0d9b0 !important;
+  background: linear-gradient(135deg, #fffdf8 0%, #ffffff 72%) !important;
+  box-shadow: 0 9px 22px rgba(217,119,6,.07) !important;
+}
+body.light-theme:has(.app-shell) .btn-primary-cta {
+  min-height: 42px;
+  padding-inline: 16px !important;
+  box-shadow: 0 8px 16px rgba(217,119,6,.15);
+}
+
+/* A small piece of orientation copy helps students understand the consequence
+   of submission without adding another large panel. */
+body.light-theme .student-eval-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: -12px 0 20px;
+  padding: 10px 12px;
+  border: 1px solid #dbe7f2;
+  border-radius: 10px;
+  background: #f8fbff;
+  color: #52657a;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+body.light-theme .student-eval-note i { color: #3b82f6; margin-top: 2px; }
+
+/* Evaluation categories become more obviously clickable. */
+body.light-theme:has(.app-shell) .cat-btn {
+  min-height: 176px;
+  border-color: #e1e8f0 !important;
+  box-shadow: 0 8px 18px rgba(15,23,42,.05) !important;
+  background: linear-gradient(180deg, #fff 0%, #fbfcfe 100%) !important;
+}
+body.light-theme:has(.app-shell) .cat-btn:hover,
+body.light-theme:has(.app-shell) .cat-btn.active {
+  border-color: #f0b557 !important;
+  box-shadow: 0 14px 28px rgba(217,119,6,.10) !important;
+}
+body.light-theme:has(.app-shell) .cat-meta { color: #64748b !important; }
+body.light-theme:has(.app-shell) .cat-done-pill {
+  background: #ecfdf3 !important;
+  border-color: #bbf7d0 !important;
+  color: #15803d !important;
+}
+
+body.light-theme:has(.app-shell) .members-panel {
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 24px rgba(15,23,42,.06) !important;
+}
+body.light-theme:has(.app-shell) .person-card {
+  background: #fbfcfe !important;
+  border-color: #e1e8f0 !important;
+  box-shadow: 0 6px 16px rgba(15,23,42,.04) !important;
+}
+body.light-theme:has(.app-shell) .person-card:hover:not(.done) {
+  border-color: #efb25a !important;
+  box-shadow: 0 12px 24px rgba(217,119,6,.08) !important;
+}
+body.light-theme:has(.app-shell) .person-card.done {
+  opacity: .74;
+}
+body.light-theme:has(.app-shell) .person-avatar,
+body.light-theme:has(.app-shell) .person-avatar-ph {
+  box-shadow: 0 0 0 4px #fff, 0 4px 12px rgba(15,23,42,.08);
+}
+body.light-theme:has(.app-shell) .eval-btn:not(:disabled) {
+  min-height: 38px;
+  border-radius: 9px;
+  box-shadow: 0 6px 13px rgba(217,119,6,.12);
+}
+body.light-theme:has(.app-shell) .eval-btn:disabled {
+  min-height: 38px;
+  border: 1px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #94a3b8 !important;
+}
+
+/* History and guidelines cards. */
+body.light-theme:has(.app-shell) .history-card,
+body.light-theme:has(.app-shell) .gl-card {
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 7px 18px rgba(15,23,42,.05) !important;
+}
+body.light-theme:has(.app-shell) .history-card:hover {
+  border-color: #d7e1ec !important;
+  box-shadow: 0 11px 24px rgba(15,23,42,.07) !important;
+  transform: translateY(-1px);
+}
+body.light-theme:has(.app-shell) .history-comment {
+  border-left: 3px solid #f2c980;
+  padding-left: 10px;
+}
+body.light-theme:has(.app-shell) .gl-card h3 {
+  margin-bottom: 13px;
+}
+body.light-theme:has(.app-shell) .gl-card li + li { margin-top: 5px; }
+body.light-theme:has(.app-shell) .gl-scale-row {
+  padding: 7px 0;
+  border-bottom: 1px dashed #e5eaf0;
+}
+body.light-theme:has(.app-shell) .gl-scale-row:last-child { border-bottom: 0; }
+
+/* Modal polish + mobile-friendly questionnaire. */
+body.light-theme:has(.app-shell) .modal-overlay,
+body.light-theme:has(.app-shell) .photo-modal-overlay {
+  background: rgba(9, 17, 30, .64) !important;
+  backdrop-filter: blur(4px);
+}
+body.light-theme:has(.app-shell) .modal,
+body.light-theme:has(.app-shell) .photo-modal {
+  border-color: #dfe6ef !important;
+  box-shadow: 0 30px 80px rgba(15,23,42,.24) !important;
+}
+body.light-theme:has(.app-shell) .modal-header {
+  box-shadow: 0 1px 0 #eef2f6;
+}
+body.light-theme:has(.app-shell) .modal-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(255,255,255,.96) !important;
+  border-top: 1px solid #e7edf4 !important;
+  backdrop-filter: blur(8px);
+}
+body.light-theme:has(.app-shell) .eval-form-wrap {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+body.light-theme:has(.app-shell) .eval-form-table {
+  min-width: 650px;
+}
+body.light-theme:has(.app-shell) .eval-form-table th:first-child,
+body.light-theme:has(.app-shell) .eval-form-table td:first-child {
+  min-width: 360px;
+}
+body.light-theme:has(.app-shell) .eval-form-rating label {
+  box-shadow: 0 2px 5px rgba(15,23,42,.03);
+}
+body.light-theme:has(.app-shell) .eval-form-rating input:focus-visible + label {
+  outline: 3px solid rgba(14,165,233,.22);
+  outline-offset: 2px;
+}
+body.light-theme:has(.app-shell) .comment-box {
+  border: 1px solid #e5eaf0;
+}
+body.light-theme:has(.app-shell) .comment-textarea {
+  background: #fff !important;
+  border-color: #dbe3ec !important;
+  color: #0f172a !important;
+}
+body.light-theme:has(.app-shell) .comment-textarea:focus {
+  border-color: #f2b24c !important;
+  box-shadow: 0 0 0 3px rgba(217,119,6,.12);
+}
+
+/* Cleaner status alerts. */
+body.light-theme:has(.app-shell) .alert {
+  border-radius: 11px !important;
+  padding: 12px 14px !important;
+}
+body.light-theme:has(.app-shell) .alert-success {
+  background: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+  color: #166534 !important;
+}
+body.light-theme:has(.app-shell) .alert-error {
+  background: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #991b1b !important;
+}
+
+/* Small screen refinements. */
+@media (max-width: 900px) {
+  body.light-theme:has(.app-shell) .main {
+    padding-top: 68px !important;
+  }
+  .student-sidebar-brand { padding-top: 2px; }
+}
+
+@media (max-width: 600px) {
+  .login-card, .reg-card, body:has(.card) .card {
+    padding-inline: 22px !important;
+  }
+  body.light-theme:has(.app-shell) .main {
+    padding-inline: 14px !important;
+  }
+  body.light-theme:has(.app-shell) .workspace-meta {
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+  body.light-theme:has(.app-shell) .workspace-pill {
+    width: 100%;
+    justify-content: center;
+  }
+  body.light-theme:has(.app-shell) .category-grid {
+    gap: 10px;
+  }
+  body.light-theme:has(.app-shell) .cat-btn {
+    min-height: 155px;
+    padding: 20px 14px 16px;
+  }
+  body.light-theme:has(.app-shell) .members-grid {
+    grid-template-columns: 1fr 1fr !important;
+    padding-inline: 12px !important;
+  }
+  body.light-theme:has(.app-shell) .modal {
+    max-height: 95vh !important;
+    border-radius: 15px !important;
+  }
+  body.light-theme:has(.app-shell) .modal-footer {
+    display: grid !important;
+    grid-template-columns: 1fr 1.3fr;
+  }
+}
+
+@media (max-width: 430px) {
+  body.light-theme:has(.app-shell) .members-grid { grid-template-columns: 1fr !important; }
+  body.light-theme:has(.app-shell) .page-title { font-size: 22px !important; }
+  .login-card, .reg-card, body:has(.card) .card {
+    padding: 24px 16px 22px !important;
+    border-radius: 16px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Student workspace composition — matches the Dean portal
+   White outer page + inset light workspace (#F3F6FA) + white feature cards.
+   Replaces the earlier warm gradient / 22px-radius workspace in light theme.
+   ------------------------------------------------------------------------- */
+body.light-theme:has(.app-shell) {
+  background: #FFFFFF !important;
+}
+
+body.light-theme:has(.app-shell) .main {
+  background: #F3F6FA !important;
+  border: 1px solid #E5EAF0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 10px rgba(31, 55, 79, .035) !important;
+}
+
+@media (min-width: 901px) {
+  body.light-theme:has(.app-shell) .main {
+    margin: 24px !important;           /* white outer margin, same as Dean */
+    min-height: calc(100vh - 48px) !important;
+  }
+}

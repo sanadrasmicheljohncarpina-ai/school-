@@ -1,0 +1,630 @@
+/* Principal workspace consistency layer
+   Align all non-dashboard navigation pages with the Dashboard's clean
+   workspace, card, typography and gold-accent system. Presentation only. */
+
+:root {
+  --pws-canvas: #F3F6FA;
+  --pws-surface: #FFFFFF;
+  --pws-surface-soft: #F7F9FC;
+  --pws-text: #12263F;
+  --pws-body: #334155;
+  --pws-muted: #5B7186;
+  --pws-border: #D9E4EF;
+  --pws-gold: #D99A2B;
+  --pws-gold-dark: #A16207;
+  --pws-shadow: 0 4px 16px rgba(20,42,67,.045);
+}
+
+/* Workspace canvas and the main inset panel. */
+html:not(.principal-theme-dark) body:has(#pbiPrincipalTopbar) {
+  background: var(--pws-canvas) !important;
+  color: var(--pws-body) !important;
+}
+#pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) {
+  box-sizing: border-box !important;
+  min-height: calc(100vh - 58px) !important;
+  padding: 26px 28px 36px !important;
+  background: var(--pws-canvas) !important;
+  color: var(--pws-body) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  isolation: isolate !important;
+  position: relative !important;
+}
+#pbiPrincipalTopbar ~ main.main:not(.principal-dashboard):not(.principal-feature-page)::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: 16px !important;
+  right: 16px !important;
+  bottom: 0 !important;
+  left: 16px !important;
+  background: var(--pws-surface) !important;
+  border: 1px solid #E2EAF3 !important;
+  border-bottom: 0 !important;
+  border-radius: 20px 20px 0 0 !important;
+  box-shadow: 0 2px 12px rgba(15,23,42,.025) !important;
+  pointer-events: none !important;
+}
+#pbiPrincipalTopbar ~ main.principal-feature-page:not(.principal-dashboard) {
+  background: var(--pws-canvas) !important;
+}
+#pbiPrincipalTopbar ~ main.principal-feature-page #principalFeatureWorkspace,
+#pbiPrincipalTopbar ~ main.principal-feature-page .principal-feature-shell,
+#pbiPrincipalTopbar ~ main.principal-feature-page .principal-results-shell,
+#pbiPrincipalTopbar ~ main.principal-feature-page .feature-workspace-shell {
+  background: var(--pws-surface) !important;
+  color: var(--pws-body) !important;
+  border: 1px solid var(--pws-border) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--pws-shadow) !important;
+}
+
+/* Page headings mirror the Dashboard title and eyebrow scale. */
+main.main:not(.principal-dashboard) .page-header,
+main.main:not(.principal-dashboard) .page-header:first-child {
+  min-width: 0 !important;
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+main.main:not(.principal-dashboard) .page-title,
+main.main:not(.principal-dashboard) .page-header h1,
+main.main:not(.principal-dashboard) > h1,
+main.main:not(.principal-dashboard) .section-title,
+main.main:not(.principal-dashboard) .tracker-heading h2,
+main.main:not(.principal-dashboard) .principal-feature-heading h1 {
+  color: var(--pws-text) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: clamp(24px, 1.8vw, 31px) !important;
+  font-weight: 700 !important;
+  line-height: 1.16 !important;
+  letter-spacing: .1px !important;
+}
+main.main:not(.principal-dashboard) .page-sub,
+main.main:not(.principal-dashboard) .page-header p,
+main.main:not(.principal-dashboard) .description,
+main.main:not(.principal-dashboard) .helper,
+main.main:not(.principal-dashboard) .muted,
+main.main:not(.principal-dashboard) .subtitle,
+main.main:not(.principal-dashboard) .small,
+main.main:not(.principal-dashboard) .count-note {
+  color: var(--pws-muted) !important;
+}
+main.main:not(.principal-dashboard) .section h2,
+main.main:not(.principal-dashboard) .card h2,
+main.main:not(.principal-dashboard) .panel h2,
+main.main:not(.principal-dashboard) .tracker-toolbar h2,
+main.main:not(.principal-dashboard) .settings-section-title {
+  color: var(--pws-text) !important;
+  font-weight: 700 !important;
+}
+
+/* Dashboard-like cards with consistent borders, spacing and shadow. */
+main.main:not(.principal-dashboard) .section,
+main.main:not(.principal-dashboard) .card,
+main.main:not(.principal-dashboard) .panel,
+main.main:not(.principal-dashboard) .stat-card,
+main.main:not(.principal-dashboard) .stat,
+main.main:not(.principal-dashboard) .tracker-card,
+main.main:not(.principal-dashboard) .tracker-toolbar,
+main.main:not(.principal-dashboard) .table-card,
+main.main:not(.principal-dashboard) .table-card-wrap,
+main.main:not(.principal-dashboard) .table-wrap,
+main.main:not(.principal-dashboard) .content-card,
+main.main:not(.principal-dashboard) .content-panel,
+main.main:not(.principal-dashboard) .filter-bar,
+main.main:not(.principal-dashboard) .period-strip,
+main.main:not(.principal-dashboard) .eval-banner,
+main.main:not(.principal-dashboard) .info-banner,
+main.main:not(.principal-dashboard) .history-card,
+main.main:not(.principal-dashboard) .gl-card,
+main.main:not(.principal-dashboard) .amber-card,
+main.main:not(.principal-dashboard) .green-card,
+main.main:not(.principal-dashboard) .red-card,
+main.main:not(.principal-dashboard) .ra-table-card,
+main.main:not(.principal-dashboard) .eval-card,
+main.main:not(.principal-dashboard) .comment-section,
+main.main:not(.principal-dashboard) .avg-summary,
+main.main:not(.principal-dashboard) .standing-panel,
+main.main:not(.principal-dashboard) .person-row,
+main.main:not(.principal-dashboard) .target-card,
+main.main:not(.principal-dashboard) .evaluator-grid,
+main.main:not(.principal-dashboard) .people-list,
+main.main:not(.principal-dashboard) .cat-section,
+main.main:not(.principal-dashboard) .results-card,
+main.main:not(.principal-dashboard) .result-card,
+main.main:not(.principal-dashboard) .feature-card,
+main.main:not(.principal-dashboard) .de-panel,
+main.main:not(.principal-dashboard) .detail-results-panel,
+main.main:not(.principal-dashboard) .detail-person-card,
+main.main:not(.principal-dashboard) .response-card,
+main.main:not(.principal-dashboard) .eval-switcher,
+main.main:not(.principal-dashboard) .tabs,
+main.main:not(.principal-dashboard) .level-tabs,
+main.main:not(.principal-dashboard) .status-tabs,
+main.main:not(.principal-dashboard) .faculty-subtabs,
+main.main:not(.principal-dashboard) .group-tabs,
+main.main:not(.principal-dashboard) .group-tab-wrap,
+main.main:not(.principal-dashboard) .desig-subtabs,
+main.main:not(.principal-dashboard) .desig-subtab-wrap {
+  color: var(--pws-body) !important;
+  background: var(--pws-surface) !important;
+  border-color: var(--pws-border) !important;
+  box-shadow: var(--pws-shadow) !important;
+}
+main.main:not(.principal-dashboard) .section,
+main.main:not(.principal-dashboard) .card,
+main.main:not(.principal-dashboard) .panel,
+main.main:not(.principal-dashboard) .stat-card,
+main.main:not(.principal-dashboard) .stat,
+main.main:not(.principal-dashboard) .tracker-card,
+main.main:not(.principal-dashboard) .table-card,
+main.main:not(.principal-dashboard) .table-wrap,
+main.main:not(.principal-dashboard) .content-card,
+main.main:not(.principal-dashboard) .content-panel,
+main.main:not(.principal-dashboard) .filter-bar,
+main.main:not(.principal-dashboard) .period-strip {
+  border-radius: 14px !important;
+}
+main.main:not(.principal-dashboard) .section,
+main.main:not(.principal-dashboard) .card,
+main.main:not(.principal-dashboard) .panel,
+main.main:not(.principal-dashboard) .stat-card,
+main.main:not(.principal-dashboard) .stat,
+main.main:not(.principal-dashboard) .tracker-card,
+main.main:not(.principal-dashboard) .content-card,
+main.main:not(.principal-dashboard) .content-panel,
+main.main:not(.principal-dashboard) .filter-bar,
+main.main:not(.principal-dashboard) .period-strip {
+  padding: clamp(16px, 1.6vw, 24px) !important;
+}
+
+/* Tables: the same pale header, legible text and fine dividers as Dashboard. */
+main.main:not(.principal-dashboard) table {
+  width: 100% !important;
+  color: var(--pws-body) !important;
+  border-color: #E2EAF2 !important;
+}
+main.main:not(.principal-dashboard) .table-wrap,
+main.main:not(.principal-dashboard) .table-card,
+main.main:not(.principal-dashboard) .table-card-wrap {
+  overflow-x: auto !important;
+}
+main.main:not(.principal-dashboard) table thead th,
+main.main:not(.principal-dashboard) table.data th,
+main.main:not(.principal-dashboard) .table-head,
+main.main:not(.principal-dashboard) .table-header,
+main.main:not(.principal-dashboard) .thead,
+main.main:not(.principal-dashboard) .subtle-head {
+  background: #F4F8FF !important;
+  color: #4B6580 !important;
+  border-color: #D9E4EF !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: .45px !important;
+  text-transform: uppercase !important;
+}
+main.main:not(.principal-dashboard) table tbody td,
+main.main:not(.principal-dashboard) table.data td,
+main.main:not(.principal-dashboard) .table-cell {
+  color: #334155 !important;
+  border-color: #E2E8F0 !important;
+}
+main.main:not(.principal-dashboard) table tbody tr:hover td,
+main.main:not(.principal-dashboard) .person-row:hover,
+main.main:not(.principal-dashboard) .standing-item:hover {
+  background: #F8FAFC !important;
+}
+
+/* Search and form controls. */
+main.main:not(.principal-dashboard) input:not([type="checkbox"]):not([type="radio"]),
+main.main:not(.principal-dashboard) select,
+main.main:not(.principal-dashboard) textarea,
+main.main:not(.principal-dashboard) .search-box input[type="text"],
+main.main:not(.principal-dashboard) .search-box select,
+main.main:not(.principal-dashboard) .form-group input,
+main.main:not(.principal-dashboard) .filter-field input[type="text"],
+main.main:not(.principal-dashboard) .filter-field select,
+main.main:not(.principal-dashboard) .ra-filter-row select,
+main.main:not(.principal-dashboard) .ra-search,
+main.main:not(.principal-dashboard) .eval-comment-box {
+  min-height: 40px !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 9px !important;
+  background: #FFFFFF !important;
+  color: #172033 !important;
+  box-shadow: none !important;
+}
+main.main:not(.principal-dashboard) textarea { min-height: 96px !important; }
+main.main:not(.principal-dashboard) input::placeholder,
+main.main:not(.principal-dashboard) textarea::placeholder { color: #94A3B8 !important; }
+main.main:not(.principal-dashboard) input:focus,
+main.main:not(.principal-dashboard) select:focus,
+main.main:not(.principal-dashboard) textarea:focus {
+  outline: none !important;
+  border-color: #D99A2B !important;
+  box-shadow: 0 0 0 3px rgba(217,154,43,.12) !important;
+}
+main.main:not(.principal-dashboard) label,
+main.main:not(.principal-dashboard) .form-group label {
+  color: #52677E !important;
+  font-weight: 600 !important;
+}
+
+/* Buttons and navigation tabs share a consistent shape and interaction. */
+main.main:not(.principal-dashboard) .btn,
+main.main:not(.principal-dashboard) a.btn,
+main.main:not(.principal-dashboard) .action-btn,
+main.main:not(.principal-dashboard) .back-btn,
+main.main:not(.principal-dashboard) .btn-print,
+main.main:not(.principal-dashboard) .btn-archive,
+main.main:not(.principal-dashboard) .btn-restore,
+main.main:not(.principal-dashboard) .ra-tool-btn,
+main.main:not(.principal-dashboard) .export-btn,
+main.main:not(.principal-dashboard) .filter-toggle,
+main.main:not(.principal-dashboard) .page-btn,
+main.main:not(.principal-dashboard) .filter-btns a,
+main.main:not(.principal-dashboard) .qa-btns a,
+main.main:not(.principal-dashboard) .report-btns button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 38px !important;
+  padding: 9px 14px !important;
+  border: 1px solid #D7E1EC !important;
+  border-radius: 9px !important;
+  background: #FFFFFF !important;
+  color: #334C66 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,.025) !important;
+  transition: background .16s ease, border-color .16s ease, transform .16s ease !important;
+}
+main.main:not(.principal-dashboard) .btn:hover,
+main.main:not(.principal-dashboard) a.btn:hover,
+main.main:not(.principal-dashboard) .action-btn:hover,
+main.main:not(.principal-dashboard) .back-btn:hover,
+main.main:not(.principal-dashboard) .btn-print:hover,
+main.main:not(.principal-dashboard) .ra-tool-btn:hover,
+main.main:not(.principal-dashboard) .export-btn:hover,
+main.main:not(.principal-dashboard) .filter-toggle:hover,
+main.main:not(.principal-dashboard) .filter-btns a:hover,
+main.main:not(.principal-dashboard) .qa-btns a:hover {
+  background: #F8FAFC !important;
+  border-color: #B9C9DA !important;
+  color: #12263F !important;
+}
+main.main:not(.principal-dashboard) .btn-primary,
+main.main:not(.principal-dashboard) .btn-submit,
+main.main:not(.principal-dashboard) .btn-save,
+main.main:not(.principal-dashboard) .search-box button {
+  background: #D99A2B !important;
+  border: 1px solid #D99A2B !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+main.main:not(.principal-dashboard) .btn-primary:hover,
+main.main:not(.principal-dashboard) .btn-submit:hover,
+main.main:not(.principal-dashboard) .btn-save:hover,
+main.main:not(.principal-dashboard) .search-box button:hover {
+  background: #B8801F !important;
+  border-color: #B8801F !important;
+  color: #FFFFFF !important;
+}
+main.main:not(.principal-dashboard) .tab.active,
+main.main:not(.principal-dashboard) .level-tab.active,
+main.main:not(.principal-dashboard) .status-tab.active,
+main.main:not(.principal-dashboard) .group-tab.active,
+main.main:not(.principal-dashboard) .desig-subtab.active,
+main.main:not(.principal-dashboard) .faculty-subtab.active,
+main.main:not(.principal-dashboard) .eval-tab.active,
+main.main:not(.principal-dashboard) .page-btn.active {
+  background: rgba(217,154,43,.12) !important;
+  border-color: rgba(217,154,43,.42) !important;
+  color: #9A6700 !important;
+}
+
+/* Small labels, status badges and alert panels retain clear semantic colors. */
+main.main:not(.principal-dashboard) .pill.good,
+main.main:not(.principal-dashboard) .status-pill.success,
+main.main:not(.principal-dashboard) .optional-status.completed {
+  background: #ECFDF5 !important; color: #047857 !important; border-color: #A7F3D0 !important;
+}
+main.main:not(.principal-dashboard) .pill.warn,
+main.main:not(.principal-dashboard) .status-pill.pending,
+main.main:not(.principal-dashboard) .optional-status.in_progress {
+  background: #FFFBEB !important; color: #92400E !important; border-color: #FDE68A !important;
+}
+main.main:not(.principal-dashboard) .pill.bad,
+main.main:not(.principal-dashboard) .status-pill.error {
+  background: #FEF2F2 !important; color: #B91C1C !important; border-color: #FECACA !important;
+}
+main.main:not(.principal-dashboard) .alert.success { background:#ECFDF5!important;color:#047857!important;border-color:#A7F3D0!important; }
+main.main:not(.principal-dashboard) .alert.error { background:#FEF2F2!important;color:#B91C1C!important;border-color:#FECACA!important; }
+main.main:not(.principal-dashboard) .section h2 i,
+main.main:not(.principal-dashboard) .stat-icon,
+main.main:not(.principal-dashboard) .stat-card i,
+main.main:not(.principal-dashboard) .section-title i,
+main.main:not(.principal-dashboard) .principal-feature-eyebrow i { color: #B8801F !important; }
+
+/* Compact preference affects content spacing without breaking page structure. */
+html.principal-density-compact main.main:not(.principal-dashboard) { padding-top: 18px !important; }
+html.principal-density-compact main.main:not(.principal-dashboard) .section,
+html.principal-density-compact main.main:not(.principal-dashboard) .card,
+html.principal-density-compact main.main:not(.principal-dashboard) .panel,
+html.principal-density-compact main.main:not(.principal-dashboard) .stat-card,
+html.principal-density-compact main.main:not(.principal-dashboard) .tracker-card,
+html.principal-density-compact main.main:not(.principal-dashboard) .content-card { padding: 14px !important; }
+html.principal-density-compact main.main:not(.principal-dashboard) .page-header { margin-bottom: 15px !important; }
+
+/* Dark mode: same layout, dashboard-aligned navy surfaces and strong contrast. */
+html.principal-theme-dark {
+  --pws-canvas: #0A192F;
+  --pws-surface: #0F1F3D;
+  --pws-surface-soft: #172A45;
+  --pws-text: #F8FAFC;
+  --pws-body: #DCE6F0;
+  --pws-muted: #A0B3C6;
+  --pws-border: rgba(255,255,255,.10);
+  --pws-shadow: 0 4px 20px rgba(0,0,0,.20);
+}
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) {
+  background: #0A192F !important;
+  color: #DCE6F0 !important;
+}
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard):not(.principal-feature-page)::before {
+  background: #0F1F3D !important;
+  border-color: rgba(255,255,255,.10) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.20) !important;
+}
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.principal-feature-page #principalFeatureWorkspace,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.principal-feature-page .principal-feature-shell,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.principal-feature-page .principal-results-shell,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.principal-feature-page .feature-workspace-shell {
+  background: #0F1F3D !important;
+  color: #DCE6F0 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-title,
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-header h1,
+html.principal-theme-dark main.main:not(.principal-dashboard) > h1,
+html.principal-theme-dark main.main:not(.principal-dashboard) .section-title,
+html.principal-theme-dark main.main:not(.principal-dashboard) .section h2,
+html.principal-theme-dark main.main:not(.principal-dashboard) .card h2,
+html.principal-theme-dark main.main:not(.principal-dashboard) .panel h2,
+html.principal-theme-dark main.main:not(.principal-dashboard) .tracker-heading h2,
+html.principal-theme-dark main.main:not(.principal-dashboard) .principal-feature-heading h1 {
+  color: #F8FAFC !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-sub,
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-header p,
+html.principal-theme-dark main.main:not(.principal-dashboard) .description,
+html.principal-theme-dark main.main:not(.principal-dashboard) .helper,
+html.principal-theme-dark main.main:not(.principal-dashboard) .muted,
+html.principal-theme-dark main.main:not(.principal-dashboard) .subtitle,
+html.principal-theme-dark main.main:not(.principal-dashboard) .small,
+html.principal-theme-dark main.main:not(.principal-dashboard) .count-note,
+html.principal-theme-dark main.main:not(.principal-dashboard) label,
+html.principal-theme-dark main.main:not(.principal-dashboard) .form-group label {
+  color: #A0B3C6 !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .section,
+html.principal-theme-dark main.main:not(.principal-dashboard) .card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .panel,
+html.principal-theme-dark main.main:not(.principal-dashboard) .stat-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .stat,
+html.principal-theme-dark main.main:not(.principal-dashboard) .tracker-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .tracker-toolbar,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-card-wrap,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-wrap,
+html.principal-theme-dark main.main:not(.principal-dashboard) .content-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .content-panel,
+html.principal-theme-dark main.main:not(.principal-dashboard) .filter-bar,
+html.principal-theme-dark main.main:not(.principal-dashboard) .period-strip,
+html.principal-theme-dark main.main:not(.principal-dashboard) .eval-banner,
+html.principal-theme-dark main.main:not(.principal-dashboard) .info-banner,
+html.principal-theme-dark main.main:not(.principal-dashboard) .history-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .gl-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .amber-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .green-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .red-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .ra-table-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .eval-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .comment-section,
+html.principal-theme-dark main.main:not(.principal-dashboard) .avg-summary,
+html.principal-theme-dark main.main:not(.principal-dashboard) .standing-panel,
+html.principal-theme-dark main.main:not(.principal-dashboard) .person-row,
+html.principal-theme-dark main.main:not(.principal-dashboard) .target-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .evaluator-grid,
+html.principal-theme-dark main.main:not(.principal-dashboard) .people-list,
+html.principal-theme-dark main.main:not(.principal-dashboard) .cat-section,
+html.principal-theme-dark main.main:not(.principal-dashboard) .results-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .result-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .feature-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .de-panel,
+html.principal-theme-dark main.main:not(.principal-dashboard) .detail-results-panel,
+html.principal-theme-dark main.main:not(.principal-dashboard) .detail-person-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .response-card,
+html.principal-theme-dark main.main:not(.principal-dashboard) .eval-switcher,
+html.principal-theme-dark main.main:not(.principal-dashboard) .tabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .level-tabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .status-tabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .faculty-subtabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .group-tabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .group-tab-wrap,
+html.principal-theme-dark main.main:not(.principal-dashboard) .desig-subtabs,
+html.principal-theme-dark main.main:not(.principal-dashboard) .desig-subtab-wrap {
+  background: #172A45 !important;
+  color: #DCE6F0 !important;
+  border-color: rgba(255,255,255,.10) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.20) !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) table thead th,
+html.principal-theme-dark main.main:not(.principal-dashboard) table.data th,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-head,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-header,
+html.principal-theme-dark main.main:not(.principal-dashboard) .thead,
+html.principal-theme-dark main.main:not(.principal-dashboard) .subtle-head {
+  background: #0F1F3D !important;
+  color: #C5D4E5 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) table tbody td,
+html.principal-theme-dark main.main:not(.principal-dashboard) table.data td,
+html.principal-theme-dark main.main:not(.principal-dashboard) .table-cell {
+  background: #172A45 !important;
+  color: #DCE6F0 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) table tbody tr:hover td,
+html.principal-theme-dark main.main:not(.principal-dashboard) .person-row:hover,
+html.principal-theme-dark main.main:not(.principal-dashboard) .standing-item:hover {
+  background: #203653 !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) input:not([type="checkbox"]):not([type="radio"]),
+html.principal-theme-dark main.main:not(.principal-dashboard) select,
+html.principal-theme-dark main.main:not(.principal-dashboard) textarea,
+html.principal-theme-dark main.main:not(.principal-dashboard) .search-box input[type="text"],
+html.principal-theme-dark main.main:not(.principal-dashboard) .search-box select,
+html.principal-theme-dark main.main:not(.principal-dashboard) .form-group input,
+html.principal-theme-dark main.main:not(.principal-dashboard) .filter-field input[type="text"],
+html.principal-theme-dark main.main:not(.principal-dashboard) .filter-field select,
+html.principal-theme-dark main.main:not(.principal-dashboard) .ra-filter-row select,
+html.principal-theme-dark main.main:not(.principal-dashboard) .ra-search,
+html.principal-theme-dark main.main:not(.principal-dashboard) .eval-comment-box {
+  background: #0F1F3D !important;
+  color: #E0E6F0 !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) input::placeholder,
+html.principal-theme-dark main.main:not(.principal-dashboard) textarea::placeholder { color: #8FA6BF !important; }
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) a.btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .action-btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .back-btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-print,
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-archive,
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-restore,
+html.principal-theme-dark main.main:not(.principal-dashboard) .ra-tool-btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .export-btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .filter-toggle,
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-btn,
+html.principal-theme-dark main.main:not(.principal-dashboard) .filter-btns a,
+html.principal-theme-dark main.main:not(.principal-dashboard) .qa-btns a,
+html.principal-theme-dark main.main:not(.principal-dashboard) .report-btns button {
+  background: #172A45 !important;
+  border-color: rgba(255,255,255,.15) !important;
+  color: #E0E6F0 !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-primary,
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-submit,
+html.principal-theme-dark main.main:not(.principal-dashboard) .btn-save,
+html.principal-theme-dark main.main:not(.principal-dashboard) .search-box button {
+  background: #D99A2B !important;
+  border-color: #D99A2B !important;
+  color: #0A192F !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .tab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .level-tab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .status-tab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .group-tab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .desig-subtab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .faculty-subtab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .eval-tab.active,
+html.principal-theme-dark main.main:not(.principal-dashboard) .page-btn.active {
+  background: rgba(217,154,43,.18) !important;
+  border-color: rgba(240,184,77,.45) !important;
+  color: #F0B84D !important;
+}
+html.principal-theme-dark main.main:not(.principal-dashboard) .alert.success { background:rgba(16,185,129,.13)!important;color:#6EE7B7!important;border-color:rgba(16,185,129,.28)!important; }
+html.principal-theme-dark main.main:not(.principal-dashboard) .alert.error { background:rgba(240,84,84,.13)!important;color:#FCA5A5!important;border-color:rgba(240,84,84,.28)!important; }
+
+@media (max-width: 1100px) {
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) { padding: 22px 20px 30px !important; }
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard):not(.principal-feature-page)::before { left: 10px !important; right: 10px !important; }
+}
+@media (max-width: 900px) {
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) { margin-left: 0 !important; }
+}
+@media (max-width: 768px) {
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) { padding: 18px 12px 26px !important; }
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard):not(.principal-feature-page)::before { top: 8px !important; left: 7px !important; right: 7px !important; border-radius: 14px 14px 0 0 !important; }
+  #pbiPrincipalTopbar ~ main.principal-feature-page #principalFeatureWorkspace,
+  #pbiPrincipalTopbar ~ main.principal-feature-page .principal-feature-shell,
+  #pbiPrincipalTopbar ~ main.principal-feature-page .principal-results-shell,
+  #pbiPrincipalTopbar ~ main.principal-feature-page .feature-workspace-shell { border-radius: 14px !important; }
+  main.main:not(.principal-dashboard) .page-header { margin-bottom: 16px !important; }
+  main.main:not(.principal-dashboard) .two-col,
+  main.main:not(.principal-dashboard) .form-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}
+@media (prefers-reduced-motion: reduce), html.principal-reduced-motion * {
+  main.main:not(.principal-dashboard) *, main.main:not(.principal-dashboard) *::before, main.main:not(.principal-dashboard) *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard),
+  #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard)::before {
+    background: #FFFFFF !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Principal portal accent-color headings across sidebar pages (Dashboard excluded).
+   Keep body text and table content neutral for legibility; use the portal's gold
+   for content headings and heading icons in both themes. */
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-title,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-header h1,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) > h1,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section-title,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .principal-feature-heading h1,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section h2,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .card h2,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .panel h2,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .tracker-heading h2,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .tracker-toolbar h2,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .settings-section-title {
+  color: var(--pws-gold-dark, #A16207) !important;
+}
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-title i,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-header h1 i,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section h2 i,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .card h2 i,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .panel h2 i,
+html:not(.principal-theme-dark) #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section-title i {
+  color: var(--pws-gold, #D99A2B) !important;
+}
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-title,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-header h1,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) > h1,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section-title,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .principal-feature-heading h1,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section h2,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .card h2,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .panel h2,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .tracker-heading h2,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .tracker-toolbar h2,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .settings-section-title {
+  color: #F0B84D !important;
+}
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-title i,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .page-header h1 i,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section h2 i,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .card h2 i,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .panel h2 i,
+html.principal-theme-dark #pbiPrincipalTopbar ~ main.main:not(.principal-dashboard) .section-title i {
+  color: #F0B84D !important;
+}
+

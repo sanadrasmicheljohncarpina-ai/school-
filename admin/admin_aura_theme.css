@@ -1,0 +1,124 @@
+/* Aura dashboard theme: atmospheric layered gradients + restrained glass panels. */
+:root{
+  --aura-ink:#14100a;
+  --aura-navy:#2a2110;
+  --aura-blue:#5c4413;
+  --aura-card:rgba(255,255,255,.85);
+  --aura-card-strong:rgba(255,255,255,.93);
+  --aura-border:rgba(255,255,255,.52);
+  --aura-shadow:0 18px 42px rgba(2,13,36,.22),0 3px 10px rgba(2,13,36,.12);
+}
+
+/* The workspace becomes the atmospheric canvas; navigation remains light. */
+html:has(.pbi-dashboard-container){background:#FFFFFF!important;}
+body:has(.pbi-dashboard-container){
+  background:#FFFFFF!important;
+  position:relative;
+}
+body:has(.pbi-dashboard-container)::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  mix-blend-mode:screen;
+}
+body:has(.pbi-dashboard-container) .page-content{position:relative;z-index:1;}
+
+/* Dashboard headings — dark text for the light canvas. */
+body:has(.pbi-dashboard-container) .pbi-dashboard-heading,
+body:has(.pbi-dashboard-container) .pbi-dashboard-heading *{color:#0B1F3A!important;}
+body:has(.pbi-dashboard-container) .pbi-system-subtitle{color:#67819E!important;}
+
+/* Main dashboard panels: translucent cool white, readable rather than frosted-heavy. */
+body:has(.pbi-dashboard-container) .pbi-stat-card,
+body:has(.pbi-dashboard-container) .pbi-period-box,
+body:has(.pbi-dashboard-container) .pbi-section-box,
+body:has(.pbi-dashboard-container) .pbi-panel,
+body:has(.pbi-dashboard-container) .pbi-card,
+body:has(.pbi-dashboard-container) .pbi-period-tile,
+body:has(.pbi-dashboard-container) .pbi-action-btn{
+  background:var(--aura-card)!important;
+  border:1px solid var(--aura-border)!important;
+  box-shadow:var(--aura-shadow)!important;
+  backdrop-filter:blur(14px) saturate(120%);
+  -webkit-backdrop-filter:blur(14px) saturate(120%);
+}
+body:has(.pbi-dashboard-container) .pbi-period-box,
+body:has(.pbi-dashboard-container) .pbi-section-box{background:rgba(255,255,255,.88)!important;}
+body:has(.pbi-dashboard-container) .pbi-period-box{background:rgba(255,255,255,.92)!important;}
+body:has(.pbi-dashboard-container) .pbi-period-tile{background:rgba(247,250,255,.80)!important;}
+body:has(.pbi-dashboard-container) .pbi-action-btn{background:rgba(255,255,255,.82)!important;}
+body:has(.pbi-dashboard-container) .pbi-stat-card:hover,
+body:has(.pbi-dashboard-container) .pbi-section-box:hover,
+body:has(.pbi-dashboard-container) .pbi-card:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(2,13,36,.28)!important;}
+
+/* Keep all dashboard data high-contrast against translucent surfaces. */
+body:has(.pbi-dashboard-container) .pbi-stat-label,
+body:has(.pbi-dashboard-container) .pbi-card-title,
+body:has(.pbi-dashboard-container) .pbi-period-label,
+body:has(.pbi-dashboard-container) .pbi-period-tile-label,
+body:has(.pbi-dashboard-container) .pbi-section-heading{color:#52657f!important;}
+body:has(.pbi-dashboard-container) .pbi-stat-value,
+body:has(.pbi-dashboard-container) .pbi-card-value,
+body:has(.pbi-dashboard-container) .pbi-period-value,
+body:has(.pbi-dashboard-container) .pbi-period-tile-value{color:#0b1f3a!important;}
+body:has(.pbi-dashboard-container) .pbi-stat-sub,
+body:has(.pbi-dashboard-container) .pbi-period-meta,
+body:has(.pbi-dashboard-container) .pbi-period-tile-sub,
+body:has(.pbi-dashboard-container) .pbi-action-sub{color:#60728c!important;}
+body:has(.pbi-dashboard-container) .pbi-action-title,
+body:has(.pbi-dashboard-container) .pbi-action-btn{color:#102544!important;}
+body:has(.pbi-dashboard-container) .pbi-action-btn:hover{background:rgba(255,255,255,.96)!important;}
+body:has(.pbi-dashboard-container) .pbi-view-all-link{color:#B8860B!important;}
+
+/* Light navigation stays visually separate from the ambient workspace. */
+body:has(.pbi-dashboard-container) .pbi-sidebar{z-index:3;}
+body:has(.pbi-dashboard-container) .nude-nav{
+  position:fixed!important;
+  top:0!important;
+  right:0!important;
+  left:var(--sidebar-w)!important;
+  height:var(--topbar-h)!important;
+  min-height:var(--topbar-h)!important;
+  box-sizing:border-box!important;
+  z-index:20!important;
+  background:#FFFFFF!important;
+  border-bottom:none!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+/* Match the small account photo to the green accent ring used elsewhere. */
+body:has(.pbi-dashboard-container) .brand-avatar{
+  width:48px!important;
+  height:48px!important;
+  border:2px solid var(--blue-accent, #0F9F6E)!important;
+  background:#FFFFFF!important;
+  box-shadow:none!important;
+}
+body:has(.pbi-dashboard-container) .brand-avatar img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:50% 35%!important;
+  image-rendering:auto;
+  filter:contrast(1.08) saturate(1.08);
+}
+body:has(.pbi-dashboard-container) .avatar-gear{z-index:2;}
+body:has(.pbi-dashboard-container) .page-content{
+  margin-top:var(--topbar-h)!important;
+  scroll-margin-top:calc(var(--topbar-h) + 12px);
+}
+
+@media(max-width:700px){
+  body:has(.pbi-dashboard-container) .pbi-stat-card,
+  body:has(.pbi-dashboard-container) .pbi-period-box,
+  body:has(.pbi-dashboard-container) .pbi-section-box{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+}
+@media(prefers-reduced-transparency:reduce){
+  body:has(.pbi-dashboard-container) .pbi-stat-card,
+  body:has(.pbi-dashboard-container) .pbi-period-box,
+  body:has(.pbi-dashboard-container) .pbi-section-box,
+  body:has(.pbi-dashboard-container) .pbi-panel,
+  body:has(.pbi-dashboard-container) .pbi-card,
+  body:has(.pbi-dashboard-container) .pbi-period-tile,
+  body:has(.pbi-dashboard-container) .pbi-action-btn{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--aura-card-strong)!important;}
+}

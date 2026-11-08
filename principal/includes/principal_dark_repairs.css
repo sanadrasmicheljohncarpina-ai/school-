@@ -1,0 +1,2305 @@
+/* Principal dark-mode cleanup layer.
+ * Loaded after each page's legacy/light-only inline CSS so dark mode wins
+ * without changing the light appearance or page functionality.
+ */
+html.principal-theme-dark,
+html.principal-theme-dark body{
+  background:#0A192F!important;
+  color:#E0E6F0!important;
+  color-scheme:dark!important;
+}
+html.principal-theme-dark body{background-image:none!important;}
+
+/* Workspace / shell */
+html.principal-theme-dark .main,
+html.principal-theme-dark main.main,
+html.principal-theme-dark .main-content,
+html.principal-theme-dark .content,
+html.principal-theme-dark .page-content{
+  background:#0A192F!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .page-header,
+html.principal-theme-dark .page-header > div,
+html.principal-theme-dark .page-heading,
+html.principal-theme-dark .toolbar,
+html.principal-theme-dark .top-bar{
+  background:transparent!important;
+  color:#E0E6F0!important;
+}
+
+/* Generic feature surfaces */
+html.principal-theme-dark .section,
+html.principal-theme-dark .card,
+html.principal-theme-dark .panel,
+html.principal-theme-dark .table-card,
+html.principal-theme-dark .content-card,
+html.principal-theme-dark .table-wrap,
+html.principal-theme-dark .table-card-wrap,
+html.principal-theme-dark .content-panel,
+html.principal-theme-dark .history-card,
+html.principal-theme-dark .eval-card,
+html.principal-theme-dark .results-card,
+html.principal-theme-dark .result-card,
+html.principal-theme-dark .feature-card,
+html.principal-theme-dark .period-strip,
+html.principal-theme-dark .filter-bar,
+html.principal-theme-dark .person-row,
+html.principal-theme-dark .target-card,
+html.principal-theme-dark .no-eval,
+html.principal-theme-dark .no-data,
+html.principal-theme-dark .no-evaluated,
+html.principal-theme-dark .no-archived,
+html.principal-theme-dark .evaluator-grid,
+html.principal-theme-dark .people-list,
+html.principal-theme-dark .cat-section,
+html.principal-theme-dark .eval-banner,
+html.principal-theme-dark .info-banner,
+html.principal-theme-dark .comment-section,
+html.principal-theme-dark .avg-summary,
+html.principal-theme-dark .standing-panel,
+html.principal-theme-dark .sum-card{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.28)!important;
+}
+
+/* Evaluation roster */
+html.principal-theme-dark .eval-tabs,
+html.principal-theme-dark .eval-switcher,
+html.principal-theme-dark .group-tabs,
+html.principal-theme-dark .tabs,
+html.principal-theme-dark .level-tabs,
+html.principal-theme-dark .status-tabs,
+html.principal-theme-dark .faculty-subtabs,
+html.principal-theme-dark .desig-subtabs{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.08)!important;
+  color:#A0B3C6!important;
+}
+html.principal-theme-dark .eval-tab,
+html.principal-theme-dark .tab,
+html.principal-theme-dark .level-tab,
+html.principal-theme-dark .status-tab,
+html.principal-theme-dark .group-tab,
+html.principal-theme-dark .faculty-subtab,
+html.principal-theme-dark .desig-subtab{
+  background:transparent!important;
+  color:#A0B3C6!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark .eval-tab:hover,
+html.principal-theme-dark .tab:hover,
+html.principal-theme-dark .level-tab:hover,
+html.principal-theme-dark .status-tab:hover,
+html.principal-theme-dark .group-tab:hover,
+html.principal-theme-dark .faculty-subtab:hover,
+html.principal-theme-dark .desig-subtab:hover{
+  background:rgba(255,255,255,.05)!important;
+  color:#FFFFFF!important;
+}
+html.principal-theme-dark .eval-tab.active,
+html.principal-theme-dark .tab.active,
+html.principal-theme-dark .level-tab.active,
+html.principal-theme-dark .status-tab.active,
+html.principal-theme-dark .group-tab.active,
+html.principal-theme-dark .faculty-subtab.active,
+html.principal-theme-dark .desig-subtab.active{
+  background:rgba(217,154,43,.14)!important;
+  border-color:rgba(217,154,43,.35)!important;
+  color:#F0B84D!important;
+}
+
+/* Tables / rows — removes the white row bodies visible in dark mode. */
+html.principal-theme-dark table,
+html.principal-theme-dark table.data,
+html.principal-theme-dark .eval-table,
+html.principal-theme-dark .q-table{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+}
+html.principal-theme-dark table thead,
+html.principal-theme-dark table thead tr,
+html.principal-theme-dark .eval-table thead,
+html.principal-theme-dark .q-table thead{
+  background:#0F1F3D!important;
+}
+html.principal-theme-dark table th,
+html.principal-theme-dark table.data th,
+html.principal-theme-dark .eval-table th,
+html.principal-theme-dark .q-table th{
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark table td,
+html.principal-theme-dark table.data td,
+html.principal-theme-dark .eval-table td,
+html.principal-theme-dark .q-table td{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.07)!important;
+}
+html.principal-theme-dark table tbody tr:nth-child(even) td,
+html.principal-theme-dark table.data tbody tr:nth-child(even) td,
+html.principal-theme-dark .eval-table tbody tr:nth-child(even) td,
+html.principal-theme-dark .q-table tbody tr:nth-child(even) td{
+  background:#15263F!important;
+}
+html.principal-theme-dark table tbody tr:hover td,
+html.principal-theme-dark table.data tbody tr:hover td,
+html.principal-theme-dark .eval-table tbody tr:hover td,
+html.principal-theme-dark .q-table tbody tr:hover td{
+  background:rgba(255,255,255,.045)!important;
+}
+
+/* Tracker page */
+html.principal-theme-dark .tracker-card,
+html.principal-theme-dark .stat,
+html.principal-theme-dark .structure-note,
+html.principal-theme-dark .filter-menu,
+html.principal-theme-dark .table-empty,
+html.principal-theme-dark .tracker-toolbar{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .tracker-toolbar{border-bottom-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .tracker-heading h2,
+html.principal-theme-dark .tracker-heading .count,
+html.principal-theme-dark .stat-num,
+html.principal-theme-dark .stat-label,
+html.principal-theme-dark .stat-caption,
+html.principal-theme-dark .filter-menu-title,
+html.principal-theme-dark .filter-field label{
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .stat-caption,
+html.principal-theme-dark .tracker-heading .count,
+html.principal-theme-dark .filter-field label{color:#9FB2C6!important;}
+html.principal-theme-dark .filter-toggle,
+html.principal-theme-dark .export-btn,
+html.principal-theme-dark .filter-apply,
+html.principal-theme-dark .filter-clear{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .filter-toggle:hover,
+html.principal-theme-dark .export-btn:hover,
+html.principal-theme-dark .filter-clear:hover{
+  background:#172A45!important;
+  color:#FFFFFF!important;
+}
+html.principal-theme-dark .filter-toggle.active,
+html.principal-theme-dark .filter-apply{
+  background:rgba(217,154,43,.14)!important;
+  color:#F0B84D!important;
+  border-color:rgba(217,154,43,.32)!important;
+}
+html.principal-theme-dark .filter-field input,
+html.principal-theme-dark .filter-field select{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark .level-pill{
+  background:rgba(25,179,157,.13)!important;
+  color:#6EE7D8!important;
+  border-color:rgba(25,179,157,.28)!important;
+}
+html.principal-theme-dark .progress-track{background:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .page-btn,
+html.principal-theme-dark .pagination,
+html.principal-theme-dark .page-ellipsis{
+  background:#0F1F3D!important;
+  color:#AFC0D2!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .page-btn.active{background:rgba(217,154,43,.18)!important;color:#F0B84D!important;border-color:rgba(217,154,43,.35)!important;}
+
+/* Reports / analytics */
+html.principal-theme-dark .reports-top-tab,
+html.principal-theme-dark .reports-filter-tab{
+  background:#172A45!important;
+  color:#B6C5D6!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .reports-top-tab:hover,
+html.principal-theme-dark .reports-filter-tab:hover{
+  background:#1D3554!important;
+  color:#FFFFFF!important;
+}
+html.principal-theme-dark .reports-top-tab.active,
+html.principal-theme-dark .reports-filter-tab.active{
+  background:rgba(217,154,43,.14)!important;
+  color:#F0B84D!important;
+  border-color:rgba(217,154,43,.35)!important;
+}
+html.principal-theme-dark .reports-data-panel,
+html.principal-theme-dark .individual-sheet,
+html.principal-theme-dark .cumulative-sheet,
+html.principal-theme-dark .detail-person-card,
+html.principal-theme-dark .detail-results-panel{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .reports-table-wrap{background:#172A45!important;border-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .reports-table,
+html.principal-theme-dark .reports-table thead,
+html.principal-theme-dark .reports-table tbody,
+html.principal-theme-dark .detail-results-table{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+}
+html.principal-theme-dark .reports-table th,
+html.principal-theme-dark .detail-results-table th{
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .reports-table td,
+html.principal-theme-dark .detail-results-table td{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.07)!important;
+}
+html.principal-theme-dark .reports-table tbody tr:nth-child(even) td,
+html.principal-theme-dark .detail-results-table tbody tr:nth-child(even) td{
+  background:#15263F!important;
+}
+html.principal-theme-dark .reports-table tbody tr:hover td,
+html.principal-theme-dark .detail-results-table tbody tr:hover td{
+  background:rgba(255,255,255,.045)!important;
+}
+html.principal-theme-dark .reports-action-btn,
+html.principal-theme-dark .reports-view-btn,
+html.principal-theme-dark .reports-archive-btn,
+html.principal-theme-dark .btn-print,
+html.principal-theme-dark .back-btn,
+html.principal-theme-dark .detail-view-btn,
+html.principal-theme-dark .detail-back{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .reports-action-btn:hover,
+html.principal-theme-dark .reports-view-btn:hover,
+html.principal-theme-dark .reports-archive-btn:hover,
+html.principal-theme-dark .btn-print:hover,
+html.principal-theme-dark .back-btn:hover,
+html.principal-theme-dark .detail-view-btn:hover,
+html.principal-theme-dark .detail-back:hover{
+  background:#1D3554!important;
+  color:#FFFFFF!important;
+}
+html.principal-theme-dark .reports-search,
+html.principal-theme-dark .reports-search-input,
+html.principal-theme-dark .detail-year-filter input,
+html.principal-theme-dark .detail-year-filter select,
+html.principal-theme-dark .reports-filters input,
+html.principal-theme-dark .reports-filters select{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark .reports-person-name,
+html.principal-theme-dark .reports-person-link,
+html.principal-theme-dark .detail-person-name,
+html.principal-theme-dark .sheet-name,
+html.principal-theme-dark .target-name,
+html.principal-theme-dark .person-name,
+html.principal-theme-dark .detail-stat-value,
+html.principal-theme-dark .detail-stat-label,
+html.principal-theme-dark .sheet-header,
+html.principal-theme-dark .sheet-desig,
+html.principal-theme-dark .cat-title,
+html.principal-theme-dark .q-text,
+html.principal-theme-dark .q-table td{
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .reports-person-row,
+html.principal-theme-dark .person-row,
+html.principal-theme-dark .sheet-header,
+html.principal-theme-dark .detail-stats,
+html.principal-theme-dark .detail-legend-row,
+html.principal-theme-dark .cat-title{
+  border-color:rgba(255,255,255,.08)!important;
+}
+
+/* Light-theme stylesheet can otherwise repaint common controls white. */
+html.principal-theme-dark input,
+html.principal-theme-dark select,
+html.principal-theme-dark textarea,
+html.principal-theme-dark .search-box input[type=text],
+html.principal-theme-dark .search-box select,
+html.principal-theme-dark .form-group input{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark input::placeholder,
+html.principal-theme-dark textarea::placeholder{color:#7F93A8!important;}
+
+/* Preserve amber role identity for common Principal controls. */
+html.principal-theme-dark .btn-primary,
+html.principal-theme-dark .btn-save,
+html.principal-theme-dark .btn-submit,
+html.principal-theme-dark .btn-solid{
+  background:#B8801F!important;
+  border-color:#B8801F!important;
+  color:#FFFFFF!important;
+}
+html.principal-theme-dark .btn-primary:hover,
+html.principal-theme-dark .btn-save:hover,
+html.principal-theme-dark .btn-submit:hover,
+html.principal-theme-dark .btn-solid:hover{
+  background:#D99A2B!important;
+  border-color:#D99A2B!important;
+}
+
+@media print{
+  html.principal-theme-dark,
+  html.principal-theme-dark body,
+  html.principal-theme-dark .main,
+  html.principal-theme-dark main.main{background:#FFFFFF!important;color:#000!important;}
+}
+
+/* ===== FINAL DARK-MODE OVERRIDES =====
+   These selectors target the Principal pages' exact, page-specific class names.
+   They intentionally come last so legacy light-theme blocks cannot repaint them. */
+
+/* Principal Results / View Results */
+html.principal-theme-dark .privacy{
+  background:rgba(16,185,129,.08)!important;
+  border-color:rgba(16,185,129,.22)!important;
+  color:#7FE3BE!important;
+}
+html.principal-theme-dark .top-grid .stat-card{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .view-evals-btn,
+html.principal-theme-dark .details-btn{
+  background:rgba(217,154,43,.11)!important;
+  border-color:rgba(217,154,43,.28)!important;
+  color:#F0B84D!important;
+}
+html.principal-theme-dark .received-item{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .received-item:hover{background:#1D3554!important;}
+html.principal-theme-dark .received-anon{color:#F2F6FA!important;}
+html.principal-theme-dark .received-meta{color:#9FB2C6!important;}
+html.principal-theme-dark .received-score{
+  background:rgba(217,154,43,.11)!important;
+  border-color:rgba(217,154,43,.25)!important;
+  color:#F0B84D!important;
+}
+html.principal-theme-dark .eval-modal{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .eval-modal-header{border-color:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .eval-modal-title{color:#F4F7FB!important;}
+html.principal-theme-dark .eval-modal-close{color:#8FA6BF!important;}
+html.principal-theme-dark .eval-modal-body{background:#0F1F3D!important;color:#E0E6F0!important;}
+html.principal-theme-dark .info-grid>div{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .info-label{color:#8FA6BF!important;}
+html.principal-theme-dark .info-value{color:#EAF0F7!important;}
+html.principal-theme-dark .modal-section-title{color:#EAF0F7!important;}
+html.principal-theme-dark .q-result,
+html.principal-theme-dark .comment-modal{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .q-no,
+html.principal-theme-dark .q-score{color:#9FB2C6!important;}
+html.principal-theme-dark .q-text{color:#EAF0F7!important;}
+
+/* Principal Evaluation Tracker — the legacy tracker CSS contains explicit white backgrounds. */
+html.principal-theme-dark .tracker-card,
+html.principal-theme-dark .tracker-toolbar,
+html.principal-theme-dark .stat,
+html.principal-theme-dark .filter-menu,
+html.principal-theme-dark .info-banner{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .tracker-toolbar{border-bottom-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .filter-toggle,
+html.principal-theme-dark .export-btn,
+html.principal-theme-dark .filter-clear,
+html.principal-theme-dark .page-btn{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .filter-toggle:hover,
+html.principal-theme-dark .export-btn:hover,
+html.principal-theme-dark .filter-clear:hover,
+html.principal-theme-dark .page-btn:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .filter-toggle.active,
+html.principal-theme-dark .filter-apply,
+html.principal-theme-dark .page-btn.active{
+  background:rgba(217,154,43,.14)!important;
+  color:#F0B84D!important;
+  border-color:rgba(217,154,43,.35)!important;
+}
+html.principal-theme-dark .filter-field input,
+html.principal-theme-dark .filter-field select{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark .table-wrap{background:#172A45!important;}
+html.principal-theme-dark table.data,
+html.principal-theme-dark table.data tbody,
+html.principal-theme-dark table.data tr,
+html.principal-theme-dark table.data td{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+}
+html.principal-theme-dark table.data th{
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark table.data td{border-color:rgba(255,255,255,.07)!important;}
+html.principal-theme-dark table.data tbody tr:nth-child(even) td{background:#15263F!important;}
+html.principal-theme-dark table.data tbody tr:hover td{background:rgba(255,255,255,.045)!important;}
+html.principal-theme-dark .stu-name{color:#EAF0F7!important;}
+html.principal-theme-dark .stu-sub,
+html.principal-theme-dark .progress-last,
+html.principal-theme-dark .progress-pct,
+html.principal-theme-dark .table-footer{color:#9FB2C6!important;}
+html.principal-theme-dark .req-number,
+html.principal-theme-dark .completed-number{color:#DCE6F0!important;}
+html.principal-theme-dark .progress-track{background:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .level-pill{
+  background:rgba(25,179,157,.13)!important;
+  color:#6EE7D8!important;
+  border-color:rgba(25,179,157,.28)!important;
+}
+html.principal-theme-dark .optional-card{
+  background:#172A45!important;
+  border-color:rgba(217,154,43,.30)!important;
+}
+html.principal-theme-dark .optional-card summary{
+  background:linear-gradient(180deg,#1D3554 0%,#172A45 100%)!important;
+  color:#EAF0F7!important;
+}
+html.principal-theme-dark .optional-card summary:hover{background:#243C5D!important;}
+html.principal-theme-dark .optional-title strong{color:#EAF0F7!important;}
+html.principal-theme-dark .optional-title span,
+html.principal-theme-dark .optional-note{color:#A9B8C8!important;}
+html.principal-theme-dark .optional-body{background:#172A45!important;border-top-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .optional-table th{background:#0F1F3D!important;color:#BFD0E0!important;}
+html.principal-theme-dark .optional-table td{background:#172A45!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.07)!important;}
+
+/* Principal Evaluation Reports — exact redesign class names. */
+html.principal-theme-dark .reports-redesign,
+html.principal-theme-dark .reports-toolbar,
+html.principal-theme-dark .reports-toolbar-spacer{background:transparent!important;color:#E0E6F0!important;}
+html.principal-theme-dark .reports-top-tab,
+html.principal-theme-dark .reports-filter-tab{
+  background:#172A45!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.10)!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark .reports-top-tab:hover,
+html.principal-theme-dark .reports-filter-tab:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .reports-top-tab.active,
+html.principal-theme-dark .reports-filter-tab.active{
+  background:rgba(217,154,43,.14)!important;
+  color:#F0B84D!important;
+  border-color:rgba(217,154,43,.35)!important;
+}
+html.principal-theme-dark .reports-top-badge,
+html.principal-theme-dark .reports-filter-tab b{
+  background:rgba(255,255,255,.10)!important;
+  color:#DCE6F0!important;
+}
+html.principal-theme-dark .reports-top-tab.active .reports-top-badge,
+html.principal-theme-dark .reports-filter-tab.active b{
+  background:rgba(217,154,43,.18)!important;color:#F0B84D!important;
+}
+html.principal-theme-dark .reports-archive-link{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark .reports-archive-link:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .reports-archive-count{background:rgba(255,255,255,.10)!important;color:#BFD0E0!important;}
+html.principal-theme-dark .reports-sub-filters,
+html.principal-theme-dark .reports-designation-filters,
+html.principal-theme-dark .reports-peer-note,
+html.principal-theme-dark .reports-active-filter-note{
+  background:#172A45!important;
+  color:#B6C7D8!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .reports-sub-label{color:#9FB2C6!important;}
+html.principal-theme-dark .reports-sub-tab,
+html.principal-theme-dark .reports-designation-pill{color:#BFD0E0!important;}
+html.principal-theme-dark .reports-sub-tab:hover,
+html.principal-theme-dark .reports-designation-pill:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .reports-sub-tab.active,
+html.principal-theme-dark .reports-designation-pill.active{background:rgba(217,154,43,.14)!important;color:#F0B84D!important;border-color:rgba(217,154,43,.30)!important;}
+html.principal-theme-dark .reports-peer-note{color:#B8C6D6!important;}
+html.principal-theme-dark .reports-peer-note i,
+html.principal-theme-dark .reports-peer-note strong{color:#F0B84D!important;}
+html.principal-theme-dark .reports-data-panel{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.28)!important;
+}
+html.principal-theme-dark .reports-data-head{background:#172A45!important;}
+html.principal-theme-dark .reports-data-title h2{color:#EAF0F7!important;}
+html.principal-theme-dark .reports-data-title span{color:#9FB2C6!important;}
+html.principal-theme-dark .reports-data-title>i{color:#F0B84D!important;}
+html.principal-theme-dark .reports-action-btn{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .reports-action-btn:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .reports-search-box{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .reports-search-box i{color:#8FA6BF!important;}
+html.principal-theme-dark .reports-search-box input{
+  background:transparent!important;
+  color:#EAF0F7!important;
+}
+html.principal-theme-dark .reports-search-box input::placeholder{color:#7F93A8!important;}
+html.principal-theme-dark .reports-table-wrap{background:#172A45!important;}
+html.principal-theme-dark .reports-table,
+html.principal-theme-dark .reports-table tbody,
+html.principal-theme-dark .reports-table tr,
+html.principal-theme-dark .reports-table td{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+}
+html.principal-theme-dark .reports-table th{
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .reports-table td{border-color:rgba(255,255,255,.07)!important;}
+html.principal-theme-dark .reports-table tbody tr:nth-child(even) td{background:#15263F!important;}
+html.principal-theme-dark .reports-table tbody tr:hover td{background:rgba(255,255,255,.045)!important;}
+html.principal-theme-dark .reports-person-name{color:#EAF0F7!important;}
+html.principal-theme-dark .reports-person-link{color:#DCE6F0!important;}
+html.principal-theme-dark .reports-designation-cell,
+html.principal-theme-dark .reports-date{color:#C7D5E3!important;}
+html.principal-theme-dark .reports-person-photo.placeholder{background:#0F1F3D!important;color:#8FA6BF!important;border-color:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .reports-role-badge.faculty{background:rgba(96,165,250,.13)!important;border-color:rgba(96,165,250,.28)!important;color:#8FC4FF!important;}
+html.principal-theme-dark .reports-role-badge.staff{background:rgba(167,139,250,.13)!important;border-color:rgba(167,139,250,.28)!important;color:#C8B7FF!important;}
+html.principal-theme-dark .reports-role-badge.dean{background:rgba(167,139,250,.13)!important;border-color:rgba(167,139,250,.28)!important;color:#C8B7FF!important;}
+html.principal-theme-dark .reports-role-badge.principal{background:rgba(217,154,43,.13)!important;border-color:rgba(217,154,43,.28)!important;color:#F0B84D!important;}
+html.principal-theme-dark .reports-view-btn,
+html.principal-theme-dark .reports-archive-btn{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .reports-view-btn:hover,
+html.principal-theme-dark .reports-archive-btn:hover{background:#1D3554!important;color:#FFFFFF!important;}
+html.principal-theme-dark .reports-empty-state,
+html.principal-theme-dark .reports-no-search{color:#A7B8C9!important;}
+html.principal-theme-dark .reports-empty-state i{color:#7F93A8!important;}
+html.principal-theme-dark .reports-empty-state h3{color:#EAF0F7!important;}
+html.principal-theme-dark .reports-empty-state p{color:#9FB2C6!important;}
+
+/* ===== PRINCIPAL EVALUATION REPORTS — FINAL DARK SCREEN PASS =====
+   Loaded from pageHead so this also applies to the ?view=students and
+   ?view=sheet report/detail screens, which exit before the old bottom-of-page
+   stylesheet link could run. Print styles remain intentionally light. */
+@media screen {
+  html.principal-theme-dark,
+  html.principal-theme-dark body,
+  html.principal-theme-dark .main,
+  html.principal-theme-dark main.main,
+  html.principal-theme-dark main.detail-page {
+    background:#0A192F !important;
+    color:#E0E6F0 !important;
+  }
+
+  /* Evaluation Reports — roster/list */
+  html.principal-theme-dark .reports-data-panel,
+  html.principal-theme-dark .reports-table-wrap,
+  html.principal-theme-dark .reports-active-filter-note,
+  html.principal-theme-dark .reports-sub-filters,
+  html.principal-theme-dark .reports-designation-filters,
+  html.principal-theme-dark .reports-peer-note {
+    background:#172A45 !important;
+    color:#DCE6F0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.26) !important;
+  }
+
+  html.principal-theme-dark .reports-data-title h2,
+  html.principal-theme-dark .reports-data-title span,
+  html.principal-theme-dark .reports-data-title i,
+  html.principal-theme-dark .reports-sub-label,
+  html.principal-theme-dark .reports-peer-note,
+  html.principal-theme-dark .reports-empty-state,
+  html.principal-theme-dark .reports-no-search {
+    color:#DCE6F0 !important;
+  }
+  html.principal-theme-dark .reports-data-title i { color:#F0B84D !important; }
+  html.principal-theme-dark .reports-data-title span,
+  html.principal-theme-dark .reports-sub-label { color:#9FB2C6 !important; }
+
+  html.principal-theme-dark .reports-table,
+  html.principal-theme-dark .reports-table tbody,
+  html.principal-theme-dark #reportsTable,
+  html.principal-theme-dark #reportsTable tbody,
+  html.principal-theme-dark #reportsTable tr,
+  html.principal-theme-dark #reportsTable td {
+    background:#172A45 !important;
+    color:#E0E6F0 !important;
+  }
+  html.principal-theme-dark #reportsTable thead,
+  html.principal-theme-dark #reportsTable thead tr,
+  html.principal-theme-dark #reportsTable th {
+    background:#0F1F3D !important;
+    color:#BFD0E0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+  }
+  html.principal-theme-dark #reportsTable tbody tr:nth-child(even) td {
+    background:#15263F !important;
+  }
+  html.principal-theme-dark #reportsTable tbody tr:hover td {
+    background:#1D3554 !important;
+  }
+  html.principal-theme-dark .reports-person-name,
+  html.principal-theme-dark .reports-designation-cell,
+  html.principal-theme-dark .reports-date,
+  html.principal-theme-dark .reports-person-link {
+    color:#EAF0F7 !important;
+  }
+  html.principal-theme-dark .reports-designation-cell,
+  html.principal-theme-dark .reports-date { color:#B7C7D7 !important; }
+  html.principal-theme-dark .reports-search-box,
+  html.principal-theme-dark .reports-action-btn,
+  html.principal-theme-dark .reports-view-btn,
+  html.principal-theme-dark .reports-archive-btn,
+  html.principal-theme-dark .reports-archive-link {
+    background:#0F1F3D !important;
+    color:#DCE6F0 !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  html.principal-theme-dark .reports-search-box input {
+    background:transparent !important;
+    color:#E0E6F0 !important;
+  }
+  html.principal-theme-dark .reports-search-box i { color:#8FA6BF !important; }
+  html.principal-theme-dark .reports-action-btn:hover,
+  html.principal-theme-dark .reports-view-btn:hover,
+  html.principal-theme-dark .reports-archive-btn:hover,
+  html.principal-theme-dark .reports-archive-link:hover {
+    background:#1D3554 !important;
+    color:#FFFFFF !important;
+  }
+
+  /* Evaluation Reports — target / evaluator detail page */
+  html.principal-theme-dark .detail-actions .detail-back,
+  html.principal-theme-dark .detail-actions .back-btn {
+    background:#0F1F3D !important;
+    color:#DCE6F0 !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  html.principal-theme-dark .detail-actions .detail-back:hover,
+  html.principal-theme-dark .detail-actions .back-btn:hover {
+    background:#1D3554 !important;
+    color:#FFFFFF !important;
+  }
+  html.principal-theme-dark .detail-eval-banner,
+  html.principal-theme-dark .detail-person-card,
+  html.principal-theme-dark .detail-results-panel {
+    background:#172A45 !important;
+    color:#E0E6F0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.26) !important;
+  }
+  html.principal-theme-dark .detail-eval-banner {
+    background:rgba(217,154,43,.08) !important;
+    border-color:rgba(217,154,43,.24) !important;
+  }
+  html.principal-theme-dark .detail-eval-icon {
+    background:rgba(217,154,43,.12) !important;
+    color:#F0B84D !important;
+    border-color:rgba(217,154,43,.28) !important;
+  }
+  html.principal-theme-dark .detail-eval-title { color:#F0B84D !important; }
+  html.principal-theme-dark .detail-eval-sub,
+  html.principal-theme-dark .detail-person-desig,
+  html.principal-theme-dark .detail-results-title span,
+  html.principal-theme-dark .detail-stat-label,
+  html.principal-theme-dark .detail-legend-text,
+  html.principal-theme-dark .detail-year-filter label,
+  html.principal-theme-dark .detail-role,
+  html.principal-theme-dark .detail-date {
+    color:#9FB2C6 !important;
+  }
+  html.principal-theme-dark .detail-person-name,
+  html.principal-theme-dark .detail-results-title h2,
+  html.principal-theme-dark .detail-legend-title {
+    color:#F4F7FB !important;
+  }
+  html.principal-theme-dark .detail-stat-value { color:#F0B84D !important; }
+  html.principal-theme-dark .detail-stat-value.score { color:#6EE7B7 !important; }
+  html.principal-theme-dark .detail-legend {
+    background:#0F1F3D !important;
+    border-color:rgba(255,255,255,.12) !important;
+  }
+  html.principal-theme-dark .detail-year-filter select {
+    background:#0F1F3D !important;
+    color:#E0E6F0 !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  html.principal-theme-dark .detail-results-table,
+  html.principal-theme-dark .detail-results-table tbody,
+  html.principal-theme-dark .detail-results-table tr,
+  html.principal-theme-dark .detail-results-table td {
+    background:#172A45 !important;
+    color:#E0E6F0 !important;
+  }
+  html.principal-theme-dark .detail-results-table th {
+    background:#0F1F3D !important;
+    color:#BFD0E0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+  }
+  html.principal-theme-dark .detail-results-table tbody tr:nth-child(even) td { background:#15263F !important; }
+  html.principal-theme-dark .detail-results-table tbody tr:hover td { background:#1D3554 !important; }
+  html.principal-theme-dark .detail-evaluator { color:#EAF0F7 !important; }
+  html.principal-theme-dark .detail-view-btn {
+    background:#0F1F3D !important;
+    color:#DCE6F0 !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  html.principal-theme-dark .detail-view-btn:hover { background:#1D3554 !important; color:#FFFFFF !important; }
+  html.principal-theme-dark .detail-report-btn {
+    background:#B8801F !important;
+    border-color:#D99A2B !important;
+    color:#FFFFFF !important;
+  }
+  html.principal-theme-dark .detail-report-btn:hover { background:#D99A2B !important; }
+
+  /* Generate Report / cumulative screen — this was the large source of
+     white blocks because its print-oriented stylesheet intentionally paints
+     the entire report white. Override it only while viewing on screen. */
+  html.principal-theme-dark body.report-mode .cumulative-sheet,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-topbar,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-header,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .comment-section {
+    background:#172A45 !important;
+    color:#E0E6F0 !important;
+    border-color:rgba(255,255,255,.10) !important;
+    box-shadow:none !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-section {
+    background:transparent !important;
+    border-color:rgba(255,255,255,.08) !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-title {
+    background:transparent !important;
+    color:#F0B84D !important;
+    border-bottom-color:rgba(217,154,43,.30) !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table td {
+    background:#172A45 !important;
+    color:#E0E6F0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table thead tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table th {
+    background:#0F1F3D !important;
+    color:#BFD0E0 !important;
+    border-color:rgba(255,255,255,.08) !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:nth-child(even) td {
+    background:#15263F !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:hover td {
+    background:#1D3554 !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-name,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-by,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-val,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total-label {
+    color:#F4F7FB !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-desig,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-label,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-remark,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .no-comment,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-out-of {
+    color:#A9B8C8 !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-badge {
+    background:#0F1F3D !important;
+    border-color:rgba(255,255,255,.14) !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-num {
+    color:#6EE7B7 !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-lbl {
+    color:#A7F3D0 !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-big,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-label {
+    color:#6EE7B7 !important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-avatar-ph {
+    background:#0F1F3D !important;
+    color:#9FB2C6 !important;
+    border-color:rgba(255,255,255,.12) !important;
+  }
+}
+
+
+/* Tracker final reinforcement: page-local tracker styles use hard-coded light
+   backgrounds with !important, so dark mode needs selectors with the theme
+   root prefix to win without touching Light Mode. */
+html.principal-theme-dark .tracker-card,
+html.principal-theme-dark .tracker-toolbar,
+html.principal-theme-dark .stat,
+html.principal-theme-dark .structure-note,
+html.principal-theme-dark .filter-menu,
+html.principal-theme-dark .info-banner,
+html.principal-theme-dark .optional-card{background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.09)!important;}
+html.principal-theme-dark table.data td,
+html.principal-theme-dark table.data th,
+html.principal-theme-dark .optional-table td,
+html.principal-theme-dark .optional-table th{border-color:rgba(255,255,255,.07)!important;}
+html.principal-theme-dark table.data td,
+html.principal-theme-dark .optional-table td{background:#172A45!important;color:#DCE6F0!important;}
+html.principal-theme-dark table.data th,
+html.principal-theme-dark .optional-table th{background:#0F1F3D!important;color:#BFD0E0!important;}
+
+/* ===== FINAL SURFACE CLEANUP: dark mode must not leave white cards behind =====
+   These rules intentionally use only the Principal dark-theme root class so
+   the existing light workspace remains unchanged. */
+html.principal-theme-dark .main,
+html.principal-theme-dark main.main,
+html.principal-theme-dark .main-content,
+html.principal-theme-dark .content,
+html.principal-theme-dark .page-content {
+  background:#0A192F!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .main .section,
+html.principal-theme-dark .main .card,
+html.principal-theme-dark .main .panel,
+html.principal-theme-dark .main .stat-card,
+html.principal-theme-dark .main .table-card,
+html.principal-theme-dark .main .content-card,
+html.principal-theme-dark .main .table-wrap,
+html.principal-theme-dark .main .table-card-wrap,
+html.principal-theme-dark .main .content-panel,
+html.principal-theme-dark .main .history-card,
+html.principal-theme-dark .main .eval-card,
+html.principal-theme-dark .main .results-card,
+html.principal-theme-dark .main .result-card,
+html.principal-theme-dark .main .feature-card,
+html.principal-theme-dark .main .period-strip,
+html.principal-theme-dark .main .filter-bar,
+html.principal-theme-dark .main .person-row,
+html.principal-theme-dark .main .target-card,
+html.principal-theme-dark .main .no-eval,
+html.principal-theme-dark .main .no-data,
+html.principal-theme-dark .main .no-evaluated,
+html.principal-theme-dark .main .no-archived,
+html.principal-theme-dark .main .evaluator-grid,
+html.principal-theme-dark .main .people-list,
+html.principal-theme-dark .main .cat-section,
+html.principal-theme-dark .main .eval-banner,
+html.principal-theme-dark .main .info-banner,
+html.principal-theme-dark .main .comment-section,
+html.principal-theme-dark .main .avg-summary,
+html.principal-theme-dark .main .standing-panel,
+html.principal-theme-dark .main .sum-card,
+html.principal-theme-dark .main .response-card,
+html.principal-theme-dark .main .ra-table-card {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:0 4px 18px rgba(0,0,0,.22)!important;
+}
+html.principal-theme-dark .main .page-header,
+html.principal-theme-dark .main .page-header > div,
+html.principal-theme-dark .main .principal-feature-heading,
+html.principal-theme-dark .main .toolbar,
+html.principal-theme-dark .main .table-toolbar {
+  background:transparent!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .main .page-title,
+html.principal-theme-dark .main .page-header h1,
+html.principal-theme-dark .main .section h2,
+html.principal-theme-dark .main .section-title,
+html.principal-theme-dark .main h1,
+html.principal-theme-dark .main h2,
+html.principal-theme-dark .main h3,
+html.principal-theme-dark .main h4 {
+  color:#F4F7FB!important;
+}
+html.principal-theme-dark .main .page-sub,
+html.principal-theme-dark .main .muted,
+html.principal-theme-dark .main .helper,
+html.principal-theme-dark .main .description,
+html.principal-theme-dark .main .empty-note,
+html.principal-theme-dark .main .count-note,
+html.principal-theme-dark .main small {
+  color:#A0B3C6!important;
+}
+
+/* Evaluate Others category cards, staff/person rows and evaluation modal. */
+html.principal-theme-dark .main,
+html.principal-theme-dark .main .de-cat,
+html.principal-theme-dark .main .de-panel,
+html.principal-theme-dark .main .de-person,
+html.principal-theme-dark .main .de-modal,
+html.principal-theme-dark .main .de-modal-body,
+html.principal-theme-dark .main .de-legend,
+html.principal-theme-dark .main .de-table-wrap,
+html.principal-theme-dark .main .de-comment textarea {
+  --de-ink:#EAF0F7!important;
+  --de-muted:#A0B3C6!important;
+  --de-border:rgba(255,255,255,.10)!important;
+  --de-inner:#0F1F3D!important;
+}
+html.principal-theme-dark .main .de-cat,
+html.principal-theme-dark .main .de-panel,
+html.principal-theme-dark .main .de-person,
+html.principal-theme-dark .main .de-legend,
+html.principal-theme-dark .main .de-table-wrap {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+  box-shadow:0 4px 18px rgba(0,0,0,.22)!important;
+}
+html.principal-theme-dark .main .de-cat:hover,
+html.principal-theme-dark .main .de-person:hover {background:#1D3554!important;}
+html.principal-theme-dark .main .de-panel-head,
+html.principal-theme-dark .main .de-modal-head,
+html.principal-theme-dark .main .de-modal-foot {
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .main .de-cat-name,
+html.principal-theme-dark .main .de-panel-title,
+html.principal-theme-dark .main .de-person-name,
+html.principal-theme-dark .main .de-modal-name,
+html.principal-theme-dark .main .de-qtext,
+html.principal-theme-dark .main .de-comment-readonly,
+html.principal-theme-dark .main .de-summary .num {
+  color:#F4F7FB!important;
+}
+html.principal-theme-dark .main .de-cat-count,
+html.principal-theme-dark .main .de-person-desig,
+html.principal-theme-dark .main .de-pill-date,
+html.principal-theme-dark .main .de-modal-sub,
+html.principal-theme-dark .main .de-muted,
+html.principal-theme-dark .main .de-comment-label,
+html.principal-theme-dark .main .de-summary .of,
+html.principal-theme-dark .main .de-loading {
+  color:#A0B3C6!important;
+}
+html.principal-theme-dark .main .de-panel-foot {border-color:rgba(255,255,255,.10)!important;color:#A0B3C6!important;}
+html.principal-theme-dark .main .de-panel-foot b,
+html.principal-theme-dark .main .de-cat-title,
+html.principal-theme-dark .main .de-qno {color:#F0B84D!important;}
+html.principal-theme-dark .main .de-avatar {background:#0F1F3D!important;border-color:rgba(255,255,255,.12)!important;}
+html.principal-theme-dark .main .de-modal {background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.12)!important;}
+html.principal-theme-dark .main .de-modal-body {background:#0F1F3D!important;color:#E0E6F0!important;}
+html.principal-theme-dark .main .de-modal-foot .de-btn-cancel,
+html.principal-theme-dark .main .de-btn-view {
+  background:#0F1F3D!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .main .de-table,
+html.principal-theme-dark .main .de-table tbody,
+html.principal-theme-dark .main .de-table tr,
+html.principal-theme-dark .main .de-table td {
+  background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .main .de-table th {
+  background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .main .de-table tr.unanswered td {background:rgba(240,84,84,.09)!important;}
+html.principal-theme-dark .main .de-rate label {
+  background:#0F1F3D!important;color:#A0B3C6!important;border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .main .de-rate label:hover {border-color:#D99A2B!important;color:#F0B84D!important;}
+html.principal-theme-dark .main .de-rate input:checked + label,
+html.principal-theme-dark .main .de-btn-submit {background:#B8801F!important;color:#FFFFFF!important;border-color:#D99A2B!important;}
+html.principal-theme-dark .main .de-progress {background:rgba(217,154,43,.10)!important;border-color:rgba(217,154,43,.28)!important;color:#E0E6F0!important;}
+html.principal-theme-dark .main .de-progress .de-progress-status {color:#F0B84D!important;}
+html.principal-theme-dark .main .de-comment textarea,
+html.principal-theme-dark .main .de-panel-tools select {
+  background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.14)!important;
+}
+
+/* Evaluation Received modal and the content behind it. */
+html.principal-theme-dark .main .info-grid {background:transparent!important;border-color:rgba(255,255,255,.08)!important;box-shadow:none!important;}
+html.principal-theme-dark .main .info-grid > div,
+html.principal-theme-dark .main .q-result,
+html.principal-theme-dark .main .comment-modal,
+html.principal-theme-dark .main .received-item,
+html.principal-theme-dark .main .response-card {
+  background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.09)!important;
+}
+html.principal-theme-dark .main .eval-modal,
+html.principal-theme-dark .main .eval-modal-body {background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .main .eval-modal-header {background:#0F1F3D!important;border-color:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .main .info-label,
+html.principal-theme-dark .main .q-no,
+html.principal-theme-dark .main .q-score,
+html.principal-theme-dark .main .response-comment,
+html.principal-theme-dark .main .response-meta {color:#A0B3C6!important;}
+html.principal-theme-dark .main .info-value,
+html.principal-theme-dark .main .q-text,
+html.principal-theme-dark .main .modal-section-title,
+html.principal-theme-dark .main .cat-name-modal,
+html.principal-theme-dark .main .cat-score-modal {color:#EAF0F7!important;}
+html.principal-theme-dark .main .term-picker label {color:#A0B3C6!important;}
+html.principal-theme-dark .main .term-picker select,
+html.principal-theme-dark .main .term-picker option {background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.14)!important;}
+
+/* Evaluation Tracker: dark header rows, bodies, and utility surfaces. */
+html.principal-theme-dark .main .table-scroll,
+html.principal-theme-dark .main .table-wrap,
+html.principal-theme-dark .main table.data,
+html.principal-theme-dark .main table.data tbody,
+html.principal-theme-dark .main table.data tr,
+html.principal-theme-dark .main table.data td,
+html.principal-theme-dark .main .optional-table,
+html.principal-theme-dark .main .optional-table tbody,
+html.principal-theme-dark .main .optional-table tr,
+html.principal-theme-dark .main .optional-table td {
+  background:#172A45!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .main table.data thead,
+html.principal-theme-dark .main table.data thead tr,
+html.principal-theme-dark .main table.data th,
+html.principal-theme-dark .main .optional-table thead,
+html.principal-theme-dark .main .optional-table th {
+  background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.09)!important;
+}
+html.principal-theme-dark .main table.data tbody tr:nth-child(even) td,
+html.principal-theme-dark .main .optional-table tbody tr:nth-child(even) td {background:#15263F!important;}
+html.principal-theme-dark .main .table-empty,
+html.principal-theme-dark .main .filter-menu,
+html.principal-theme-dark .main .filter-field,
+html.principal-theme-dark .main .filter-menu-title {background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .main .stu-name {color:#EAF0F7!important;}
+html.principal-theme-dark .main .stu-sub,
+html.principal-theme-dark .main .progress-last,
+html.principal-theme-dark .main .progress-pct,
+html.principal-theme-dark .main .table-footer {color:#A0B3C6!important;}
+html.principal-theme-dark .main .progress-track {background:rgba(255,255,255,.09)!important;}
+html.principal-theme-dark .main .stu-avatar {background:#0F1F3D!important;border-color:rgba(255,255,255,.12)!important;}
+
+/* Ensure the main shell and table headers don't flash white in dark mode. */
+html.principal-theme-dark .main table thead th,
+html.principal-theme-dark .main .table-head,
+html.principal-theme-dark .main .table-header,
+html.principal-theme-dark .main .thead,
+html.principal-theme-dark .main .subtle-head {
+  background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.09)!important;
+}
+
+/* Evaluation form modal is rendered as a sibling of main.main, not inside it.
+   Target it directly so legacy light-mode modal styles cannot leave white panels
+   behind when the Principal theme is dark. Light mode is unaffected. */
+html.principal-theme-dark .de-overlay .de-modal {
+  --de-border:rgba(255,255,255,.10)!important;
+  --de-ink:#EAF0F7!important;
+  --de-muted:#A0B3C6!important;
+  --de-inner:#172A45!important;
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.12)!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.55)!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-head,
+html.principal-theme-dark .de-overlay .de-modal-body,
+html.principal-theme-dark .de-overlay .de-modal-foot {
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-name,
+html.principal-theme-dark .de-overlay .de-qtext,
+html.principal-theme-dark .de-overlay .de-comment-readonly {
+  color:#EAF0F7!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-sub,
+html.principal-theme-dark .de-overlay .de-modal-x,
+html.principal-theme-dark .de-overlay .de-modal-x:hover,
+html.principal-theme-dark .de-overlay .de-comment-label,
+html.principal-theme-dark .de-overlay .de-loading {
+  color:#A0B3C6!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-head img {
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .de-overlay .de-progress {
+  background:rgba(217,154,43,.10)!important;
+  border-color:rgba(217,154,43,.28)!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark .de-overlay .de-progress .de-progress-status,
+html.principal-theme-dark .de-overlay .de-cat-title,
+html.principal-theme-dark .de-overlay .de-qno {
+  color:#F0B84D!important;
+}
+html.principal-theme-dark .de-overlay .de-validation {
+  background:rgba(240,84,84,.12)!important;
+  border-color:rgba(240,84,84,.32)!important;
+  color:#FCA5A5!important;
+}
+html.principal-theme-dark .de-overlay .de-legend,
+html.principal-theme-dark .de-overlay .de-table-wrap {
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .de-overlay .de-table,
+html.principal-theme-dark .de-overlay .de-table tbody,
+html.principal-theme-dark .de-overlay .de-table tr,
+html.principal-theme-dark .de-overlay .de-table td {
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .de-overlay .de-table th {
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .de-overlay .de-table tr.unanswered td {
+  background:rgba(240,84,84,.10)!important;
+  color:#EAF0F7!important;
+}
+html.principal-theme-dark .de-overlay .de-table tr.unanswered td:first-child {
+  box-shadow:inset 3px 0 0 #F87171!important;
+}
+html.principal-theme-dark .de-overlay .de-table tr.unanswered .de-qno {
+  color:#FCA5A5!important;
+}
+html.principal-theme-dark .de-overlay .de-rate label {
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .de-overlay .de-rate label:hover {
+  background:rgba(217,154,43,.10)!important;
+  color:#F0B84D!important;
+  border-color:#D99A2B!important;
+}
+html.principal-theme-dark .de-overlay .de-rate input:checked + label,
+html.principal-theme-dark .de-overlay .de-modal-foot .de-btn-submit {
+  background:#B8801F!important;
+  color:#FFFFFF!important;
+  border-color:#D99A2B!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-foot .de-btn-cancel {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .de-overlay .de-modal-foot .de-btn-submit:hover {
+  background:#D99A2B!important;
+}
+html.principal-theme-dark .de-overlay .de-comment textarea {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark .de-overlay .de-comment textarea::placeholder {
+  color:#7F93A8!important;
+}
+
+/* ===== EVALUATION REPORTS: FINAL THREE-STATE DARK MODE FIX =====
+   Screen-only so the generated report remains printer-friendly in print preview.
+   Covers: reports list, target/evaluator details after View, and cumulative sheet
+   after Generate Report. */
+@media screen {
+  html.principal-theme-dark .reports-data-panel,
+  body.dark-theme .reports-data-panel,
+  html.principal-theme-dark .reports-table-wrap,
+  body.dark-theme .reports-table-wrap,
+  html.principal-theme-dark .reports-active-filter-note,
+  body.dark-theme .reports-active-filter-note,
+  html.principal-theme-dark .reports-sub-filters,
+  body.dark-theme .reports-sub-filters,
+  html.principal-theme-dark .reports-designation-filters,
+  body.dark-theme .reports-designation-filters {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.10)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.24)!important;
+  }
+
+  html.principal-theme-dark #reportsTable,
+  body.dark-theme #reportsTable,
+  html.principal-theme-dark #reportsTable tbody,
+  body.dark-theme #reportsTable tbody,
+  html.principal-theme-dark #reportsTable tbody tr,
+  body.dark-theme #reportsTable tbody tr,
+  html.principal-theme-dark #reportsTable tbody td,
+  body.dark-theme #reportsTable tbody td {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.09)!important;
+  }
+  html.principal-theme-dark #reportsTable thead,
+  body.dark-theme #reportsTable thead,
+  html.principal-theme-dark #reportsTable thead tr,
+  body.dark-theme #reportsTable thead tr,
+  html.principal-theme-dark #reportsTable thead th,
+  body.dark-theme #reportsTable thead th {
+    background:#0F1F3D!important;
+    color:#BFD0E0!important;
+    border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark #reportsTable tbody tr:nth-child(even) td,
+  body.dark-theme #reportsTable tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark #reportsTable tbody tr:hover td,
+  body.dark-theme #reportsTable tbody tr:hover td { background:#1D3554!important; }
+
+  html.principal-theme-dark #reportsTable .reports-person-name,
+  body.dark-theme #reportsTable .reports-person-name,
+  html.principal-theme-dark #reportsTable .reports-person-link,
+  body.dark-theme #reportsTable .reports-person-link { color:#F4F7FB!important; }
+  html.principal-theme-dark #reportsTable .reports-designation-cell,
+  body.dark-theme #reportsTable .reports-designation-cell,
+  html.principal-theme-dark #reportsTable .reports-date,
+  body.dark-theme #reportsTable .reports-date { color:#B7C7D7!important; }
+
+  html.principal-theme-dark .detail-eval-banner,
+  body.dark-theme .detail-eval-banner,
+  html.principal-theme-dark .detail-person-card,
+  body.dark-theme .detail-person-card,
+  html.principal-theme-dark .detail-results-panel,
+  body.dark-theme .detail-results-panel,
+  html.principal-theme-dark .detail-legend,
+  body.dark-theme .detail-legend {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.10)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.24)!important;
+  }
+  html.principal-theme-dark .detail-eval-banner,
+  body.dark-theme .detail-eval-banner { background:rgba(217,154,43,.09)!important;border-color:rgba(217,154,43,.28)!important; }
+  html.principal-theme-dark .detail-eval-title,
+  body.dark-theme .detail-eval-title { color:#F0B84D!important; }
+  html.principal-theme-dark .detail-eval-sub,
+  body.dark-theme .detail-eval-sub,
+  html.principal-theme-dark .detail-person-desig,
+  body.dark-theme .detail-person-desig,
+  html.principal-theme-dark .detail-stat-label,
+  body.dark-theme .detail-stat-label,
+  html.principal-theme-dark .detail-legend-text,
+  body.dark-theme .detail-legend-text,
+  html.principal-theme-dark .detail-year-filter label,
+  body.dark-theme .detail-year-filter label,
+  html.principal-theme-dark .detail-role,
+  body.dark-theme .detail-role,
+  html.principal-theme-dark .detail-date,
+  body.dark-theme .detail-date { color:#AFC0D2!important; }
+  html.principal-theme-dark .detail-person-name,
+  body.dark-theme .detail-person-name,
+  html.principal-theme-dark .detail-results-title h2,
+  body.dark-theme .detail-results-title h2,
+  html.principal-theme-dark .detail-legend-title,
+  body.dark-theme .detail-legend-title,
+  html.principal-theme-dark .detail-evaluator,
+  body.dark-theme .detail-evaluator { color:#F4F7FB!important; }
+  html.principal-theme-dark .detail-year-filter select,
+  body.dark-theme .detail-year-filter select {
+    background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.14)!important;
+  }
+  html.principal-theme-dark .detail-results-table,
+  body.dark-theme .detail-results-table,
+  html.principal-theme-dark .detail-results-table tbody,
+  body.dark-theme .detail-results-table tbody,
+  html.principal-theme-dark .detail-results-table tbody tr,
+  body.dark-theme .detail-results-table tbody tr,
+  html.principal-theme-dark .detail-results-table tbody td,
+  body.dark-theme .detail-results-table tbody td {
+    background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.09)!important;
+  }
+  html.principal-theme-dark .detail-results-table thead tr,
+  body.dark-theme .detail-results-table thead tr,
+  html.principal-theme-dark .detail-results-table th,
+  body.dark-theme .detail-results-table th {
+    background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark .detail-results-table tbody tr:nth-child(even) td,
+  body.dark-theme .detail-results-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark .detail-results-table tbody tr:hover td,
+  body.dark-theme .detail-results-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark .detail-actions .detail-back,
+  body.dark-theme .detail-actions .detail-back,
+  html.principal-theme-dark .detail-actions .back-btn,
+  body.dark-theme .detail-actions .back-btn {
+    background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.14)!important;
+  }
+  html.principal-theme-dark .detail-actions .detail-print,
+  body.dark-theme .detail-actions .detail-print {
+    background:#D99A2B!important;color:#0A192F!important;border-color:#D99A2B!important;
+  }
+
+  /* Generated cumulative report on screen only; @media print stays black/white. */
+  html.principal-theme-dark body.report-mode .cumulative-sheet,
+  body.dark-theme.report-mode .cumulative-sheet {
+    display:block!important;background:#0A192F!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet *,
+  body.dark-theme.report-mode .cumulative-sheet * { color:#E0E6F0!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-topbar,
+  body.dark-theme.report-mode .cumulative-sheet .cum-topbar,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-header,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-header,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total,
+  body.dark-theme.report-mode .cumulative-sheet .cum-total,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .comment-section,
+  body.dark-theme.report-mode .cumulative-sheet .comment-section {
+    background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.10)!important;box-shadow:none!important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-topbar,
+  body.dark-theme.report-mode .cumulative-sheet .cum-topbar { background:#0F1F3D!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-section,
+  body.dark-theme.report-mode .cumulative-sheet .cat-section { background:transparent!important;border-color:rgba(255,255,255,.10)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-title,
+  body.dark-theme.report-mode .cumulative-sheet .cat-title { background:transparent!important;color:#F0B84D!important;border-bottom-color:rgba(217,154,43,.30)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table,
+  body.dark-theme.report-mode .cumulative-sheet .q-table,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table td {
+    background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.08)!important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table thead tr,
+  body.dark-theme.report-mode .cumulative-sheet .q-table thead tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table th,
+  body.dark-theme.report-mode .cumulative-sheet .q-table th { background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.09)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:nth-child(even) td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:hover td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-name,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-name,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-val,
+  body.dark-theme.report-mode .cumulative-sheet .cum-date-val,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total-label,
+  body.dark-theme.report-mode .cumulative-sheet .cum-total-label { color:#F4F7FB!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-type,
+  body.dark-theme.report-mode .cumulative-sheet .cum-type,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-label,
+  body.dark-theme.report-mode .cumulative-sheet .avg-score-label { color:#F0B84D!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-desig,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-desig,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-by,
+  body.dark-theme.report-mode .cumulative-sheet .cum-by,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-label,
+  body.dark-theme.report-mode .cumulative-sheet .cum-date-label,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-remark,
+  body.dark-theme.report-mode .cumulative-sheet .cum-remark,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .no-comment,
+  body.dark-theme.report-mode .cumulative-sheet .no-comment,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-out-of,
+  body.dark-theme.report-mode .cumulative-sheet .avg-out-of { color:#AFC0D2!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-badge,
+  body.dark-theme.report-mode .cumulative-sheet .rating-badge,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-avatar-ph,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-avatar-ph { background:#0F1F3D!important;border-color:rgba(255,255,255,.14)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-num,
+  body.dark-theme.report-mode .cumulative-sheet .rating-num,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-big,
+  body.dark-theme.report-mode .cumulative-sheet .avg-score-big { color:#6EE7B7!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-lbl,
+  body.dark-theme.report-mode .cumulative-sheet .rating-lbl { color:#A7F3D0!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-empty,
+  body.dark-theme.report-mode .cumulative-sheet .cum-empty { background:#172A45!important;color:#AFC0D2!important;border-color:rgba(255,255,255,.12)!important; }
+}
+
+/* ===== PRINCIPAL EVALUATION REPORTS: FINAL HIGH-CONTRAST DARK PATCH =====
+   Keep the reports roster, detail table, and generated evaluation sheet readable
+   even when older inline light-theme rules appear later in principal_reports.php.
+   Screen only: print styles continue to produce the clean print layout. */
+@media screen {
+  /* Main "Users Being Evaluated" roster */
+  html.principal-theme-dark .reports-data-panel,
+  body.dark-theme .reports-data-panel,
+  html.principal-theme-dark .reports-table-wrap,
+  body.dark-theme .reports-table-wrap {
+    background:#172A45!important;
+    color:#EAF0F7!important;
+    border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark #reportsTable,
+  body.dark-theme #reportsTable,
+  html.principal-theme-dark #reportsTable tbody,
+  body.dark-theme #reportsTable tbody,
+  html.principal-theme-dark #reportsTable tbody tr,
+  body.dark-theme #reportsTable tbody tr,
+  html.principal-theme-dark #reportsTable tbody td,
+  body.dark-theme #reportsTable tbody td,
+  html.principal-theme-dark .reports-table tbody td,
+  body.dark-theme .reports-table tbody td {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark #reportsTable thead tr,
+  body.dark-theme #reportsTable thead tr,
+  html.principal-theme-dark #reportsTable thead th,
+  body.dark-theme #reportsTable thead th,
+  html.principal-theme-dark .reports-table thead th,
+  body.dark-theme .reports-table thead th {
+    background:#0F1F3D!important;
+    color:#C7D5E4!important;
+    border-color:rgba(255,255,255,.12)!important;
+  }
+  html.principal-theme-dark #reportsTable tbody tr:nth-child(even) td,
+  body.dark-theme #reportsTable tbody tr:nth-child(even) td,
+  html.principal-theme-dark .reports-table tbody tr:nth-child(even) td,
+  body.dark-theme .reports-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark #reportsTable tbody tr:hover td,
+  body.dark-theme #reportsTable tbody tr:hover td,
+  html.principal-theme-dark .reports-table tbody tr:hover td,
+  body.dark-theme .reports-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark #reportsTable .reports-person-name,
+  body.dark-theme #reportsTable .reports-person-name,
+  html.principal-theme-dark #reportsTable .reports-person-link,
+  body.dark-theme #reportsTable .reports-person-link { color:#F4F7FB!important; }
+  html.principal-theme-dark #reportsTable .reports-designation-cell,
+  body.dark-theme #reportsTable .reports-designation-cell,
+  html.principal-theme-dark #reportsTable .reports-date,
+  body.dark-theme #reportsTable .reports-date,
+  html.principal-theme-dark #reportsTable .col-no,
+  body.dark-theme #reportsTable .col-no { color:#B7C7D7!important; }
+  html.principal-theme-dark .reports-data-head,
+  body.dark-theme .reports-data-head { color:#F4F7FB!important; }
+  html.principal-theme-dark .reports-data-title h2,
+  body.dark-theme .reports-data-title h2 { color:#F4F7FB!important; }
+  html.principal-theme-dark .reports-search-box,
+  body.dark-theme .reports-search-box,
+  html.principal-theme-dark .reports-search-box input,
+  body.dark-theme .reports-search-box input {
+    background:#0F1F3D!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.14)!important;
+  }
+  html.principal-theme-dark .reports-search-box input::placeholder,
+  body.dark-theme .reports-search-box input::placeholder { color:#91A5BA!important; }
+
+  /* "Evaluation Results" detail view */
+  html.principal-theme-dark .detail-eval-banner,
+  body.dark-theme .detail-eval-banner,
+  html.principal-theme-dark .detail-person-card,
+  body.dark-theme .detail-person-card,
+  html.principal-theme-dark .detail-results-panel,
+  body.dark-theme .detail-results-panel,
+  html.principal-theme-dark .detail-legend,
+  body.dark-theme .detail-legend {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.11)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+  }
+  html.principal-theme-dark .detail-results-table,
+  body.dark-theme .detail-results-table,
+  html.principal-theme-dark .detail-results-table tbody,
+  body.dark-theme .detail-results-table tbody,
+  html.principal-theme-dark .detail-results-table tbody tr,
+  body.dark-theme .detail-results-table tbody tr,
+  html.principal-theme-dark .detail-results-table tbody td,
+  body.dark-theme .detail-results-table tbody td {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.10)!important;
+  }
+  html.principal-theme-dark .detail-results-table th,
+  body.dark-theme .detail-results-table th {
+    background:#0F1F3D!important;
+    color:#C7D5E4!important;
+    border-color:rgba(255,255,255,.12)!important;
+  }
+  html.principal-theme-dark .detail-results-table tbody tr:nth-child(even) td,
+  body.dark-theme .detail-results-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark .detail-results-table tbody tr:hover td,
+  body.dark-theme .detail-results-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark .detail-evaluator,
+  body.dark-theme .detail-evaluator,
+  html.principal-theme-dark .detail-person-name,
+  body.dark-theme .detail-person-name,
+  html.principal-theme-dark .detail-results-title h2,
+  body.dark-theme .detail-results-title h2,
+  html.principal-theme-dark .detail-legend-title,
+  body.dark-theme .detail-legend-title { color:#F4F7FB!important; }
+  html.principal-theme-dark .detail-person-desig,
+  body.dark-theme .detail-person-desig,
+  html.principal-theme-dark .detail-role,
+  body.dark-theme .detail-role,
+  html.principal-theme-dark .detail-date,
+  body.dark-theme .detail-date,
+  html.principal-theme-dark .detail-stat-label,
+  body.dark-theme .detail-stat-label,
+  html.principal-theme-dark .detail-legend-text,
+  body.dark-theme .detail-legend-text { color:#B7C7D7!important; }
+  html.principal-theme-dark .detail-year-filter select,
+  body.dark-theme .detail-year-filter select {
+    background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.14)!important;
+  }
+  html.principal-theme-dark .detail-back,
+  body.dark-theme .detail-back,
+  html.principal-theme-dark .detail-view-btn,
+  body.dark-theme .detail-view-btn {
+    background:#0F1F3D!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.16)!important;
+  }
+  html.principal-theme-dark .detail-report-btn,
+  body.dark-theme .detail-report-btn { background:#B8801F!important;color:#FFFFFF!important;border-color:#D99A2B!important; }
+
+  /* Individual evaluation sheet (View) — overriding the late light-only sheet block. */
+  html.principal-theme-dark body .individual-sheet,
+  body.dark-theme .individual-sheet {
+    color:#E0E6F0!important;
+  }
+  html.principal-theme-dark body .individual-sheet .sheet-header,
+  body.dark-theme .individual-sheet .sheet-header,
+  html.principal-theme-dark body .individual-sheet .scale-bar,
+  body.dark-theme .individual-sheet .scale-bar,
+  html.principal-theme-dark body .individual-sheet .comment-section,
+  body.dark-theme .individual-sheet .comment-section,
+  html.principal-theme-dark body .individual-sheet .avg-summary,
+  body.dark-theme .individual-sheet .avg-summary {
+    background:#172A45!important;
+    color:#E0E6F0!important;
+    border-color:rgba(255,255,255,.12)!important;
+    box-shadow:none!important;
+  }
+  html.principal-theme-dark body .individual-sheet .sheet-name,
+  body.dark-theme .individual-sheet .sheet-name,
+  html.principal-theme-dark body .individual-sheet .eval-by-name,
+  body.dark-theme .individual-sheet .eval-by-name { color:#F4F7FB!important; }
+  html.principal-theme-dark body .individual-sheet .sheet-desig,
+  body.dark-theme .individual-sheet .sheet-desig,
+  html.principal-theme-dark body .individual-sheet .eval-by-date,
+  body.dark-theme .individual-sheet .eval-by-date,
+  html.principal-theme-dark body .individual-sheet .eval-by-label,
+  body.dark-theme .individual-sheet .eval-by-label,
+  html.principal-theme-dark body .individual-sheet .avg-out-of,
+  body.dark-theme .individual-sheet .avg-out-of,
+  html.principal-theme-dark body .individual-sheet .scale-item,
+  body.dark-theme .individual-sheet .scale-item,
+  html.principal-theme-dark body .individual-sheet .no-comment,
+  body.dark-theme .individual-sheet .no-comment { color:#B7C7D7!important; }
+  html.principal-theme-dark body .individual-sheet .cat-section,
+  body.dark-theme .individual-sheet .cat-section { background:transparent!important;border-color:rgba(255,255,255,.10)!important; }
+  html.principal-theme-dark body .individual-sheet .cat-title,
+  body.dark-theme .individual-sheet .cat-title,
+  html.principal-theme-dark body .individual-sheet .comment-title,
+  body.dark-theme .individual-sheet .comment-title { background:transparent!important;color:#F0B84D!important;border-color:rgba(217,154,43,.30)!important; }
+  html.principal-theme-dark body .individual-sheet .q-table,
+  body.dark-theme .individual-sheet .q-table,
+  html.principal-theme-dark body .individual-sheet .q-table tbody,
+  body.dark-theme .individual-sheet .q-table tbody,
+  html.principal-theme-dark body .individual-sheet .q-table tbody tr,
+  body.dark-theme .individual-sheet .q-table tbody tr,
+  html.principal-theme-dark body .individual-sheet .q-table tbody td,
+  body.dark-theme .individual-sheet .q-table tbody td {
+    background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.09)!important;
+  }
+  html.principal-theme-dark body .individual-sheet .q-table thead tr,
+  body.dark-theme .individual-sheet .q-table thead tr,
+  html.principal-theme-dark body .individual-sheet .q-table th,
+  body.dark-theme .individual-sheet .q-table th { background:#0F1F3D!important;color:#C7D5E4!important;border-color:rgba(255,255,255,.12)!important; }
+  html.principal-theme-dark body .individual-sheet .q-table tbody tr:nth-child(even) td,
+  body.dark-theme .individual-sheet .q-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark body .individual-sheet .q-table tbody tr:hover td,
+  body.dark-theme .individual-sheet .q-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark body .individual-sheet .q-table td.q-num,
+  body.dark-theme .individual-sheet .q-table td.q-num { color:#91A5BA!important; }
+  html.principal-theme-dark body .individual-sheet .rating-num,
+  body.dark-theme .individual-sheet .rating-num,
+  html.principal-theme-dark body .individual-sheet .avg-score-big,
+  body.dark-theme .individual-sheet .avg-score-big { color:#6EE7B7!important; }
+  html.principal-theme-dark body .individual-sheet .rating-lbl,
+  body.dark-theme .individual-sheet .rating-lbl { color:#A7F3D0!important; }
+  html.principal-theme-dark body .individual-sheet .comment-text,
+  body.dark-theme .individual-sheet .comment-text {
+    background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.12)!important;
+  }
+  html.principal-theme-dark body .individual-sheet .avg-bar-bg,
+  body.dark-theme .individual-sheet .avg-bar-bg { background:#263B55!important; }
+
+  /* Generated Report / cumulative sheet. */
+  html.principal-theme-dark body.report-mode .cumulative-sheet,
+  body.dark-theme.report-mode .cumulative-sheet {
+    background:#0A192F!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.12)!important;
+  }
+  html.principal-theme-dark body.report-mode .cumulative-sheet *,
+  body.dark-theme.report-mode .cumulative-sheet * { color:#E0E6F0!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-topbar,
+  body.dark-theme.report-mode .cumulative-sheet .cum-topbar { background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.12)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-header,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-header,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total,
+  body.dark-theme.report-mode .cumulative-sheet .cum-total,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .comment-section,
+  body.dark-theme.report-mode .cumulative-sheet .comment-section { background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.11)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-section,
+  body.dark-theme.report-mode .cumulative-sheet .cat-section { background:transparent!important;border-color:rgba(255,255,255,.10)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cat-title,
+  body.dark-theme.report-mode .cumulative-sheet .cat-title,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-type,
+  body.dark-theme.report-mode .cumulative-sheet .cum-type,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-label,
+  body.dark-theme.report-mode .cumulative-sheet .avg-score-label { color:#F0B84D!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table,
+  body.dark-theme.report-mode .cumulative-sheet .q-table,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody td { background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.09)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table thead tr,
+  body.dark-theme.report-mode .cumulative-sheet .q-table thead tr,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table th,
+  body.dark-theme.report-mode .cumulative-sheet .q-table th { background:#0F1F3D!important;color:#C7D5E4!important;border-color:rgba(255,255,255,.12)!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:nth-child(even) td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr:nth-child(even) td { background:#15263F!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .q-table tbody tr:hover td,
+  body.dark-theme.report-mode .cumulative-sheet .q-table tbody tr:hover td { background:#1D3554!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-num,
+  body.dark-theme.report-mode .cumulative-sheet .rating-num,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-score-big,
+  body.dark-theme.report-mode .cumulative-sheet .avg-score-big { color:#6EE7B7!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .rating-lbl,
+  body.dark-theme.report-mode .cumulative-sheet .rating-lbl { color:#A7F3D0!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-name,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-name,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-val,
+  body.dark-theme.report-mode .cumulative-sheet .cum-date-val,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-total-label,
+  body.dark-theme.report-mode .cumulative-sheet .cum-total-label { color:#F4F7FB!important; }
+  html.principal-theme-dark body.report-mode .cumulative-sheet .sheet-desig,
+  body.dark-theme.report-mode .cumulative-sheet .sheet-desig,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-by,
+  body.dark-theme.report-mode .cumulative-sheet .cum-by,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-date-label,
+  body.dark-theme.report-mode .cumulative-sheet .cum-date-label,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .cum-remark,
+  body.dark-theme.report-mode .cumulative-sheet .cum-remark,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .no-comment,
+  body.dark-theme.report-mode .cumulative-sheet .no-comment,
+  html.principal-theme-dark body.report-mode .cumulative-sheet .avg-out-of,
+  body.dark-theme.report-mode .cumulative-sheet .avg-out-of { color:#B7C7D7!important; }
+}
+
+
+/* Reports roster: enforce dark-mode table surfaces and readable secondary text.
+   This runs in the final repair layer so legacy inline light-theme rules cannot win. */
+html.principal-theme-dark .reports-redesign .reports-data-panel,
+body.dark-theme .reports-redesign .reports-data-panel {
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.24)!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table,
+body.dark-theme .reports-redesign .reports-table {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table thead,
+body.dark-theme .reports-redesign .reports-table thead,
+html.principal-theme-dark .reports-redesign .reports-table thead tr,
+body.dark-theme .reports-redesign .reports-table thead tr,
+html.principal-theme-dark .reports-redesign .reports-table thead th,
+body.dark-theme .reports-redesign .reports-table thead th {
+  background:#0F1F3D!important;
+  color:#D5E0EC!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table tbody tr,
+body.dark-theme .reports-redesign .reports-table tbody tr {
+  background:#172A45!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table tbody td,
+body.dark-theme .reports-redesign .reports-table tbody td {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table tbody tr:nth-child(even) td,
+body.dark-theme .reports-redesign .reports-table tbody tr:nth-child(even) td {
+  background:#15263F!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table tbody tr:hover td,
+body.dark-theme .reports-redesign .reports-table tbody tr:hover td {
+  background:#1D3554!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table .reports-person-name,
+body.dark-theme .reports-redesign .reports-table .reports-person-name {
+  color:#F4F7FB!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table .reports-designation-cell,
+body.dark-theme .reports-redesign .reports-table .reports-designation-cell,
+html.principal-theme-dark .reports-redesign .reports-table .reports-date,
+body.dark-theme .reports-redesign .reports-table .reports-date {
+  color:#C0CEDD!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table .col-no,
+body.dark-theme .reports-redesign .reports-table .col-no {
+  color:#AABBCD!important;
+}
+html.principal-theme-dark .reports-redesign .reports-table .reports-person-link,
+body.dark-theme .reports-redesign .reports-table .reports-person-link {
+  color:#F4F7FB!important;
+}
+
+/* The individual evaluator results table uses its own legacy light colors. */
+html.principal-theme-dark body .detail-results-table,
+body.dark-theme .detail-results-table {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+}
+html.principal-theme-dark body .detail-results-table thead tr,
+body.dark-theme .detail-results-table thead tr,
+html.principal-theme-dark body .detail-results-table th,
+body.dark-theme .detail-results-table th {
+  background:#0F1F3D!important;
+  color:#D5E0EC!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark body .detail-results-table tbody tr,
+body.dark-theme .detail-results-table tbody tr,
+html.principal-theme-dark body .detail-results-table td,
+body.dark-theme .detail-results-table td {
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark body .detail-results-table tbody tr:nth-child(even) td,
+body.dark-theme .detail-results-table tbody tr:nth-child(even) td {
+  background:#15263F!important;
+}
+html.principal-theme-dark body .detail-results-table tbody tr:hover td,
+body.dark-theme .detail-results-table tbody tr:hover td {
+  background:#1D3554!important;
+}
+html.principal-theme-dark body .detail-results-table .detail-evaluator,
+body.dark-theme .detail-results-table .detail-evaluator,
+html.principal-theme-dark body .detail-results-table .detail-role,
+body.dark-theme .detail-results-table .detail-role,
+html.principal-theme-dark body .detail-results-table .detail-date,
+body.dark-theme .detail-results-table .detail-date {
+  color:#C0CEDD!important;
+}
+
+/* -------------------------------------------------------------------------
+   Appearance settings: theme selection, density, and accessibility.
+   Loaded as the final cascade layer.
+   ------------------------------------------------------------------------- */
+:root{--appearance-accent:#D99A2B;--appearance-accent-hover:#F0B84D;--appearance-accent-rgb:217,154,43;--appearance-on-accent:#0A192F;}
+#principal-appearance-settings{padding:26px!important;overflow:hidden;}
+#principal-appearance-settings .appearance-heading-row{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:23px;}
+#principal-appearance-settings .appearance-heading-row h2{margin:0 0 6px!important;display:flex;align-items:center;gap:10px;}
+#principal-appearance-settings .appearance-heading-row h2>i{color:var(--appearance-accent)!important;}
+#principal-appearance-settings .appearance-subtitle{margin:0!important;font-size:13px;line-height:1.55;color:#64748B!important;}
+#principal-appearance-settings .appearance-device-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #D9E4EF;border-radius:999px;background:#F8FAFC;color:#53677D;font-size:11px;font-weight:700;white-space:nowrap;}
+#principal-appearance-settings .appearance-device-badge i{color:var(--appearance-accent)!important;}
+#principal-appearance-settings .appearance-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;}
+#principal-appearance-settings .appearance-control-card{min-width:0;padding:19px;border:1px solid #E2E8F0;border-radius:15px;background:linear-gradient(145deg,#FFFFFF,#F8FAFC);color:#172033;box-shadow:0 4px 16px rgba(15,23,42,.045);}
+#principal-appearance-settings .appearance-control-head{display:flex;align-items:flex-start;gap:11px;margin-bottom:17px;}
+#principal-appearance-settings .appearance-control-icon{width:37px;height:37px;flex:0 0 37px;display:flex;align-items:center;justify-content:center;border-radius:11px;background:rgba(var(--appearance-accent-rgb),.12);color:var(--appearance-accent)!important;font-size:15px;}
+#principal-appearance-settings .appearance-control-head h3{margin:0 0 4px;font-size:14px;font-weight:800;line-height:1.3;color:#172033!important;}
+#principal-appearance-settings .appearance-control-head p{margin:0;font-size:11.5px;line-height:1.5;color:#64748B!important;}
+#principal-appearance-settings .appearance-theme-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;}
+#principal-appearance-settings .appearance-choice{appearance:none;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:11px;min-width:0;min-height:122px;padding:13px 12px;border:1px solid #D8E2EE!important;border-radius:12px!important;background:#FFFFFF!important;color:#24354A!important;text-align:left;font:inherit;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease!important;}
+#principal-appearance-settings .appearance-choice:hover{transform:translateY(-2px);border-color:rgba(var(--appearance-accent-rgb),.55)!important;box-shadow:0 6px 14px rgba(15,23,42,.07)!important;}
+#principal-appearance-settings .appearance-choice:focus-visible,
+#principal-appearance-settings .appearance-density-choice:focus-visible,
+#principal-appearance-settings .appearance-motion-toggle:focus-visible{outline:3px solid rgba(var(--appearance-accent-rgb),.34)!important;outline-offset:3px;}
+#principal-appearance-settings .appearance-choice.active{border-color:var(--appearance-accent)!important;background:rgba(var(--appearance-accent-rgb),.085)!important;box-shadow:inset 0 0 0 1px var(--appearance-accent),0 5px 12px rgba(var(--appearance-accent-rgb),.08)!important;color:#172033!important;}
+#principal-appearance-settings .appearance-choice-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#EEF3F8;color:#52667D;font-size:15px;}
+#principal-appearance-settings .appearance-choice.active .appearance-choice-icon{background:var(--appearance-accent)!important;color:var(--appearance-on-accent)!important;}
+#principal-appearance-settings .appearance-choice-copy{display:flex;flex-direction:column;gap:3px;min-width:0;}
+#principal-appearance-settings .appearance-choice-copy strong{font-size:12px;font-weight:800;color:inherit!important;}
+#principal-appearance-settings .appearance-choice-copy small{font-size:10px;line-height:1.4;color:#718096!important;}
+#principal-appearance-settings .appearance-choice-check{position:absolute;top:10px;right:10px;width:19px;height:19px;border:1px solid #D8E2EE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:transparent;background:#fff;}
+#principal-appearance-settings .appearance-choice.active .appearance-choice-check{border-color:var(--appearance-accent);background:var(--appearance-accent);color:var(--appearance-on-accent);}
+#principal-appearance-settings .appearance-inline-status{display:flex;align-items:center;gap:6px;margin-top:13px;font-size:11px;color:#64748B!important;}
+#principal-appearance-settings .appearance-inline-status>i{color:var(--appearance-accent)!important;}
+#principal-appearance-settings .appearance-inline-status strong{font-weight:800;color:#172033!important;}
+#principal-appearance-settings .appearance-density-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+#principal-appearance-settings .appearance-density-choice{display:flex;align-items:center;gap:11px;min-width:0;padding:13px;border:1px solid #D8E2EE;border-radius:11px;background:#fff;text-align:left;color:#52667D;font:inherit;cursor:pointer;transition:all .18s ease;}
+#principal-appearance-settings .appearance-density-choice>i{width:32px;height:32px;flex:0 0 32px;display:flex;align-items:center;justify-content:center;background:#EEF3F8;border-radius:9px;color:#60758C;}
+#principal-appearance-settings .appearance-density-choice span{display:flex;flex-direction:column;gap:4px;min-width:0;}
+#principal-appearance-settings .appearance-density-choice strong{font-size:11px;color:inherit!important;}
+#principal-appearance-settings .appearance-density-choice small{font-size:10px;line-height:1.35;color:#718096!important;}
+#principal-appearance-settings .appearance-density-choice.active{border-color:var(--appearance-accent);background:rgba(var(--appearance-accent-rgb),.075);box-shadow:inset 0 0 0 1px var(--appearance-accent);color:#172033;}
+#principal-appearance-settings .appearance-density-choice.active>i{background:var(--appearance-accent);color:var(--appearance-on-accent);}
+#principal-appearance-settings .appearance-motion-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 14px;border:1px solid #D8E2EE;border-radius:11px;background:#fff;color:#24354A;text-align:left;font:inherit;cursor:pointer;transition:border-color .18s ease,background .18s ease;}
+#principal-appearance-settings .appearance-motion-toggle:hover{border-color:rgba(var(--appearance-accent-rgb),.55);}
+#principal-appearance-settings .appearance-motion-copy{display:flex;flex-direction:column;gap:4px;}
+#principal-appearance-settings .appearance-motion-copy strong{font-size:11.5px;color:inherit!important;}
+#principal-appearance-settings .appearance-motion-copy small{font-size:10px;color:#718096!important;}
+#principal-appearance-settings .appearance-switch-track{width:41px;height:23px;flex:0 0 41px;display:flex;align-items:center;padding:3px;border-radius:99px;background:#CBD5E1;transition:background .18s ease;}
+#principal-appearance-settings .appearance-switch-thumb{width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.22);transition:transform .18s ease;}
+#principal-appearance-settings .appearance-motion-toggle.active .appearance-switch-track{background:var(--appearance-accent);}
+#principal-appearance-settings .appearance-motion-toggle.active .appearance-switch-thumb{transform:translateX(18px);}
+#principal-appearance-settings .appearance-accessibility-note{display:flex;align-items:flex-start;gap:7px;margin-top:12px;font-size:10px;line-height:1.5;color:#64748B!important;}
+#principal-appearance-settings .appearance-accessibility-note i{margin-top:1px;color:var(--appearance-accent)!important;}
+
+/* Keep controls readable in the portal's deep navy theme. */
+html.principal-theme-dark #principal-appearance-settings .appearance-subtitle{color:#A0B3C6!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-device-badge{background:#0F1F3D;border-color:rgba(255,255,255,.12);color:#B8C6D8;}
+html.principal-theme-dark #principal-appearance-settings .appearance-control-card{background:linear-gradient(145deg,#172A45,#10213C);border-color:rgba(255,255,255,.10);color:#E0E6F0;box-shadow:0 7px 20px rgba(0,0,0,.16);}
+html.principal-theme-dark #principal-appearance-settings .appearance-control-head h3,
+html.principal-theme-dark #principal-appearance-settings .appearance-inline-status strong{color:#F3F7FC!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-control-head p,
+html.principal-theme-dark #principal-appearance-settings .appearance-inline-status,
+html.principal-theme-dark #principal-appearance-settings .appearance-accessibility-note{color:#A0B3C6!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice,
+html.principal-theme-dark #principal-appearance-settings .appearance-density-choice,
+html.principal-theme-dark #principal-appearance-settings .appearance-motion-toggle{background:#0F1F3D!important;border-color:rgba(255,255,255,.12)!important;color:#DCE6F0!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice:hover,
+html.principal-theme-dark #principal-appearance-settings .appearance-density-choice:hover,
+html.principal-theme-dark #principal-appearance-settings .appearance-motion-toggle:hover{border-color:rgba(var(--appearance-accent-rgb),.72)!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice.active,
+html.principal-theme-dark #principal-appearance-settings .appearance-density-choice.active{background:rgba(var(--appearance-accent-rgb),.15)!important;border-color:var(--appearance-accent)!important;color:#FFFFFF!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice-icon,
+html.principal-theme-dark #principal-appearance-settings .appearance-density-choice>i{background:#172A45;color:#BCCBDD;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice-copy small,
+html.principal-theme-dark #principal-appearance-settings .appearance-density-choice small,
+html.principal-theme-dark #principal-appearance-settings .appearance-motion-copy small{color:#9AAEC3!important;}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice-check{background:#172A45;border-color:rgba(255,255,255,.16);}
+html.principal-theme-dark #principal-appearance-settings .appearance-choice.active .appearance-choice-check{background:var(--appearance-accent);border-color:var(--appearance-accent);color:var(--appearance-on-accent);}
+
+/* Compact density and reduced-motion preferences are applied across pages. */
+html.principal-density-compact body .main table thead th,
+html.principal-density-compact body .main table tbody td,
+html.principal-density-compact body main.main table thead th,
+html.principal-density-compact body main.main table tbody td{padding-top:7px!important;padding-bottom:7px!important;}
+html.principal-density-compact body .main .section:not(#principal-appearance-settings),
+html.principal-density-compact body main.main .section:not(#principal-appearance-settings){margin-bottom:12px!important;}
+html.principal-density-compact body .main .table-card,
+html.principal-density-compact body .main .table-wrap,
+html.principal-density-compact body .main .content-card{border-radius:10px!important;}
+html.principal-reduced-motion *,
+html.principal-reduced-motion *::before,
+html.principal-reduced-motion *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+
+@media (max-width:900px){
+  #principal-appearance-settings{padding:20px!important;}
+  #principal-appearance-settings .appearance-feature-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+  #principal-appearance-settings{padding:16px!important;}
+  #principal-appearance-settings .appearance-theme-options{grid-template-columns:1fr;}
+  #principal-appearance-settings .appearance-choice{min-height:74px;flex-direction:row;align-items:center;gap:12px;}
+  #principal-appearance-settings .appearance-choice-copy{flex:1;}
+  #principal-appearance-settings .appearance-density-options{grid-template-columns:1fr;}
+}
+
+/* ==========================================================================
+   Evaluation Received (principal_results.php) — dark mode
+   That page ships late inline light styles (ID-scoped, !important), so these
+   rules use html.principal-theme-dark + #principalFeatureWorkspace to win.
+   Palette matches Evaluation Tracker: #172A45 cards, #0F1F3D inner, #E0E6F0 text.
+   ========================================================================== */
+
+/* KPI cards */
+html.principal-theme-dark #principalFeatureWorkspace .er-stats .stat-card{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.28)!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .er-stat-icon{background:rgba(217,154,43,.16)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-stat-icon i{color:#F0B84D!important;}
+html.principal-theme-dark #principalFeatureWorkspace .stat-card .num{color:#F4F7FB!important;}
+html.principal-theme-dark #principalFeatureWorkspace .stat-card .label{color:#A0B3C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-num-unit,
+html.principal-theme-dark #principalFeatureWorkspace .er-stat-sub,
+html.principal-theme-dark #principalFeatureWorkspace .er-shown,
+html.principal-theme-dark #principalFeatureWorkspace .empty-note{color:#9FB2C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-stars span{color:rgba(255,255,255,.18)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-stars span.on{color:#F5B301!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-trend.up{color:#34D399!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-trend.down{color:#F87171!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-trend.flat{color:#9FB2C6!important;}
+
+/* Section cards + headings */
+html.principal-theme-dark #principalFeatureWorkspace .section{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.28)!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .section h2{color:#F4F7FB!important;}
+html.principal-theme-dark #principalFeatureWorkspace .section h2 i{color:#F0B84D!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-count{background:rgba(217,154,43,.18)!important;color:#F0B84D!important;}
+
+/* Performance by Category */
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-name{color:#E0E6F0!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-score{color:#F4F7FB!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-score small{color:#9FB2C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-track{background:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-tag.highest{background:rgba(16,185,129,.16)!important;color:#34D399!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-cat-tag.lowest{background:rgba(245,158,11,.16)!important;color:#FBBF24!important;}
+
+/* Term picker */
+html.principal-theme-dark #principalFeatureWorkspace .term-picker label{color:#9FB2C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .term-picker select{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .term-picker .sel-wrap i{color:#E0E6F0!important;}
+html.principal-theme-dark #principalFeatureWorkspace .term-picker select option{background:#0F1F3D;color:#E0E6F0;}
+html.principal-theme-dark #principalFeatureWorkspace .term-picker select:focus,
+html.principal-theme-dark #principalFeatureWorkspace .er-select:focus{border-color:#D99A2B!important;outline-color:rgba(217,154,43,.35);}
+
+/* Toolbar: sort, "with comments only" chip */
+html.principal-theme-dark #principalFeatureWorkspace .er-toolbar{border-top-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-select,
+html.principal-theme-dark #principalFeatureWorkspace .er-chip{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .er-select option{background:#0F1F3D;color:#E0E6F0;}
+html.principal-theme-dark #principalFeatureWorkspace .er-chip:hover{border-color:rgba(217,154,43,.40)!important;}
+
+/* Evaluation list items */
+html.principal-theme-dark #principalFeatureWorkspace .er-item{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .er-item:hover,
+html.principal-theme-dark #principalFeatureWorkspace .er-item:focus-visible{
+  background:#14284A!important;
+  border-color:rgba(217,154,43,.45)!important;
+  box-shadow:0 2px 14px rgba(0,0,0,.35)!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .er-eyebrow{color:#A0B3C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-meta{color:#9FB2C6!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-comment{color:#E0E6F0!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-comment.none{color:#8FA6BF!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-badge.high{background:rgba(16,185,129,.16)!important;color:#34D399!important;border-color:rgba(16,185,129,.35)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-badge.mid{background:rgba(245,158,11,.16)!important;color:#FBBF24!important;border-color:rgba(245,158,11,.38)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-badge.low{background:rgba(239,68,68,.16)!important;color:#F87171!important;border-color:rgba(239,68,68,.38)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .er-badge.none{background:rgba(148,163,184,.14)!important;color:#A0B3C6!important;border-color:rgba(148,163,184,.28)!important;}
+html.principal-theme-dark #principalFeatureWorkspace .details-btn{
+  background:rgba(217,154,43,.14)!important;
+  border-color:rgba(217,154,43,.32)!important;
+  color:#F0B84D!important;
+}
+html.principal-theme-dark #principalFeatureWorkspace .details-btn:hover{background:rgba(217,154,43,.22)!important;}
+
+/* Evaluation Details modal (outside #principalFeatureWorkspace) */
+html.principal-theme-dark .eval-modal-overlay{background:rgba(3,10,22,.72)!important;}
+html.principal-theme-dark .eval-modal .info-grid{
+  background:transparent!important;
+  box-shadow:none!important;
+  border:0!important;
+}
+html.principal-theme-dark .eval-modal .info-grid>div{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark .eval-modal .info-label{color:#8FA6BF!important;}
+html.principal-theme-dark .eval-modal .info-value{color:#EAF0F7!important;}
+html.principal-theme-dark .eval-modal .score-big{color:#F0B84D!important;}
+html.principal-theme-dark .eval-modal .modal-section-title{color:#EAF0F7!important;}
+html.principal-theme-dark .eval-modal .cat-name-modal{color:#C9D5E3!important;}
+html.principal-theme-dark .eval-modal .cat-score-modal{color:#F0B84D!important;}
+html.principal-theme-dark .eval-modal .cat-bar{background:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark .eval-modal .cat-bar>div{background:linear-gradient(90deg,#B8801F,#F0B84D)!important;}
+html.principal-theme-dark .eval-modal .q-result{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark .eval-modal .q-no,
+html.principal-theme-dark .eval-modal .q-score,
+html.principal-theme-dark .eval-modal .loading-eval{color:#9FB2C6!important;}
+html.principal-theme-dark .eval-modal .q-score span{color:#E0E6F0!important;}
+html.principal-theme-dark .eval-modal .q-text{color:#EAF0F7!important;}
+html.principal-theme-dark .eval-modal .star{color:rgba(255,255,255,.18)!important;}
+html.principal-theme-dark .eval-modal .star.filled{color:#FACC15!important;}
+html.principal-theme-dark .eval-modal .comment-modal{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark .eval-modal .comment-modal.empty{color:#8FA6BF!important;}
+
+/* ==========================================================================
+   Evaluation Reports (principal_reports.php) — dark mode
+   Covers: Users Being Evaluated list, per-person Evaluation Results, and the
+   individual report sheet. The page ships several late light-only blocks
+   (main.main table thead th, .reports-table th, .detail-results-title i, ...)
+   so these selectors are prefixed with html.principal-theme-dark body main.main:not(#pbi-dark-id)
+   to out-rank them. The cumulative PRINT sheet is intentionally left alone.
+   Palette = Evaluation Tracker: #172A45 / #0F1F3D / #E0E6F0 / #9FB2C6 / amber.
+   ========================================================================== */
+html.principal-theme-dark body main.main:not(#pbi-dark-id){--dk-card:#172A45;--dk-inner:#0F1F3D;--dk-line:rgba(255,255,255,.08);}
+
+/* --- Tables: header bar, rows, text ------------------------------------ */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table thead,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table thead tr,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table thead tr{background:#0F1F3D!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table thead th,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table th,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table th,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table th{
+  background:#0F1F3D!important;
+  color:#BFD0E0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table tbody td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table td{
+  background:#172A45!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.07)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table tbody tr:nth-child(even) td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table tbody tr:nth-child(even) td{background:#15263F!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) table tbody tr:hover td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table tbody tr:hover td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table tbody tr:hover td,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table tbody tr:hover td{background:#1D3554!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table{background:#172A45!important;border-color:rgba(255,255,255,.08)!important;}
+
+/* Individual cells that carried their own muted/dark colours */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table td.col-no,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table td.detail-no,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table td.q-num,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-no,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-num{color:#8FA6BF!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-designation-cell,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-date,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-date,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-role{color:#A9BBCD!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-evaluator,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-person-name,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-person-link{color:#F4F7FB!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table .q-text,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .q-table td:nth-child(2){color:#DCE6F0!important;}
+
+/* --- Users Being Evaluated panel ---------------------------------------- */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-data-panel,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table-wrap{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.28)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-data-title i,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-title i{color:#F0B84D!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-data-title h2,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-title h2{color:#F4F7FB!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-data-title span,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-title span{color:#9FB2C6!important;}
+
+/* Live pill */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-live-status{
+  background:rgba(16,185,129,.14)!important;
+  border-color:rgba(16,185,129,.35)!important;
+  color:#34D399!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-live-status.stale{
+  background:rgba(148,163,184,.12)!important;
+  border-color:rgba(148,163,184,.28)!important;
+  color:#A0B3C6!important;
+}
+
+/* Search box, Export, Filters */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-search-box{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-search-box i{color:#9FB2C6!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-search-box input{
+  background:transparent!important;
+  color:#E0E6F0!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-search-box input::placeholder{color:#8FA6BF!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-export-btn,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-filters-btn,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-view-btn,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-view-btn,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-back,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .back-btn{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.14)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-export-btn:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-filters-btn:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-view-btn:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-view-btn:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-back:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .back-btn:hover{
+  background:#1D3554!important;
+  color:#FFFFFF!important;
+  border-color:rgba(217,154,43,.40)!important;
+}
+
+/* Role / rating pills keep their semantic colours, tuned for dark */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-score,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-avg{color:#34D399!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-score.mid{color:#FBBF24!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-score.low{color:#F87171!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-empty-state,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-no-search,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .cum-empty,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-empty{
+  background:#172A45!important;
+  color:#9FB2C6!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+
+/* --- Per-person Evaluation Results screen ------------------------------- */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-eval-banner,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-person-card,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-panel{
+  background:#172A45!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.28)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-eval-title{color:#F0B84D!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-eval-sub,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-person-meta,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-person-desig,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-stat-label{color:#A9BBCD!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-person-name,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-stat-value,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-legend-title{color:#F4F7FB!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-legend{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-legend-text{color:#E0E6F0!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-year-filter label{color:#9FB2C6!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-year-filter select,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-year-filter input{
+  background:#0F1F3D!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.13)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-year-filter option{background:#0F1F3D;color:#E0E6F0;}
+
+/* --- Individual report sheet (screen only) ------------------------------ */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .sheet-header,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .scale-bar,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .cat-section,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .comment-section,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-summary,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .person-header{
+  background:#172A45!important;
+  color:#E0E6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .eval-type-chip{
+  background:rgba(217,154,43,.12)!important;
+  border-color:rgba(217,154,43,.30)!important;
+  color:#F0B84D!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .eval-by-label,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .eval-by-date,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .person-meta,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-bar-label,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-out-of,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .no-comment{color:#9FB2C6!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .eval-by-name,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .person-name,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-bar-val{color:#F4F7FB!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .cat-title,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .comment-title{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.08)!important;
+  color:#F0B84D!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .comment-text{
+  background:#0F1F3D!important;
+  color:#DCE6F0!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-bar-bg{background:rgba(255,255,255,.10)!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-score-big{color:#34D399!important;}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .avg-score-label{color:#9FB2C6!important;}
+
+/* Rating chips inside the sheet table (e.g. "5.00 VERY SATISFIED") */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .individual-sheet .rating-badge{
+  background:#0F1F3D!important;
+  border-color:rgba(255,255,255,.12)!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-rating{background:rgba(16,185,129,.16)!important;color:#34D399!important;}
+
+/* Evaluation Reports list: View action is a plain eye icon (dark mode colours) */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table .reports-view-btn{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#C5D4E5!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .reports-table .reports-view-btn:hover{
+  background:rgba(240,184,77,.14)!important;
+  color:#F0B84D!important;
+}
+
+/* Evaluation Results (per person): icon-only actions, dark mode */
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table .detail-view-btn,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table .detail-view-btn.detail-report-btn{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#C5D4E5!important;
+}
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table .detail-view-btn:hover,
+html.principal-theme-dark body main.main:not(#pbi-dark-id) .detail-results-table .detail-view-btn.detail-report-btn:hover{
+  background:rgba(240,184,77,.14)!important;
+  color:#F0B84D!important;
+}

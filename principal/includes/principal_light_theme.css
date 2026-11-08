@@ -1,0 +1,938 @@
+/*
+ * Principal Light Theme (same as the Dean Reports theme)
+ * Shared final light-theme layer for all authenticated Principal Reports.
+ * The sidebar intentionally remains dark; the feature content area is
+ * standardized to the same white/light palette used by the Dean Reports page.
+ */
+:root {
+  --page-l: #F5F8FC !important;
+  --card-l: #FFFFFF !important;
+  --line-l: #DCE7F1 !important;
+  --line-strong-l: #9FB2C3 !important;
+  --text-l: #12263A !important;
+  --muted-l: #6D8194 !important;
+  --input-l: #F7FAFC !important;
+  --shadow-l: 0 4px 16px rgba(28,64,92,.09) !important;
+
+  /* Legacy dark-theme variables used by older Dean feature styles. */
+  --dark: #F5F8FC !important;
+  --mid: #FFFFFF !important;
+  --inner: #F7FAFC !important;
+  --light: #12263A !important;
+  --muted: #6D8194 !important;
+  --border: #DCE7F1 !important;
+  --page-bg: #F5F8FC !important;
+  --card-bg: #FFFFFF !important;
+  --card-border: #DCE7F1 !important;
+  --portal-accent-bg: rgba(124,95,217,.10) !important;
+  --portal-accent: #7C5FD9 !important;
+  --portal-accent-h: #5F45B8 !important;
+}
+
+html {
+  background: var(--page-l) !important;
+  color-scheme: light !important;
+}
+
+body {
+  min-height: 100vh !important;
+  background: var(--page-l) !important;
+  background-image: none !important;
+  background-color: var(--page-l) !important;
+  color: var(--text-l) !important;
+}
+
+.main,
+.content,
+.page-content,
+main {
+  background: transparent !important;
+  color: var(--text-l) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Dean sidebar: crisp, opaque dark navigation on the light theme.
+
+   Fully opaque on purpose. The per-page fallback used to paint this at
+   rgba(23,42,69,.9), which let the light page bleed through and made the
+   whole rail look washed out / semi-transparent. Every colour below is a
+   solid hex so the rail reads as one dense block against the content area.
+   ------------------------------------------------------------------------- */
+.sidebar {
+  background: #0F1F33 !important;
+  background-image: none !important;
+  color: #F5F8FC !important;
+  border-right: 1px solid #060E18 !important;
+  box-shadow: 4px 0 22px rgba(8,18,31,.28) !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.sidebar .sb-name { color: #FFFFFF !important; }
+.sidebar .sb-role { color: #C4B5FD !important; }
+.sidebar .sb-scope { color: #C3D2E2 !important; }
+.sidebar .sb-nav a {
+  color: #DCE7F3 !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  font-weight: 600 !important;
+}
+.sidebar .sb-nav a:hover {
+  color: #FFFFFF !important;
+  background: #1D3350 !important;
+  border-color: #2A4468 !important;
+}
+.sidebar .sb-nav a.active {
+  color: #FFFFFF !important;
+  background: #4C3FA8 !important;
+  border-color: #6353C4 !important;
+  box-shadow: inset 3px 0 0 #C4B5FD, 0 4px 12px rgba(6,14,24,.38) !important;
+}
+.sidebar .sb-nav a i { color: #B9A6FF !important; }
+.sidebar .sb-nav a.active i { color: #FFFFFF !important; }
+.sidebar .sb-logout a { color: #FFA8A8 !important; }
+.sidebar .sb-logout a:hover {
+  background: #4D2A32 !important;
+  color: #FFFFFF !important;
+}
+
+/* Balanced Dean navigation: correctly grouped and slightly relaxed without
+returning to the original, taller spacing. */
+.sidebar {
+  padding-top: 28px !important;
+  padding-bottom: 24px !important;
+}
+.sidebar .sb-profile {
+  margin-bottom: 22px !important;
+}
+.sidebar .sb-nav {
+  gap: 4px !important;
+  margin-top: 8px !important;
+}
+.sidebar .sb-nav a,
+.sidebar .sb-logout a {
+  min-height: 42px !important;
+  padding: 11px 14px !important;
+  line-height: 20px !important;
+}
+.sidebar .sb-nav a i,
+.sidebar .sb-logout a i {
+  flex: 0 0 18px !important;
+}
+.sidebar .sb-section-title {
+  padding: 7px 14px 4px !important;
+  margin-top: 1px !important;
+  color: #98AEC8 !important;
+  font-size: 10px !important;
+  line-height: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.1px !important;
+  text-align: left !important;
+}
+.sidebar .sb-section-title-account {
+  margin-top: 4px !important;
+}
+.sidebar .sb-logout {
+  margin-top: 6px !important;
+}
+
+/* -------------------------------------------------------------------------
+   Core surfaces.
+   ------------------------------------------------------------------------- */
+.section,
+.stat-card,
+.filter-bar,
+.table-wrap,
+.eval-table-wrap,
+.person-card,
+.q-block,
+.comment-block,
+.profile-card,
+.tracker-card,
+.structure-note,
+.info-banner,
+.eval-tabs,
+.eval-switcher,
+.eval-banner,
+.sheet-header,
+.scale-bar,
+.avg-summary,
+.comment-section,
+.response-card,
+.received-item,
+.sum-card,
+.standing-panel,
+.person-row,
+.eval-card,
+.top-bar,
+.content-panel,
+.create-panel,
+.period-card,
+.history-card,
+.gl-card,
+.amber-card,
+.green-card,
+.red-card,
+.no-archived,
+.target-card,
+.no-evaluated,
+.cat-section,
+.people-list,
+.evaluator-grid,
+.no-eval,
+.no-data,
+.shell .section {
+  background: var(--card-l) !important;
+  color: var(--text-l) !important;
+  border-color: var(--line-l) !important;
+  box-shadow: var(--shadow-l) !important;
+}
+
+/* Inner/compact surfaces. */
+.notif-list li,
+.countdown-box,
+.bar-wrap,
+.progress-track,
+.comment-text,
+.info-item,
+.rating-badge,
+.avg-bar-bg,
+.eval-bar-bg,
+.score-bar-bg,
+.cat-bar,
+.page-btn,
+.filter-toggle,
+.filter-menu,
+.pagination,
+.filter-menu-actions,
+.mini-list li,
+.q-table thead tr,
+.eval-table thead tr,
+thead tr {
+  background: var(--input-l) !important;
+  color: var(--text-l) !important;
+}
+
+/* Reports / result sheets. */
+.sheet-header,
+.eval-banner,
+.eval-card,
+.target-card,
+.top-bar,
+.history-card,
+.no-archived,
+.standing-panel,
+.sum-card,
+.person-row,
+.comment-section,
+.avg-summary,
+.content-panel {
+  background: #FFFFFF !important;
+  color: var(--text-l) !important;
+}
+
+.sheet-avatar-ph,
+.target-avatar-ph,
+.person-photo-ph,
+.standing-photo-ph {
+  background: #F1F5F9 !important;
+  border-color: var(--line-l) !important;
+  color: var(--muted-l) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Typography / data text.
+   ------------------------------------------------------------------------- */
+.page-title,
+.page-header .page-title,
+.page-header h1,
+.page-header h2,
+.section h2,
+.section-title,
+.tracker-heading,
+.eval-modal-title,
+.sheet-name,
+.target-name,
+.person-name,
+.standing-name,
+.sum-value,
+.period-field-value,
+.info-value,
+.num,
+.score-big,
+.score-big .val,
+.summary-score,
+.received-score,
+td,
+.q-table td,
+.eval-table td,
+.rating-cell,
+.q-text,
+.q-table .q-text,
+.eval-qtext {
+  color: var(--text-l) !important;
+}
+
+.page-sub,
+.muted,
+.empty-note,
+.no-results,
+.filter-hint,
+.count-note,
+.person-meta,
+.eval-by-date,
+.eval-by-label,
+.sum-label,
+.sum-sub,
+.standing-desig,
+.pstat-lbl,
+.description,
+.helper,
+.subtitle,
+.small,
+small,
+.filter-field label,
+.toolbar .count-note,
+.period-field-label,
+.info-label,
+.eval-by-date,
+.no-comment,
+.loading-eval,
+.avg-bar-label,
+.avg-out-of,
+.received-meta {
+  color: var(--muted-l) !important;
+}
+
+.eval-score-lbl {
+  color: var(--muted-l);
+}
+
+label,
+th,
+.table-header,
+.q-table th,
+.eval-table th {
+  color: #52687B !important;
+}
+
+/* -------------------------------------------------------------------------
+   Tables / lists.
+   ------------------------------------------------------------------------- */
+table.data,
+table.data td,
+table.data th,
+.eval-table,
+.eval-table td,
+.eval-table th,
+.q-table,
+.q-table td,
+.q-table th {
+  color: var(--text-l) !important;
+}
+
+table.data th,
+.q-table th,
+.eval-table th {
+  border-color: var(--line-l) !important;
+  color: #52687B !important;
+  background: #F8FAFC !important;
+}
+
+table.data td,
+.q-table td,
+.eval-table td {
+  border-color: var(--line-l) !important;
+}
+
+table.data tbody tr:hover td,
+.q-table tbody tr:hover td,
+.eval-table tbody tr:hover td {
+  background: #F8FAFC !important;
+}
+
+/* -------------------------------------------------------------------------
+   Forms / filters.
+   ------------------------------------------------------------------------- */
+input,
+select,
+textarea,
+.filter-field select,
+.toolbar input[type="text"],
+.toolbar select,
+.search-wrap input,
+.form-group input,
+.comment-block textarea {
+  background: #FFFFFF !important;
+  color: var(--text-l) !important;
+  border-color: var(--line-strong-l) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #93A4B4 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #7C5FD9 !important;
+  box-shadow: 0 0 0 3px rgba(124,95,217,.12) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Tabs / segmented navigation.
+   ------------------------------------------------------------------------- */
+.eval-tabs,
+.eval-switcher,
+.group-tabs,
+.faculty-subtabs,
+.desig-subtabs,
+.status-tabs,
+.tabs,
+.level-tabs {
+  background: #FFFFFF !important;
+  border-color: var(--line-l) !important;
+  box-shadow: none !important;
+}
+
+.eval-tab,
+.tab,
+.level-tab,
+.status-tab,
+.group-tab,
+.faculty-subtab,
+.desig-subtab {
+  color: var(--muted-l) !important;
+  background: transparent !important;
+}
+
+.eval-tab:hover,
+.tab:hover,
+.level-tab:hover,
+.status-tab:hover,
+.group-tab:hover,
+.faculty-subtab:hover,
+.desig-subtab:hover {
+  background: #F4F7FB !important;
+  color: var(--text-l) !important;
+}
+
+.eval-tabs .active,
+.eval-tab.active,
+.group-tab.active,
+.faculty-subtab.active,
+.desig-subtab.active,
+.status-tab.active,
+.group-tab.active-all,
+.group-tab.active-teacher,
+.group-tab.active-staff {
+  background: rgba(124,95,217,.10) !important;
+  border-color: rgba(124,95,217,.28) !important;
+  color: #5F45B8 !important;
+}
+
+.tab-badge,
+.tab-count,
+.eval-tab .badge {
+  background: #F1F5F9 !important;
+  color: #52687B !important;
+}
+
+/* -------------------------------------------------------------------------
+   Accents, status pills and score bars.
+   ------------------------------------------------------------------------- */
+.stat-card i,
+.section h2 i,
+.page-header i,
+.info-banner i,
+.structure-note i,
+.eval-qno,
+.fa-circle-info {
+  color: #5F45B8 !important;
+}
+
+.period-badge {
+  background: rgba(124,95,217,.10) !important;
+  border-color: rgba(124,95,217,.28) !important;
+  color: #5F45B8 !important;
+}
+
+.period-badge.closed,
+.closed {
+  background: rgba(240,84,84,.08) !important;
+  border-color: rgba(240,84,84,.24) !important;
+  color: #C24141 !important;
+}
+
+.period-badge.amber,
+.amber {
+  background: rgba(217,119,6,.10) !important;
+  border-color: rgba(217,119,6,.24) !important;
+  color: #A16207 !important;
+}
+
+.pill.good,
+.good {
+  background: rgba(16,185,129,.08) !important;
+  color: #047857 !important;
+  border-color: rgba(16,185,129,.24) !important;
+}
+
+.pill.warn,
+.warn {
+  background: rgba(124,95,217,.10) !important;
+  color: #5F45B8 !important;
+  border-color: rgba(124,95,217,.24) !important;
+}
+
+.status-pill,
+.role-pill,
+.yl-pill,
+.desig-pill {
+  border-color: var(--line-l) !important;
+}
+
+.yl-pill {
+  background: rgba(43,108,176,.08) !important;
+  color: #2F6CA3 !important;
+}
+
+.role-pill {
+  background: #F1F5F9 !important;
+  color: #52687B !important;
+}
+
+.desig-pill {
+  background: #F8FAFC !important;
+  color: #52687B !important;
+}
+
+.bar-wrap,
+.score-bar-bg,
+.eval-bar-bg,
+.avg-bar-bg,
+.cat-bar {
+  background: #E8EEF4 !important;
+}
+
+.bar-fill,
+.eval-bar-fill,
+.avg-bar-fill,
+.score-bar-fill {
+  background: linear-gradient(90deg,#5F45B8,#9C85F0) !important;
+}
+
+/* Keep data/status colors meaningful on the light surface. */
+.score-big,
+.avg-score-big,
+.avg-score-label,
+.score-top,
+.standing-score,
+.pstat-val {
+  color: #176B3A;
+}
+
+.standing-title.low,
+.score-low {
+  color: #B42318 !important;
+}
+
+/* -------------------------------------------------------------------------
+   Evaluation form rating controls.
+   ------------------------------------------------------------------------- */
+.rating-opt label,
+.eval-rating-cell label {
+  background: #FFFFFF !important;
+  color: #52687B !important;
+  border-color: var(--line-strong-l) !important;
+}
+
+.rating-opt label:hover,
+.eval-rating-cell label:hover {
+  border-color: #9C85F0 !important;
+  background: #F8F6FF !important;
+}
+
+.rating-opt input:checked + label,
+.eval-rating-cell input:checked + label {
+  background: #7C5FD9 !important;
+  border-color: #7C5FD9 !important;
+  color: #FFFFFF !important;
+}
+
+.eval-category-heading,
+.cat-title,
+.comment-title,
+.eval-banner-title {
+  color: #5F45B8 !important;
+}
+
+/* -------------------------------------------------------------------------
+   Buttons.
+   ------------------------------------------------------------------------- */
+.btn-primary,
+.btn-submit,
+.btn-eval,
+.btn-apply,
+.btn-solid,
+.filter-apply,
+.btn-print {
+  background: #7C5FD9 !important;
+  color: #FFFFFF !important;
+  border-color: #7C5FD9 !important;
+}
+
+.btn-secondary,
+.btn-view,
+.btn-cancel,
+.btn-icon,
+.page-btn,
+.filter-clear,
+.back-btn,
+.btn-archived-link,
+.btn-archive,
+.btn-restore,
+.btn-action,
+.action-btn {
+  background: #FFFFFF !important;
+  color: var(--text-l) !important;
+  border-color: var(--line-strong-l) !important;
+}
+
+.btn-secondary:hover,
+.btn-view:hover,
+.btn-cancel:hover,
+.btn-icon:hover,
+.page-btn:hover,
+.filter-clear:hover,
+.back-btn:hover,
+.btn-archived-link:hover,
+.btn-archive:hover,
+.btn-restore:hover,
+.btn-action:hover,
+.action-btn:hover {
+  background: #F5F3FF !important;
+  color: #5F45B8 !important;
+  border-color: rgba(124,95,217,.30) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Alerts / notes.
+   ------------------------------------------------------------------------- */
+.alert,
+.alert-error,
+.error {
+  background: rgba(240,84,84,.07) !important;
+  border-color: rgba(240,84,84,.24) !important;
+  color: #B42318 !important;
+}
+
+.alert-success,
+.success {
+  background: rgba(16,185,129,.08) !important;
+  border-color: rgba(16,185,129,.24) !important;
+  color: #047857 !important;
+}
+
+.alert-info,
+.stub-note,
+.info-banner {
+  background: rgba(124,95,217,.06) !important;
+  border-color: rgba(124,95,217,.20) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Results / received-evaluation details.
+   ------------------------------------------------------------------------- */
+.response-card,
+.received-item,
+.q-result,
+.comment-modal,
+.info-grid > div {
+  background: #FFFFFF !important;
+  border-color: var(--line-l) !important;
+  color: var(--text-l) !important;
+}
+
+.response-label,
+.response-head,
+.info-label,
+.q-no {
+  color: var(--muted-l) !important;
+}
+
+.response-comment,
+.comment-modal,
+.q-text,
+.info-value,
+.cat-name,
+.cat-name-modal,
+.q-score,
+.q-score span {
+  color: var(--text-l) !important;
+}
+
+.response-score,
+.received-score {
+  background: rgba(16,185,129,.08) !important;
+  border-color: rgba(16,185,129,.20) !important;
+  color: #047857 !important;
+}
+
+.view-evals-btn {
+  background: rgba(124,95,217,.08) !important;
+  border-color: rgba(124,95,217,.24) !important;
+  color: #5F45B8 !important;
+}
+
+.details-btn {
+  background: rgba(13,148,136,.08) !important;
+  border-color: rgba(13,148,136,.24) !important;
+  color: #0F766E !important;
+}
+
+.eval-modal-overlay {
+  background: rgba(15,23,42,.38) !important;
+}
+
+.eval-modal {
+  background: #FFFFFF !important;
+  border-color: var(--line-l) !important;
+  box-shadow: 0 24px 80px rgba(15,23,42,.18) !important;
+}
+
+.eval-modal-header {
+  border-bottom-color: var(--line-l) !important;
+}
+
+.eval-modal-title,
+.modal-section-title {
+  color: var(--text-l) !important;
+}
+
+/* Preserve score/rating colors that are intentionally generated inline. */
+.rating-num,
+.rating-lbl,
+.eval-score,
+.eval-score-lbl,
+.avg-score-big,
+.avg-score-label,
+.pstat-val {
+  color: var(--text-l);
+}
+
+/* -------------------------------------------------------------------------
+   Notification dropdown.
+   ------------------------------------------------------------------------- */
+.notif-dropdown,
+.notif-dropdown-header {
+  background: #FFFFFF !important;
+  color: var(--text-l) !important;
+  border-color: var(--line-l) !important;
+}
+.notif-dropdown-header { border-bottom-color: var(--line-l) !important; }
+.notif-list li { border-color: transparent !important; }
+.notif-list li i { color: #5F45B8 !important; }
+
+/* -------------------------------------------------------------------------
+   Account settings specific content.
+   ------------------------------------------------------------------------- */
+.form-group input:disabled {
+  background: #F1F5F9 !important;
+  color: #6D8194 !important;
+}
+.info-item {
+  background: #F8FAFC !important;
+  border-color: var(--line-l) !important;
+}
+
+/* Scrollbar. */
+::-webkit-scrollbar-track { background: #F8FAFC !important; }
+::-webkit-scrollbar-thumb { background: #CBD5E1 !important; border: 2px solid #F8FAFC !important; }
+
+@media(max-width:768px){
+  body { background: var(--page-l) !important; }
+}
+
+/* -------------------------------------------------------------------------
+   Dean workspace shell — match the Principal feature-switching view.
+   White outer viewport + inset F3F6FA feature workspace + white surfaces.
+   Sidebar remains in the Dean's existing dark/violet theme.
+   ------------------------------------------------------------------------- */
+html {
+  background: #FFFFFF !important;
+  color-scheme: light !important;
+}
+
+body {
+  background: #FFFFFF !important;
+  background-image: none !important;
+  background-color: #FFFFFF !important;
+  color: #172033 !important;
+}
+
+.main,
+main.main {
+  position: relative !important;
+  flex: 1 1 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: calc(100vh - 20px) !important;
+  margin: 20px 20px 0 20px !important;
+  padding: 24px 34px 34px !important;
+  background: #F3F6FA !important;
+  color: #172033 !important;
+  border: 1px solid #E5EAF0 !important;
+  border-bottom: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+  box-shadow: none !important;
+  isolation: auto !important;
+  overflow: visible !important;
+}
+
+/* Transparent page headers sit directly on the feature workspace. */
+.main > .page-header,
+main.main > .page-header {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* White feature surfaces remain distinct from the F3F6FA workspace. */
+.main .section,
+.main .stat-card,
+.main .filter-bar,
+.main .table-wrap,
+.main .eval-table-wrap,
+.main .person-card,
+.main .q-block,
+.main .comment-block,
+.main .profile-card,
+.main .tracker-card,
+.main .structure-note,
+.main .info-banner,
+.main .eval-tabs,
+.main .eval-switcher,
+.main .eval-banner,
+.main .sheet-header,
+.main .scale-bar,
+.main .avg-summary,
+.main .comment-section,
+.main .response-card,
+.main .received-item,
+.main .sum-card,
+.main .standing-panel,
+.main .person-row,
+.main .eval-card,
+.main .top-bar,
+.main .content-panel,
+.main .create-panel,
+.main .period-card,
+.main .history-card,
+.main .gl-card,
+.main .amber-card,
+.main .green-card,
+.main .red-card,
+.main .no-archived,
+.main .target-card,
+.main .no-evaluated,
+.main .cat-section,
+.main .people-list,
+.main .evaluator-grid,
+.main .no-eval,
+.main .no-data,
+.main .shell .section,
+.main .feature-card,
+main.main .section,
+main.main .stat-card,
+main.main .filter-bar,
+main.main .table-wrap,
+main.main .eval-table-wrap,
+main.main .person-card,
+main.main .q-block,
+main.main .comment-block,
+main.main .profile-card,
+main.main .tracker-card,
+main.main .structure-note,
+main.main .info-banner,
+main.main .eval-tabs,
+main.main .eval-switcher,
+main.main .eval-banner,
+main.main .sheet-header,
+main.main .scale-bar,
+main.main .avg-summary,
+main.main .comment-section,
+main.main .response-card,
+main.main .received-item,
+main.main .sum-card,
+main.main .standing-panel,
+main.main .person-row,
+main.main .eval-card,
+main.main .top-bar,
+main.main .content-panel,
+main.main .create-panel,
+main.main .period-card,
+main.main .history-card,
+main.main .gl-card,
+main.main .amber-card,
+main.main .green-card,
+main.main .red-card,
+main.main .no-archived,
+main.main .target-card,
+main.main .no-evaluated,
+main.main .cat-section,
+main.main .people-list,
+main.main .evaluator-grid,
+main.main .no-eval,
+main.main .no-data,
+main.main .shell .section,
+main.main .feature-card {
+  background: #FFFFFF !important;
+  color: #172033 !important;
+  border-color: #D9E4EF !important;
+  box-shadow: 0 1px 5px rgba(15,23,42,.035) !important;
+}
+
+.main table thead th,
+.main .table-head,
+.main .table-header,
+.main .thead,
+.main .subtle-head,
+main.main table thead th,
+main.main .table-head,
+main.main .table-header,
+main.main .thead,
+main.main .subtle-head {
+  background: #F4F8FF !important;
+  color: #4B6580 !important;
+  border-color: #D9E4EF !important;
+}
+
+@media (max-width: 768px) {
+  .main,
+  main.main {
+    margin: 12px 12px 0 12px !important;
+    padding: 20px 18px 28px !important;
+    min-height: calc(100vh - 12px) !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #FFFFFF !important;
+  }
+  .main,
+  main.main {
+    margin: 0 !important;
+    padding: 20px !important;
+    min-height: 0 !important;
+    background: #FFFFFF !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+

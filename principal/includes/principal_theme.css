@@ -1,0 +1,316 @@
+/* Principal portal appearance layer.
+   Light is the default, matching Faculty/Staff. Dark is persisted through
+   localStorage key pbi_theme so the preference follows the user's portal. */
+
+html.principal-theme-dark-pending body{visibility:hidden!important;}
+
+:root{
+  --principal-dark:#0A192F;
+  --principal-mid:#172A45;
+  --principal-inner:#0F1F3D;
+  --principal-accent:#D99A2B;
+  --principal-accent-hover:#F0B84D;
+  --principal-light:#E0E6F0;
+  --principal-muted:#A0B3C6;
+  --principal-border:rgba(255,255,255,.08);
+  --principal-shadow:0 4px 20px rgba(0,0,0,.35);
+}
+
+/* Shared Principal sidebar — Staff layout, Principal amber accent. */
+#pbiSidebar{
+  width:248px!important;min-width:248px!important;max-width:248px!important;flex:0 0 248px!important;
+  position:fixed!important;top:0!important;left:0!important;height:100vh!important;min-height:100vh!important;
+  margin:0!important;padding:0!important;overflow:hidden!important;
+  display:flex!important;flex-direction:column!important;
+  background:#0A192F!important;color:#E0E6F0!important;border-right:1px solid #172A45!important;
+  box-shadow:6px 0 20px rgba(0,0,0,.16)!important;border-radius:0!important;
+  z-index:40!important;font-family:'DM Sans',sans-serif!important;
+}
+#pbiSidebar .portal-brand{min-height:68px!important;padding:14px 17px!important;border-bottom:1px solid rgba(255,255,255,.08)!important;display:flex!important;align-items:center!important;gap:11px!important;background:transparent!important;}
+#pbiSidebar .portal-brand-logo{width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:11px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#0F1F3D!important;border:1px solid #D99A2B!important;box-shadow:0 0 14px rgba(217,154,43,.18)!important;}
+#pbiSidebar .portal-brand-logo img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
+#pbiSidebar .portal-brand-copy{min-width:0!important;display:flex!important;flex-direction:column!important;line-height:1.2!important;}
+#pbiSidebar .portal-brand-copy strong{font-family:'Rajdhani',sans-serif!important;font-size:15px!important;font-weight:700!important;color:#F8FAFC!important;letter-spacing:.25px!important;}
+#pbiSidebar .portal-brand-copy span{margin-top:3px!important;font-size:10px!important;color:#8FA6BF!important;font-weight:600!important;letter-spacing:.15px!important;white-space:nowrap!important;}
+#pbiSidebar .portal-sidebar-profile{padding:18px 16px 17px!important;text-align:center!important;border-bottom:1px solid rgba(255,255,255,.08)!important;background:transparent!important;}
+#pbiSidebar .portal-profile-avatar-wrap{margin:0 auto 11px!important;display:flex!important;justify-content:center!important;}
+#pbiSidebar .portal-profile-avatar{width:64px!important;height:64px!important;border-radius:50%!important;object-fit:cover!important;border:2px solid #D99A2B!important;background:#0F1F3D!important;box-shadow:0 0 15px rgba(217,154,43,.18)!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+#pbiSidebar .portal-profile-fallback{color:#F0B84D!important;font-family:'Rajdhani',sans-serif!important;font-size:17px!important;font-weight:700!important;}
+#pbiSidebar .portal-profile-name{color:#F8FAFC!important;font-size:13px!important;line-height:1.35!important;font-weight:700!important;word-break:break-word!important;}
+#pbiSidebar .portal-profile-role{margin-top:3px!important;color:#8FA6BF!important;font-size:10px!important;text-transform:uppercase!important;letter-spacing:.7px!important;font-weight:700!important;line-height:1.35!important;}
+#pbiSidebar .sb-scope{margin-top:3px!important;color:#8FA6BF!important;font-size:10px!important;line-height:1.35!important;}
+#pbiSidebar .portal-sidebar-nav{flex:1!important;padding:16px 10px!important;overflow-y:auto!important;overflow-x:hidden!important;background:transparent!important;}
+#pbiSidebar .portal-sidebar-nav .sb-nav-section-label{display:block!important;width:auto!important;padding:0 8px!important;margin:0 0 7px!important;font-family:'DM Sans',sans-serif!important;font-size:9.5px!important;font-weight:800!important;letter-spacing:1.25px!important;line-height:1.2!important;text-align:left!important;text-transform:uppercase!important;color:#8FA6BF!important;text-shadow:none!important;background:none!important;border:0!important;}
+#pbiSidebar .portal-sidebar-nav .sb-nav-section-label.sidebar-section-secondary{margin-top:17px!important;}
+#pbiSidebar .portal-sidebar-nav a{display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:40px!important;margin:2px 2px!important;padding:9px 11px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:#CBD8E8!important;font-family:'DM Sans',sans-serif!important;font-size:13px!important;font-weight:500!important;line-height:1.2!important;letter-spacing:0!important;text-decoration:none!important;transition:background .2s,color .2s,box-shadow .2s!important;box-sizing:border-box!important;}
+#pbiSidebar .portal-sidebar-nav a i{display:inline-block!important;width:18px!important;flex:0 0 18px!important;font-size:14px!important;color:#8FA6BF!important;text-align:center!important;margin:0!important;}
+#pbiSidebar .portal-sidebar-nav a:hover{background:rgba(255,255,255,.07)!important;color:#FFFFFF!important;}
+#pbiSidebar .portal-sidebar-nav a:hover i{color:#F0B84D!important;}
+#pbiSidebar .portal-sidebar-nav a.active{background:linear-gradient(90deg,rgba(217,154,43,.18),rgba(255,255,255,.025))!important;color:#FFFFFF!important;font-weight:700!important;box-shadow:inset 3px 0 0 #F0B84D!important;}
+#pbiSidebar .portal-sidebar-nav a.active i{color:#F0B84D!important;}
+#pbiSidebar .portal-sidebar-nav .nav-badge,#pbiSidebar .portal-sidebar-nav .side-nav-badge{margin-left:auto!important;background:rgba(217,154,43,.22)!important;color:#FDE68A!important;border-radius:20px!important;padding:2px 7px!important;font-size:9px!important;font-weight:800!important;}
+#pbiSidebar .sidebar-footer{padding:13px 14px 15px!important;border-top:1px solid rgba(255,255,255,.08)!important;background:transparent!important;}
+#pbiSidebar .btn-logout-side{display:flex!important;align-items:center!important;gap:7px!important;width:100%!important;padding:9px 11px!important;border:1px solid rgba(240,84,84,.30)!important;background:rgba(240,84,84,.08)!important;border-radius:8px!important;color:#FCA5A5!important;font-size:13px!important;font-weight:600!important;text-decoration:none!important;transition:all .2s!important;box-sizing:border-box!important;}
+#pbiSidebar .btn-logout-side:hover{background:rgba(240,84,84,.15)!important;color:#fff!important;}
+
+/* Main shell must track the Staff sidebar width. */
+body > .main,
+body > main.main,
+.main.main{margin-left:248px!important;}
+
+/* Light mode: retain the portal's existing white workspace, but use Staff's
+   typography/spacing language and Principal amber accents. */
+body.light-theme,
+body.light-theme .main,
+body.light-theme main.main{color:#172033!important;background:#F4F7FB!important;}
+body.light-theme .page-title,
+body.light-theme .page-header h1,
+body.light-theme .section h2,
+body.light-theme .section-title,
+body.light-theme .settings-page-title,
+body.light-theme .sheet-name,
+body.light-theme .target-name,
+body.light-theme .person-name{color:#12263F!important;}
+body.light-theme .page-sub,
+body.light-theme .page-header p,
+body.light-theme .muted,
+body.light-theme .empty-note,
+body.light-theme .description,
+body.light-theme .helper,
+body.light-theme .small{color:#5B7186!important;}
+body.light-theme .period-badge{background:rgba(217,154,43,.10)!important;border-color:rgba(217,154,43,.24)!important;color:#A16207!important;}
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea{background:#fff!important;color:#172033!important;border-color:#CBD5E1!important;}
+body.light-theme .section,
+body.light-theme .card,
+body.light-theme .panel,
+body.light-theme .table-card,
+body.light-theme .content-card,
+body.light-theme .table-wrap,
+body.light-theme .content-panel,
+body.light-theme .history-card,
+body.light-theme .eval-card,
+body.light-theme .results-card,
+body.light-theme .result-card,
+body.light-theme .feature-card,
+body.light-theme .stat-card{background:#fff!important;color:#172033!important;border-color:#D9E4EF!important;box-shadow:0 5px 18px rgba(20,42,67,.045)!important;}
+body.light-theme table thead th,
+body.light-theme .table-head,
+body.light-theme .table-header{background:#F4F8FF!important;color:#4B6580!important;border-color:#D9E4EF!important;}
+body.light-theme table td{border-color:#E2E8F0!important;color:#334155!important;}
+body.light-theme .btn-primary,
+body.light-theme .btn-save,
+body.light-theme .btn-submit{background:#D99A2B!important;border-color:#D99A2B!important;color:#fff!important;}
+body.light-theme .btn-primary:hover,
+body.light-theme .btn-save:hover,
+body.light-theme .btn-submit:hover{background:#B8801F!important;border-color:#B8801F!important;}
+body.light-theme .eval-rating-opt:has(input:checked),
+body.light-theme .eval-rating-cell input:checked + label{background:#D99A2B!important;border-color:#D99A2B!important;color:#fff!important;}
+body.light-theme .bar-fill,
+body.light-theme .avg-bar-fill,
+body.light-theme .cat-bar>div{background:linear-gradient(90deg,#B8801F,#F0B84D)!important;}
+
+/* Dark mode — final cascade layer intentionally overrides the package's older
+   white-only blocks, giving Principal the same deep navy/charcoal treatment as
+   Faculty and Staff while preserving the amber role identity. */
+html.principal-theme-dark,
+html.principal-theme-dark body{background:#0A192F!important;color:#E0E6F0!important;color-scheme:dark!important;}
+html.principal-theme-dark body{background-image:none!important;}
+html.principal-theme-dark .main,
+html.principal-theme-dark main.main,
+html.principal-theme-dark .main-content,
+html.principal-theme-dark .content,
+html.principal-theme-dark .page-content{background:#0A192F!important;color:#E0E6F0!important;}
+html.principal-theme-dark .main{border-color:rgba(255,255,255,.06)!important;}
+html.principal-theme-dark .page-header,
+html.principal-theme-dark .main > .page-header,
+html.principal-theme-dark main.main > .page-header{background:transparent!important;border-color:transparent!important;box-shadow:none!important;}
+html.principal-theme-dark .page-title,
+html.principal-theme-dark .page-header h1,
+html.principal-theme-dark .section h2,
+html.principal-theme-dark .section-title,
+html.principal-theme-dark .tracker-heading,
+html.principal-theme-dark .eval-modal-title,
+html.principal-theme-dark .sheet-name,
+html.principal-theme-dark .target-name,
+html.principal-theme-dark .person-name,
+html.principal-theme-dark .standing-name,
+html.principal-theme-dark .sum-value,
+html.principal-theme-dark .period-field-value,
+html.principal-theme-dark .info-value,
+html.principal-theme-dark .num,
+html.principal-theme-dark .score-big,
+html.principal-theme-dark .summary-score,
+html.principal-theme-dark .received-score,
+html.principal-theme-dark td,
+html.principal-theme-dark th{color:#EAF0F7!important;}
+html.principal-theme-dark .page-sub,
+html.principal-theme-dark .page-header p,
+html.principal-theme-dark .muted,
+html.principal-theme-dark .empty-note,
+html.principal-theme-dark .no-results,
+html.principal-theme-dark .filter-hint,
+html.principal-theme-dark .count-note,
+html.principal-theme-dark .person-meta,
+html.principal-theme-dark .eval-by-date,
+html.principal-theme-dark .eval-by-label,
+html.principal-theme-dark .sum-label,
+html.principal-theme-dark .sum-sub,
+html.principal-theme-dark .standing-desig,
+html.principal-theme-dark .description,
+html.principal-theme-dark .helper,
+html.principal-theme-dark .subtitle,
+html.principal-theme-dark .small,
+html.principal-theme-dark small,
+html.principal-theme-dark label{color:#A0B3C6!important;}
+html.principal-theme-dark .section,
+html.principal-theme-dark .card,
+html.principal-theme-dark .panel,
+html.principal-theme-dark .stat-card,
+html.principal-theme-dark .filter-bar,
+html.principal-theme-dark .table-wrap,
+html.principal-theme-dark .table-card,
+html.principal-theme-dark .table-card-wrap,
+html.principal-theme-dark .content-card,
+html.principal-theme-dark .content-panel,
+html.principal-theme-dark .history-card,
+html.principal-theme-dark .gl-card,
+html.principal-theme-dark .amber-card,
+html.principal-theme-dark .green-card,
+html.principal-theme-dark .red-card,
+html.principal-theme-dark .ra-table-card,
+html.principal-theme-dark .eval-card,
+html.principal-theme-dark .comment-section,
+html.principal-theme-dark .avg-summary,
+html.principal-theme-dark .standing-panel,
+html.principal-theme-dark .person-row,
+html.principal-theme-dark .target-card,
+html.principal-theme-dark .no-eval,
+html.principal-theme-dark .no-data,
+html.principal-theme-dark .no-evaluated,
+html.principal-theme-dark .no-archived,
+html.principal-theme-dark .evaluator-grid,
+html.principal-theme-dark .people-list,
+html.principal-theme-dark .cat-section,
+html.principal-theme-dark .results-card,
+html.principal-theme-dark .result-card,
+html.principal-theme-dark .feature-card,
+html.principal-theme-dark .shell .section{background:#172A45!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 4px 20px rgba(0,0,0,.28)!important;}
+html.principal-theme-dark table,
+html.principal-theme-dark .eval-table,
+html.principal-theme-dark .q-table{color:#E0E6F0!important;background:#172A45!important;}
+html.principal-theme-dark table thead th,
+html.principal-theme-dark .eval-table th,
+html.principal-theme-dark .q-table th,
+html.principal-theme-dark .table-head,
+html.principal-theme-dark .table-header,
+html.principal-theme-dark .thead{background:#0F1F3D!important;color:#BFD0E0!important;border-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark table td,
+html.principal-theme-dark .eval-table td,
+html.principal-theme-dark .q-table td{color:#DCE6F0!important;border-color:rgba(255,255,255,.07)!important;background:transparent!important;}
+html.principal-theme-dark table tbody tr:hover td,
+html.principal-theme-dark .eval-table tbody tr:hover td,
+html.principal-theme-dark .q-table tbody tr:hover td{background:rgba(255,255,255,.035)!important;}
+html.principal-theme-dark input,
+html.principal-theme-dark select,
+html.principal-theme-dark textarea,
+html.principal-theme-dark .filter-field select,
+html.principal-theme-dark .filter-field input{background:#0F1F3D!important;color:#E0E6F0!important;border-color:rgba(255,255,255,.12)!important;}
+html.principal-theme-dark input::placeholder,
+html.principal-theme-dark textarea::placeholder{color:#7F93A8!important;}
+html.principal-theme-dark .eval-tabs,
+html.principal-theme-dark .eval-switcher,
+html.principal-theme-dark .group-tabs,
+html.principal-theme-dark .faculty-subtabs,
+html.principal-theme-dark .desig-subtabs,
+html.principal-theme-dark .tabs,
+html.principal-theme-dark .level-tabs,
+html.principal-theme-dark .status-tabs{background:#0F1F3D!important;border-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .eval-tab,
+html.principal-theme-dark .tab,
+html.principal-theme-dark .level-tab,
+html.principal-theme-dark .status-tab,
+html.principal-theme-dark .group-tab,
+html.principal-theme-dark .desig-subtab{color:#A0B3C6!important;background:transparent!important;}
+html.principal-theme-dark .eval-tab:hover,
+html.principal-theme-dark .tab:hover,
+html.principal-theme-dark .level-tab:hover,
+html.principal-theme-dark .status-tab:hover,
+html.principal-theme-dark .group-tab:hover,
+html.principal-theme-dark .desig-subtab:hover{color:#fff!important;background:rgba(255,255,255,.05)!important;}
+html.principal-theme-dark .eval-tab.active,
+html.principal-theme-dark .tab.active,
+html.principal-theme-dark .level-tab.active,
+html.principal-theme-dark .status-tab.active,
+html.principal-theme-dark .group-tab.active,
+html.principal-theme-dark .desig-subtab.active{color:#fff!important;background:rgba(217,154,43,.14)!important;border-color:rgba(217,154,43,.30)!important;}
+html.principal-theme-dark .period-badge{background:rgba(217,154,43,.14)!important;border-color:rgba(217,154,43,.30)!important;color:#F0B84D!important;}
+html.principal-theme-dark .structure-note{background:rgba(217,154,43,.08)!important;border-color:rgba(217,154,43,.25)!important;color:#E0E6F0!important;}
+html.principal-theme-dark .structure-note p{color:#E0E6F0!important;}
+html.principal-theme-dark .structure-note p b{color:#fff!important;}
+html.principal-theme-dark .bell-btn,
+html.principal-theme-dark .notif-btn{background:#172A45!important;border-color:rgba(255,255,255,.10)!important;color:#F0B84D!important;}
+html.principal-theme-dark .bell-btn:hover,
+html.principal-theme-dark .bell-btn[aria-expanded="true"],
+html.principal-theme-dark .notif-btn:hover,
+html.principal-theme-dark .notif-btn.has-unread{background:rgba(217,154,43,.15)!important;border-color:rgba(217,154,43,.38)!important;color:#F0B84D!important;}
+html.principal-theme-dark .bell-panel,
+html.principal-theme-dark .notif-dropdown,
+html.principal-theme-dark .eval-modal{background:#0F1F3D!important;border-color:rgba(255,255,255,.12)!important;color:#E0E6F0!important;box-shadow:0 18px 44px rgba(0,0,0,.55)!important;}
+html.principal-theme-dark .bell-head,
+html.principal-theme-dark .notif-header{border-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .bell-head h3,
+html.principal-theme-dark .notif-header-title{color:#fff!important;}
+html.principal-theme-dark .bell-list li,
+html.principal-theme-dark .notif-item{color:#DCE6F0!important;border-color:rgba(255,255,255,.06)!important;}
+html.principal-theme-dark .bell-list li.unseen,
+html.principal-theme-dark .notif-item.unread{background:rgba(217,154,43,.08)!important;}
+html.principal-theme-dark .comment-text,
+html.principal-theme-dark .info-item,
+html.principal-theme-dark .rating-badge,
+html.principal-theme-dark .bar-wrap,
+html.principal-theme-dark .progress-track,
+html.principal-theme-dark .avg-bar-bg,
+html.principal-theme-dark .eval-bar-bg,
+html.principal-theme-dark .score-bar-bg,
+html.principal-theme-dark .cat-bar{background:#0F1F3D!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.08)!important;}
+html.principal-theme-dark .bar-fill,
+html.principal-theme-dark .avg-bar-fill,
+html.principal-theme-dark .cat-bar>div{background:linear-gradient(90deg,#B8801F,#F0B84D)!important;}
+html.principal-theme-dark .btn-primary,
+html.principal-theme-dark .btn-save,
+html.principal-theme-dark .btn-submit,
+html.principal-theme-dark .btn-proceed,
+html.principal-theme-dark .btn-view-all-evals{background:#B8801F!important;border-color:#B8801F!important;color:#fff!important;}
+html.principal-theme-dark .btn-primary:hover,
+html.principal-theme-dark .btn-save:hover,
+html.principal-theme-dark .btn-submit:hover,
+html.principal-theme-dark .btn-proceed:hover,
+html.principal-theme-dark .btn-view-all-evals:hover{background:#D99A2B!important;border-color:#D99A2B!important;}
+html.principal-theme-dark .settings-card,
+html.principal-theme-dark .account-fact{background:#172A45!important;border-color:rgba(255,255,255,.08)!important;color:#E0E6F0!important;}
+html.principal-theme-dark .settings-card-head h3,
+html.principal-theme-dark .settings-page-title{color:#fff!important;}
+html.principal-theme-dark .settings-card-head p,
+html.principal-theme-dark .settings-page-subtitle,
+html.principal-theme-dark .setting-row span,
+html.principal-theme-dark .account-fact label{color:#A0B3C6!important;}
+html.principal-theme-dark .setting-row strong,
+html.principal-theme-dark .account-fact b{color:#E0E6F0!important;}
+html.principal-theme-dark .appearance-choice{background:#0F1F3D!important;color:#DCE6F0!important;border-color:rgba(255,255,255,.12)!important;}
+html.principal-theme-dark .appearance-choice.active{background:rgba(217,154,43,.14)!important;border-color:rgba(217,154,43,.35)!important;color:#F0B84D!important;}
+html.principal-theme-dark .settings-appearance-current{background:rgba(217,154,43,.10)!important;border-color:rgba(217,154,43,.24)!important;color:#F0B84D!important;}
+html.principal-theme-dark .toast-success,
+html.principal-theme-dark .alert.success{background:rgba(34,197,94,.12)!important;color:#86EFAC!important;border-color:rgba(34,197,94,.30)!important;}
+html.principal-theme-dark .toast-error,
+html.principal-theme-dark .alert.error{background:rgba(240,84,84,.12)!important;color:#FCA5A5!important;border-color:rgba(240,84,84,.30)!important;}
+
+@media(max-width:768px){
+  #pbiSidebar{position:static!important;width:100%!important;min-width:0!important;max-width:none!important;flex:0 0 auto!important;height:auto!important;min-height:auto!important;overflow:visible!important;}
+  body{flex-direction:column!important;}
+  body > .main,
+  body > main.main,
+  .main.main{margin-left:0!important;}
+  .main,main.main{padding-left:18px!important;padding-right:18px!important;}
+}

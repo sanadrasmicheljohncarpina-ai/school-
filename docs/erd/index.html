@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluation Database ERDs</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.5 Arial, sans-serif; color: #23364d; background: #f5f8fc; }
+    body { max-width: 1180px; margin: 0 auto; padding: 28px 20px 60px; }
+    h1 { color: #173b63; margin-bottom: 6px; }
+    .intro { color: #62758b; margin: 0 0 22px; }
+    nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; }
+    nav a { background: #e7f1fb; border: 1px solid #b7cde0; border-radius: 7px; padding: 8px 12px; color: #173b63; text-decoration: none; }
+    section { background: white; border: 1px solid #d3dfeb; border-radius: 10px; padding: 16px; margin: 22px 0; overflow-x: auto; }
+    section h2 { margin: 0 0 4px; color: #173b63; }
+    section p { margin: 0 0 12px; color: #62758b; }
+    section img { display: block; max-width: none; height: auto; }
+    .note { font-size: 14px; color: #62758b; }
+    @media (max-width: 700px) { body { padding: 18px 12px 40px; } section { padding: 10px; } }
+  </style>
+</head>
+<body>
+  <h1>Evaluation database ERDs</h1>
+  <p class="intro">The current 42-table database is split into four diagrams so each workflow stays readable. Primary keys are highlighted; arrows show foreign keys declared in the live database.</p>
+  <nav>
+    <a href="#people-access">People and access</a>
+    <a href="#evaluations">Evaluation records</a>
+    <a href="#questionnaires">Questionnaires</a>
+    <a href="#operations">Administration and operations</a>
+  </nav>
+  <section id="people-access">
+    <h2>1. People and access</h2><p>Accounts, roles, user context, authentication, permissions, and notifications.</p>
+    <a href="people-access.png">Open PNG image</a> · <a href="people-access.svg">Open vector SVG</a><img src="people-access.png" alt="People and access entity relationship diagram">
+  </section>
+  <section id="evaluations">
+    <h2>2. Evaluation records</h2><p>Periods, submissions, trackers, answers, reminders, results, and ratings.</p>
+    <a href="evaluations.png">Open PNG image</a> · <a href="evaluations.svg">Open vector SVG</a><img src="evaluations.png" alt="Evaluation records entity relationship diagram">
+  </section>
+  <section id="questionnaires">
+    <h2>3. Questionnaires and question banks</h2><p>Questionnaire forms, shared and user question banks, categories, and question mappings.</p>
+    <a href="questionnaires.png">Open PNG image</a> · <a href="questionnaires.svg">Open vector SVG</a><img src="questionnaires.png" alt="Questionnaire entity relationship diagram">
+  </section>
+  <section id="operations">
+    <h2>4. Administration and operations</h2><p>Archives, settings, documents, reports, activity logs, and remaining service configuration.</p>
+    <a href="operations.png">Open PNG image</a> · <a href="operations.svg">Open vector SVG</a><img src="operations.png" alt="Administration and operations entity relationship diagram">
+  </section>
+  <section id="cross-links">
+    <h2>Cross-diagram foreign keys</h2>
+    <p>These declared relationships connect tables shown in different diagrams.</p>
+    <ul>
+      <li><b>People and access → Evaluation records:</b> <code>evaluation_tracker.evaluator_id</code> and <code>target_user_id</code>; <code>evaluation_submissions.evaluator_id</code> and <code>target_user_id</code>; <code>evaluation_results.target_user_id</code>.</li>
+      <li><b>People and access → Questionnaires:</b> <code>questionnaire_forms.created_by</code>.</li>
+      <li><b>People and access → Administration and operations:</b> <code>analytics_reports.generated_by</code> and <code>documents.uploaded_by</code>.</li>
+      <li><b>Evaluation records → Questionnaires:</b> <code>evaluation_tracker.form_id</code>, <code>evaluation_submissions.form_id</code>, <code>evaluation_results.form_id</code> and <code>question_id</code>, and <code>questionnaire_answers.user_question_id</code>.</li>
+      <li><b>Evaluation records → People and access:</b> <code>evaluation_results.target_user_id</code>, plus evaluator and target references listed above.</li>
+    </ul>
+  </section>
+  <p class="note">Diagram connectors show only foreign keys declared by MySQL. Application-level references without a declared constraint, such as some reminder and certification IDs, are not drawn as enforced relationships.</p>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* -------------------------------------------------------------------------
+   Dean Workspace Composition — EA-style integrated light canvas
+   White outer page + inset light workspace + white feature surfaces.
+   The dark Dean sidebar remains untouched.
+   ------------------------------------------------------------------------- */
+
+@media screen {
+  :root {
+    --dean-workspace-bg: #F3F6FA;
+    --dean-workspace-edge: #E5EAF0;
+  }
+
+  html {
+    background: #FFFFFF !important;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+  }
+
+  /* The light canvas is inset from the white outer page, matching the
+     composition used by the EA feature pages. */
+  .main {
+    position: relative !important;
+    z-index: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .main::before {
+    content: "" !important;
+    position: fixed !important;
+    left: 274px !important; /* 250px sidebar + 24px outer white margin */
+    right: 24px !important;
+    top: 24px !important;
+    bottom: 24px !important;
+    background: var(--dean-workspace-bg) !important;
+    border: 1px solid var(--dean-workspace-edge) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 2px 10px rgba(31, 55, 79, .035) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .main > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Keep white cards/panels visually sitting on top of the workspace. */
+  .section,
+  .stat-card,
+  .filter-bar,
+  .table-wrap,
+  .eval-table-wrap,
+  .person-card,
+  .q-block,
+  .comment-block,
+  .profile-card,
+  .tracker-card,
+  .structure-note,
+  .info-banner,
+  .eval-tabs,
+  .eval-switcher,
+  .eval-banner,
+  .sheet-header,
+  .scale-bar,
+  .avg-summary,
+  .comment-section,
+  .response-card,
+  .received-item,
+  .sum-card,
+  .standing-panel,
+  .person-row,
+  .eval-card,
+  .top-bar,
+  .content-panel,
+  .create-panel,
+  .period-card,
+  .history-card,
+  .gl-card,
+  .amber-card,
+  .green-card,
+  .red-card,
+  .no-archived,
+  .target-card,
+  .no-evaluated,
+  .cat-section,
+  .people-list,
+  .evaluator-grid,
+  .no-eval,
+  .no-data,
+  .shell .section {
+    background: #FFFFFF !important;
+  }
+
+  @media (max-width: 1000px) {
+    .main::before {
+      left: 244px !important; /* 220px responsive sidebar + 24px margin */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main::before {
+      left: 14px !important;
+      right: 14px !important;
+      top: 14px !important;
+      bottom: 14px !important;
+      border-radius: 14px !important;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+Options -Indexes
+
+DirectoryIndex index.php
+
+# Keep runtime secrets, database dumps, backups, and logs out of HTTP access.
+<FilesMatch "^(\\.env|\\.env\\.php|evaluation\\.sql|.*\\.(bak|bak2|backup|old|log|tmp|temp))$">
+    Require all denied
+</FilesMatch>
+
+# Basic browser hardening. HSTS is intentionally not forced here so local
+# XAMPP development over http://localhost continues to work.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

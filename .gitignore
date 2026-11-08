@@ -1,0 +1,51 @@
+# Local environment / configuration
+
+.env
+.env.*
+!.env.example
+!.env.example.php
+
+# IDE / editor files
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+
+*.tmp
+*.temp
+*.log
+
+# PHP/XAMPP generated files
+
+cache/
+tmp/
+
+# Uploaded/generated user files
+
+uploads/
+admin/stored_docs/
+image/evaluation.sql.bak
+evaluation.sql
+image/
+image/
+evaluation.sql.bak
+
+# Backup files
+*.bak
+*.bak2
+*.backup
+*.old
+
+# Backup variants
+*.bak_*
+*.bak-*
+
+# Nested project/repository copy
+/index/
