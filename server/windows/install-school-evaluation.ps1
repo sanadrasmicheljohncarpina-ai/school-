@@ -50,7 +50,7 @@ return [
  'DB_PASS'=>'$pass',
 ];
 "@
-  Set-Content $envFile $envContent -Encoding UTF8
+  [System.IO.File]::WriteAllText($envFile, $envContent, [System.Text.UTF8Encoding]::new($false))
  }
  $configPath=Join-Path $InstallPath 'shared\app_config.php'
  if(!(Test-Path $configPath)){
@@ -69,7 +69,7 @@ function app_config(): array {
 }
 function app_is_production(): bool { return strtolower((string)(app_config()['APP_ENV']??'local'))==='production'; }
 '@
-  Set-Content $configPath $config -Encoding UTF8
+  [System.IO.File]::WriteAllText($configPath, $config, [System.Text.UTF8Encoding]::new($false))
  }
  Step 'Database setup'
  if(!$SkipDatabaseImport){
